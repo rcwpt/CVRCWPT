@@ -12,63 +12,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        :root {
+            --primary-bg: #f1f5f9;
+        }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f0f8ff;
-            /* Base font size increased for better readability on F4 */
-            font-size: 16px; 
+            background-color: var(--primary-bg);
+            font-size: 14px; 
+            color: #1e293b;
+            line-height: 1.4;
         }
+        
         .section-title {
-            position: relative;
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem; 
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            font-size: 1rem;
+            font-weight: 700;
         }
         .icon-box {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 8px;
-            margin-right: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            font-size: 1rem;
+            width: 24px; 
+            height: 24px;
+            border-radius: 4px;
+            margin-right: 8px;
+            font-size: 0.85rem;
         }
-        .table-row-hover:hover {
-            background-color: #eff6ff;
-            transition: background-color 0.2s;
-        }
-        .hover-card {
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .hover-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        .card-compact {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            margin-bottom: 0.75rem;
         }
         
-        /* PRINT SPECIFIC STYLES FOR F4 PAPER (210mm x 330mm) */
+        /* PRINT STYLES */
         @media print {
-            @page { 
-                margin: 1.5cm; 
-                size: 215mm 330mm; /* F4 / Folio Size approx */
-            }
+            @page { margin: 0.5cm; size: auto; }
             body {
                 background-color: white;
                 -webkit-print-color-adjust: exact;
-                font-size: 11pt !important; /* Standard print size */
+                font-size: 10pt !important;
             }
-            .no-print {
-                display: none !important;
-            }
-            .page-break {
-                page-break-before: always;
-                margin-top: 2rem;
-                display: block;
-            }
-            /* Remove shadows and borders for cleaner print */
             .cv-container {
                 max-width: none !important;
                 width: 100% !important;
@@ -76,481 +66,480 @@
                 box-shadow: none !important;
                 border: none !important;
             }
-            .bg-white {
-                background-color: transparent !important;
+            .bg-gradient-to-r {
+                background: #1e3a8a !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
             }
-            /* Force Grid layout in print */
             .print-grid-cols-2 {
                 display: grid !important;
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-                gap: 1rem !important;
+                gap: 0.5rem !important;
             }
             .print-flex-row {
                 display: flex !important;
                 flex-direction: row !important;
-                gap: 1.5rem !important;
-                margin-top: 0 !important;
+                gap: 1rem !important;
             }
-            .print-w-1-3 { width: 35% !important; }
-            .print-w-2-3 { width: 65% !important; }
+            .print-w-1-3 { width: 32% !important; }
+            .print-w-2-3 { width: 68% !important; }
             
-            /* Text Sizing overrides for print readability */
-            p, span, div, td {
-                font-size: 10pt;
-            }
-            h1 { font-size: 24pt !important; }
-            h2 { font-size: 14pt !important; }
-            h3 { font-size: 12pt !important; }
-            .text-xs { font-size: 9pt !important; }
-            .text-sm { font-size: 10pt !important; }
-            .text-[10px] { font-size: 8pt !important; }
+            .page-break { page-break-before: always; display: block; height: 1px; }
             
-            /* Ensure background colors print */
-            .bg-blue-50, .bg-green-50, .bg-pink-50, .bg-slate-50, .bg-indigo-50 {
+            .bg-blue-50, .bg-green-50, .bg-pink-50, .bg-slate-50, .bg-indigo-50, .bg-orange-50, .bg-teal-50, .bg-purple-50 {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
+            .shadow-2xl, .shadow-lg, .shadow-md, .shadow-sm {
+                box-shadow: none !important;
+            }
+            
+            /* Hide URL on print */
+            a[href]:after { content: none !important; }
         }
     </style>
 </head>
-<body class="text-slate-800 bg-slate-100">
+<body class="bg-slate-100 text-slate-800">
 
     <!-- Main Container -->
-    <div class="cv-container w-[95%] max-w-[95%] mx-auto my-8 bg-white shadow-2xl overflow-hidden border border-slate-200 rounded-xl">
+    <div class="cv-container max-w-7xl mx-auto my-4 bg-white shadow-xl overflow-hidden border border-slate-300 rounded-lg">
         
-        <!-- Header / Hero Section -->
-        <div class="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white px-10 pt-10 pb-20 relative overflow-hidden">
-            <!-- Decorations -->
-            <div class="absolute bottom-0 left-0 right-0 opacity-20">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-            </div>
-            <div class="absolute top-4 right-4 opacity-10">
-                <i class="fas fa-compass text-[10rem] text-yellow-300"></i>
+        <!-- Header / Hero Section (Compact) -->
+        <div class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white px-6 pt-6 pb-12 relative">
+            <div class="absolute top-2 right-4 opacity-10">
+                <i class="fas fa-anchor text-8xl text-white"></i>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center md:items-start gap-10 relative z-10">
-                <!-- Photo Frame -->
+            <div class="flex flex-col md:flex-row items-center md:items-center gap-6 relative z-10">
+                <!-- Photo -->
                 <div class="flex-shrink-0">
-                    <div class="w-40 h-52 bg-white p-1.5 rounded-lg shadow-xl border-4 border-yellow-400">
-                        <img src="https://raw.githubusercontent.com/rcwpt/CVRCWPT/main/IMG_20260128_125245.jpg.jpeg" alt="Rezhky C W P Todingbua" class="w-full h-full object-cover rounded border border-gray-100">
+                    <div class="w-32 h-40 bg-white p-1 rounded shadow-lg">
+                        <img src="https://raw.githubusercontent.com/rcwpt/CVRCWPT/main/IMG_20260128_125245.jpg.jpeg" alt="Photo" class="w-full h-full object-cover rounded-sm">
                     </div>
                 </div>
 
-                <!-- Main Info -->
-                <div class="text-center md:text-left flex-grow pt-2">
-                    <h1 class="text-4xl md:text-5xl font-bold uppercase tracking-wide leading-tight text-white drop-shadow-md">Rezhky C W P Todingbua</h1>
-                    <div class="inline-block bg-yellow-400 text-blue-900 text-lg md:text-xl mt-4 font-bold px-6 py-2 rounded-full shadow-lg">
-                        <span><i class="fas fa-anchor mr-2"></i>Deck Officer Class II (ANT-II)</span>
+                <!-- Info -->
+                <div class="text-center md:text-left flex-grow">
+                    <h1 class="text-3xl md:text-4xl font-bold uppercase tracking-wide leading-tight">Rezhky C W P Todingbua, S.Tr.Pel</h1>
+                    <div class="mt-2 mb-3">
+                        <span class="bg-yellow-400 text-blue-900 font-bold px-3 py-1 rounded text-sm shadow-sm inline-block">
+                            Deck Officer Class II (ANT-II)
+                        </span>
                     </div>
                     
-                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-blue-50">
-                        <div class="flex items-center gap-3 justify-center md:justify-start">
-                            <div class="bg-blue-700/50 p-2.5 rounded-full"><i class="fas fa-calendar-day text-yellow-400 w-5 h-5 flex items-center justify-center"></i></div>
-                            <div>
-                                <p class="text-xs text-blue-200 uppercase tracking-wider font-semibold">Date of Birth</p>
-                                <p class="font-medium text-base text-white">Sep 11th 1996</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3 justify-center md:justify-start">
-                            <div class="bg-blue-700/50 p-2.5 rounded-full"><i class="fas fa-map-marked-alt text-yellow-400 w-5 h-5 flex items-center justify-center"></i></div>
-                            <div>
-                                <p class="text-xs text-blue-200 uppercase tracking-wider font-semibold">Location</p>
-                                <p class="font-medium text-base text-white">Mimika, ID</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3 justify-center md:justify-start">
-                            <div class="bg-blue-700/50 p-2.5 rounded-full"><i class="fas fa-mobile-alt text-yellow-400 w-5 h-5 flex items-center justify-center"></i></div>
-                            <div>
-                                <p class="text-xs text-blue-200 uppercase tracking-wider font-semibold">Phone</p>
-                                <p class="font-medium text-base text-white">+62 813 4332 9545</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3 justify-center md:justify-start">
-                             <div class="bg-blue-700/50 p-2.5 rounded-full"><i class="fas fa-paper-plane text-yellow-400 w-5 h-5 flex items-center justify-center"></i></div>
-                            <div class="overflow-visible">
-                                <p class="text-xs text-blue-200 uppercase tracking-wider font-semibold">Email</p>
-                                <p class="font-medium text-base text-white">rezhkytodingbua@gmail.com</p>
-                            </div>
-                        </div>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-1 text-sm text-blue-100 font-medium">
+                        <div class="flex items-center gap-2"><i class="fas fa-calendar-day text-yellow-400"></i> Sep 11th 1996</div>
+                        <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-yellow-400"></i> Mimika, ID</div>
+                        <div class="flex items-center gap-2"><i class="fas fa-phone text-yellow-400"></i> +62 813 4332 9545</div>
+                        <div class="flex items-center gap-2"><i class="fas fa-envelope text-yellow-400"></i> rezhkytodingbua@gmail.com</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PAGE 1 CONTENT: SIDEBAR + EXPERIENCE -->
-        <div class="flex flex-col md:flex-row print-flex-row px-10 -mt-16 gap-10 print-mt-0 relative z-20">
+        <!-- SPLIT LAYOUT -->
+        <div class="flex flex-col md:flex-row print-flex-row px-6 -mt-8 gap-4 relative z-20">
             
             <!-- LEFT SIDEBAR -->
-            <div class="w-full md:w-1/3 print-w-1-3 flex flex-col gap-6">
+            <div class="w-full md:w-1/3 print-w-1-3 flex flex-col gap-3">
                 
-                <!-- Profile Summary -->
-                <div class="bg-white p-6 rounded-xl border border-blue-100 shadow-lg">
-                    <h2 class="text-base font-bold text-blue-900 section-title mb-3">
-                        <span class="icon-box bg-blue-600 text-white"><i class="fas fa-user-tie"></i></span>
-                        Profile
+                <!-- Profile -->
+                <div class="card-compact border-t-4 border-t-blue-600">
+                    <h2 class="section-title text-blue-800">
+                        <span class="icon-box bg-blue-600 text-white"><i class="fas fa-user"></i></span> Profile
                     </h2>
-                    <p class="text-sm text-slate-700 leading-relaxed text-justify">
-                        Dedicated Deck Officer holding <strong>ANT-II</strong> qualification with extensive sailing experience. Possesses profound knowledge in navigation, maritime safety (STCW), and vessel operations. Disciplined, hardworking, and ready to contribute professionally.
+                    <p class="text-xs text-justify leading-snug">
+                        Highly dedicated and disciplined Deck Officer holding <strong>ANT-II</strong> qualification with extensive sailing experience across various vessel types, including General Cargo, Bulk Carrier, and Container ships. Possesses profound knowledge and practical expertise in navigation, bridge resource management, maritime safety (STCW), and efficient vessel operations. Proven ability to maintain high safety standards, manage deck operations effectively, and adapt quickly to dynamic maritime environments. Committed to continuous professional development and ready to contribute significantly to achieving operational excellence.
                     </p>
                 </div>
 
                 <!-- Personal Details -->
-                <div class="bg-white p-6 rounded-xl border border-teal-100 shadow-md">
-                    <h2 class="text-base font-bold text-teal-800 section-title mb-3">
-                        <span class="icon-box bg-teal-600 text-white"><i class="fas fa-info"></i></span>
-                        Personal Details
+                <div class="card-compact border-t-4 border-t-teal-600">
+                    <h2 class="section-title text-teal-800">
+                        <span class="icon-box bg-teal-600 text-white"><i class="fas fa-info"></i></span> Personal
                     </h2>
-                    <ul class="space-y-4 text-sm">
-                        <li class="flex justify-between items-center border-b border-dashed border-slate-200 pb-2">
-                            <span class="font-semibold text-slate-700">Nationality</span>
-                            <span class="flex items-center gap-2 bg-teal-50 text-teal-700 px-3 py-1 rounded-full border border-teal-100 font-bold">
-                                <img src="https://flagcdn.com/w20/id.png" alt="ID" class="h-4 w-6 shadow-sm"> Indonesian
-                            </span>
+                    <table class="w-full text-xs">
+                        <tr class="border-b border-dashed border-slate-200"><td class="py-1 font-semibold text-slate-500">Nationality</td>
+                            <td class="py-1 text-right font-bold flex justify-end items-center gap-2">
+                                <img src="https://flagcdn.com/w20/id.png" alt="ID" class="h-3 w-5 shadow-sm"> Indonesian
+                            </td>
+                        </tr>
+                        <tr class="border-b border-dashed border-slate-200"><td class="py-1 font-semibold text-slate-500">Status</td><td class="py-1 text-right">Married</td></tr>
+                        <tr class="border-b border-dashed border-slate-200"><td class="py-1 font-semibold text-slate-500">Height/Weight</td><td class="py-1 text-right">163cm / 72kg</td></tr>
+                        <tr><td class="py-1 font-semibold text-slate-500">Coverall</td><td class="py-1 text-right font-bold">L</td></tr>
+                    </table>
+                </div>
+
+                <!-- Education -->
+                <div class="card-compact border-t-4 border-t-orange-500">
+                    <h2 class="section-title text-orange-700">
+                        <span class="icon-box bg-orange-600 text-white"><i class="fas fa-graduation-cap"></i></span> Education
+                    </h2>
+                    <ul class="space-y-2 text-xs">
+                        <li class="border-b border-dashed border-slate-200 pb-1">
+                            <div class="font-bold text-slate-800">POLITEKNIK ILMU PELAYARAN MAKASSAR</div>
+                            <div class="flex justify-between text-slate-500"><span>Diploma IV (S.Tr.Pel)</span><span class="font-bold text-orange-600">2020</span></div>
                         </li>
-                        <li class="flex justify-between items-center border-b border-dashed border-slate-200 pb-2">
-                            <span class="font-semibold text-slate-700">Status</span>
-                            <span class="font-medium">Married</span>
+                        <li class="border-b border-dashed border-slate-200 pb-1">
+                            <div class="font-bold text-slate-800">SMA YPPK TIGA RAJA TIMIKA</div>
+                            <div class="flex justify-between text-slate-500"><span>High School</span><span class="font-bold text-orange-600">2014</span></div>
                         </li>
-                        <li class="flex justify-between items-center border-b border-dashed border-slate-200 pb-2">
-                            <span class="font-semibold text-slate-700">Height / Weight</span>
-                            <span class="font-medium">163 cm / 72 kg</span>
+                        <li class="border-b border-dashed border-slate-200 pb-1">
+                            <div class="font-bold text-slate-800">SMPN 5 MIMIKA BARU</div>
+                            <div class="flex justify-between text-slate-500"><span>Junior High</span><span class="font-bold text-orange-600">2011</span></div>
                         </li>
-                        <li class="flex justify-between items-center">
-                            <span class="font-semibold text-slate-700">Coverall</span>
-                            <span class="font-bold text-slate-900 text-lg">L</span>
+                        <li>
+                            <div class="font-bold text-slate-800">SD INPRES TIMIKA IV</div>
+                            <div class="flex justify-between text-slate-500"><span>Elementary</span><span class="font-bold text-orange-600">2008</span></div>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Next of Kin -->
-                <div class="bg-white p-6 rounded-xl border border-pink-100 shadow-md">
-                    <h2 class="text-base font-bold text-pink-700 section-title mb-3">
-                        <span class="icon-box bg-pink-600 text-white"><i class="fas fa-heart"></i></span>
-                        Next of Kin
+                <div class="card-compact border-t-4 border-t-pink-500">
+                    <h2 class="section-title text-pink-700">
+                        <span class="icon-box bg-pink-600 text-white"><i class="fas fa-heart"></i></span> Next of Kin
                     </h2>
-                    
-                    <!-- Wife -->
-                    <div class="bg-pink-50 p-4 rounded-lg border border-pink-100 mb-4">
-                        <div class="flex items-center gap-3 mb-1">
-                            <div class="bg-pink-200 p-2 rounded-full"><i class="fas fa-female text-pink-600"></i></div>
-                            <div>
-                                <p class="font-bold text-pink-900 text-base">Mariana Mery</p>
-                                <p class="text-xs text-pink-600 font-bold uppercase">Wife</p>
-                            </div>
+                    <div class="space-y-2 text-xs">
+                        <div class="bg-pink-50 p-1.5 rounded border border-pink-100">
+                            <div class="font-bold text-pink-900">Mariana Mery <span class="font-normal text-pink-500">(Wife)</span></div>
+                            <div class="text-slate-600"><i class="fas fa-phone-alt text-[10px] mr-1"></i> +62 822 9957 2500</div>
                         </div>
-                        <div class="pl-10 mt-1">
-                             <span class="text-sm font-semibold text-slate-700 bg-white px-2 py-1 rounded border border-pink-100 shadow-sm block w-fit">+62 822 9957 2500</span>
-                        </div>
-                    </div>
-
-                    <!-- Mother -->
-                    <div class="bg-pink-50 p-4 rounded-lg border border-pink-100">
-                        <div class="flex items-center gap-3 mb-1">
-                             <div class="bg-pink-200 p-2 rounded-full"><i class="fas fa-female text-pink-600"></i></div>
-                            <div>
-                                <p class="font-bold text-pink-900 text-base">Christina Krey</p>
-                                <p class="text-xs text-pink-600 font-bold uppercase">Mother</p>
-                            </div>
-                        </div>
-                        <div class="pl-10 mt-1">
-                             <span class="text-sm font-semibold text-slate-700 bg-white px-2 py-1 rounded border border-pink-100 shadow-sm block w-fit">+62 812 4031 5725</span>
+                        <div class="bg-pink-50 p-1.5 rounded border border-pink-100">
+                            <div class="font-bold text-pink-900">Christina Krey <span class="font-normal text-pink-500">(Mother)</span></div>
+                            <div class="text-slate-600"><i class="fas fa-phone-alt text-[10px] mr-1"></i> +62 812 4031 5725</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Languages -->
-                <div class="bg-white p-6 rounded-xl border border-purple-100 shadow-md flex-grow">
-                    <h2 class="text-base font-bold text-purple-800 section-title mb-3">
-                        <span class="icon-box bg-purple-600 text-white"><i class="fas fa-language"></i></span>
-                        Languages
+                <div class="card-compact border-t-4 border-t-purple-500 flex-grow">
+                    <h2 class="section-title text-purple-800">
+                        <span class="icon-box bg-purple-600 text-white"><i class="fas fa-language"></i></span> Langs
                     </h2>
-                    <div class="space-y-4 text-sm">
-                        <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                            <div class="flex items-center gap-3">
-                                <img src="https://flagcdn.com/w20/id.png" alt="ID" class="w-6 h-4 shadow-sm rounded-sm">
-                                <span class="font-semibold text-slate-700">Indonesia</span>
+                    <div class="text-xs space-y-1">
+                        <div class="flex justify-between border-b border-slate-100 pb-1">
+                            <div class="flex items-center gap-2">
+                                <img src="https://flagcdn.com/w20/id.png" alt="ID" class="h-3 w-5 shadow-sm"> <span>Bahasa Indonesia</span>
                             </div>
-                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full border border-purple-200 text-xs font-bold">NATIVE</span>
+                            <span class="font-bold text-purple-700 bg-purple-50 px-1 rounded">Native</span>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-3">
-                                <img src="https://flagcdn.com/w20/gb.png" alt="EN" class="w-6 h-4 shadow-sm rounded-sm">
-                                <span class="font-semibold text-slate-700">English</span>
+                        <div class="flex justify-between">
+                            <div class="flex items-center gap-2">
+                                <img src="https://flagcdn.com/w20/gb.png" alt="EN" class="h-3 w-5 shadow-sm"> <span>English</span>
                             </div>
-                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full border border-purple-200 text-xs font-bold">PROFESSIONAL</span>
+                            <span class="font-bold text-purple-700 bg-purple-50 px-1 rounded">Professional</span>
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- RIGHT CONTENT (Work Experience) -->
-            <div class="w-full md:w-2/3 print-w-2-3 flex flex-col">
+            <!-- RIGHT CONTENT -->
+            <div class="w-full md:w-2/3 print-w-2-3 flex flex-col gap-3">
                 
                 <!-- Work Experience -->
-                <div class="bg-white p-8 rounded-xl border border-blue-100 shadow-lg h-full">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-6 flex items-center gap-3 border-b-2 border-slate-100 pb-3">
-                        <span class="bg-blue-600 text-white p-2 rounded-lg shadow-md"><i class="fas fa-briefcase"></i></span>
-                        Work Experience
+                <div class="card-compact border-t-4 border-t-blue-800">
+                    <h2 class="section-title text-blue-900 mb-3 border-b pb-1 border-slate-100">
+                        <i class="fas fa-briefcase mr-2 text-blue-600"></i> Work Experience
                     </h2>
 
-                    <!-- GRID: 2 Columns for better readability on print -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 print-grid-cols-2">
+                    <!-- COMPACT GRID -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 print-grid-cols-2">
                         
                         <!-- Exp 1 -->
-                        <div class="group">
-                            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-all border-l-4 border-l-blue-600 h-full flex flex-col justify-between">
-                                <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <h3 class="font-bold text-lg text-blue-900 leading-tight">MV. JIA HONG</h3>
-                                        <span class="flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full text-white text-xs font-bold shadow-sm">1</span>
-                                    </div>
-                                    <p class="text-xs text-slate-500 font-bold mb-3 uppercase tracking-wide truncate"><i class="fas fa-building mr-1"></i> JIAXIANG SHIPPING</p>
-                                    <div class="grid grid-cols-2 gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded border border-slate-100">
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">RANK</span> <span class="font-bold text-blue-900">2/O</span></div>
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">TYPE</span> Gen. Cargo</div>
-                                        <div class="col-span-2"><span class="text-slate-400 block text-[10px] font-bold">GRT / HP</span> 1995 / 1972</div>
-                                    </div>
-                                </div>
-                                <div class="mt-3 flex justify-end">
-                                    <span class="text-xs font-bold text-white bg-blue-600 px-3 py-1 rounded-full shadow-sm">2024 - 2025</span>
-                                </div>
+                        <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-blue-600 hover:bg-white transition-colors">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-sm text-blue-900 leading-none">MV. JIA HONG</h3>
+                                <span class="text-[9px] font-bold text-white bg-blue-600 px-1.5 rounded">2024 - 2025</span>
+                            </div>
+                            <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">JIAXIANG SHIPPING CO.,LTD</p>
+                            <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
+                                <div><span class="text-slate-400 text-[9px]">Rank:</span> <b>2/O</b></div>
+                                <div><span class="text-slate-400 text-[9px]">Type:</span> G.Cargo</div>
+                                <div class="col-span-2"><span class="text-slate-400 text-[9px]">GRT/HP:</span> 9243 / 3063</div>
                             </div>
                         </div>
 
                         <!-- Exp 2 -->
-                        <div class="group">
-                            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-all border-l-4 border-l-blue-500 h-full flex flex-col justify-between">
-                                <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <h3 class="font-bold text-lg text-blue-900 leading-tight">MV. CHANG RONG 12</h3>
-                                        <span class="flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full text-white text-xs font-bold shadow-sm">2</span>
-                                    </div>
-                                    <p class="text-xs text-slate-500 font-bold mb-3 uppercase tracking-wide truncate"><i class="fas fa-building mr-1"></i> VICTORY INT.</p>
-                                    <div class="grid grid-cols-2 gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded border border-slate-100">
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">RANK</span> <span class="font-bold text-blue-900">2/O</span></div>
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">TYPE</span> Container</div>
-                                        <div class="col-span-2"><span class="text-slate-400 block text-[10px] font-bold">GRT / HP</span> 2988 / 2366</div>
-                                    </div>
-                                </div>
-                                <div class="mt-3 flex justify-end">
-                                    <span class="text-xs font-bold text-white bg-blue-500 px-3 py-1 rounded-full shadow-sm">2022 - 2023</span>
-                                </div>
+                        <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-blue-500 hover:bg-white transition-colors">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-sm text-blue-900 leading-none">MV. CHANG RONG 12</h3>
+                                <span class="text-[9px] font-bold text-white bg-blue-500 px-1.5 rounded">2022 - 2023</span>
+                            </div>
+                            <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">VICTORY INTERNATIONAL SHIPPING CO.,LTD.</p>
+                            <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
+                                <div><span class="text-slate-400 text-[9px]">Rank:</span> <b>2/O</b></div>
+                                <div><span class="text-slate-400 text-[9px]">Type:</span> Container</div>
+                                <div class="col-span-2"><span class="text-slate-400 text-[9px]">GRT/HP:</span> 2988 / 2366</div>
                             </div>
                         </div>
 
                         <!-- Exp 3 -->
-                        <div class="group">
-                            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-all border-l-4 border-l-blue-400 h-full flex flex-col justify-between">
-                                <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <h3 class="font-bold text-lg text-blue-900 leading-tight">MV. V MIRACLE</h3>
-                                        <span class="flex items-center justify-center w-6 h-6 bg-blue-400 rounded-full text-white text-xs font-bold shadow-sm">3</span>
-                                    </div>
-                                    <p class="text-xs text-slate-500 font-bold mb-3 uppercase tracking-wide truncate"><i class="fas fa-building mr-1"></i> VICTORY INT.</p>
-                                    <div class="grid grid-cols-2 gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded border border-slate-100">
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">RANK</span> <span class="font-bold text-blue-900">2/O</span></div>
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">TYPE</span> Gen. Cargo</div>
-                                        <div class="col-span-2"><span class="text-slate-400 block text-[10px] font-bold">GRT / HP</span> 1840 / 1971</div>
-                                    </div>
-                                </div>
-                                <div class="mt-3 flex justify-end">
-                                    <span class="text-xs font-bold text-white bg-blue-400 px-3 py-1 rounded-full shadow-sm">Jan - Jun 2022</span>
-                                </div>
+                        <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-blue-400 hover:bg-white transition-colors">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-sm text-blue-900 leading-none">MV. V MIRACLE</h3>
+                                <span class="text-[9px] font-bold text-white bg-blue-400 px-1.5 rounded">2022</span>
+                            </div>
+                            <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">VICTORY INTERNATIONAL SHIPPING CO.,LTD.</p>
+                            <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
+                                <div><span class="text-slate-400 text-[9px]">Rank:</span> <b>2/O</b></div>
+                                <div><span class="text-slate-400 text-[9px]">Type:</span> G.Cargo</div>
+                                <div class="col-span-2"><span class="text-slate-400 text-[9px]">GRT/HP:</span> 1840 / 1971</div>
                             </div>
                         </div>
 
                         <!-- Exp 4 -->
-                        <div class="group">
-                            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-all border-l-4 border-l-cyan-500 h-full flex flex-col justify-between">
-                                <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <h3 class="font-bold text-lg text-slate-700 leading-tight">MV. INTAN DAYA 322</h3>
-                                        <span class="flex items-center justify-center w-6 h-6 bg-cyan-500 rounded-full text-white text-xs font-bold shadow-sm">4</span>
-                                    </div>
-                                    <p class="text-xs text-slate-500 font-bold mb-3 uppercase tracking-wide truncate"><i class="fas fa-building mr-1"></i> PT. TEGUH P. K.</p>
-                                    <div class="grid grid-cols-2 gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded border border-slate-100">
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">RANK</span> <span class="font-bold text-slate-900">3/O</span></div>
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">TYPE</span> Gen. Cargo</div>
-                                        <div class="col-span-2"><span class="text-slate-400 block text-[10px] font-bold">GRT / HP</span> 9222 / 4961</div>
-                                    </div>
-                                </div>
-                                <div class="mt-3 flex justify-end">
-                                    <span class="text-xs font-bold text-slate-600 bg-slate-200 px-3 py-1 rounded-full">2020 - 2021</span>
-                                </div>
+                        <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-cyan-500 hover:bg-white transition-colors">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-sm text-slate-700 leading-none">MV. INTAN DAYA 322</h3>
+                                <span class="text-[9px] font-bold text-white bg-cyan-500 px-1.5 rounded">2020 - 2021</span>
+                            </div>
+                            <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">PT. TEGUH PERSADA KENCANA</p>
+                            <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
+                                <div><span class="text-slate-400 text-[9px]">Rank:</span> <b>3/O</b></div>
+                                <div><span class="text-slate-400 text-[9px]">Type:</span> G.Cargo</div>
+                                <div class="col-span-2"><span class="text-slate-400 text-[9px]">GRT/HP:</span> 9222 / 4961</div>
                             </div>
                         </div>
 
                         <!-- Exp 5 -->
-                        <div class="group">
-                            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-all border-l-4 border-l-cyan-500 h-full flex flex-col justify-between">
-                                <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <h3 class="font-bold text-lg text-slate-700 leading-tight">MV. AMMAR</h3>
-                                        <span class="flex items-center justify-center w-6 h-6 bg-cyan-500 rounded-full text-white text-xs font-bold shadow-sm">5</span>
-                                    </div>
-                                    <p class="text-xs text-slate-500 font-bold mb-3 uppercase tracking-wide truncate"><i class="fas fa-building mr-1"></i> PT. GLS</p>
-                                    <div class="grid grid-cols-2 gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded border border-slate-100">
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">RANK</span> <span class="font-bold text-slate-900">3/O</span></div>
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">TYPE</span> Bulk Carrier</div>
-                                        <div class="col-span-2"><span class="text-slate-400 block text-[10px] font-bold">GRT / HP</span> 27986 / 12694</div>
-                                    </div>
-                                </div>
-                                <div class="mt-3 flex justify-end">
-                                    <span class="text-xs font-bold text-slate-600 bg-slate-200 px-3 py-1 rounded-full">2020</span>
-                                </div>
+                        <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-cyan-500 hover:bg-white transition-colors">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-sm text-slate-700 leading-none">MV. AMMAR</h3>
+                                <span class="text-[9px] font-bold text-white bg-cyan-500 px-1.5 rounded">2020</span>
+                            </div>
+                            <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">PT. GLS</p>
+                            <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
+                                <div><span class="text-slate-400 text-[9px]">Rank:</span> <b>3/O</b></div>
+                                <div><span class="text-slate-400 text-[9px]">Type:</span> Bulk</div>
+                                <div class="col-span-2"><span class="text-slate-400 text-[9px]">GRT/HP:</span> 27986 / 12694</div>
                             </div>
                         </div>
 
                         <!-- Exp 6 -->
-                        <div class="group">
-                            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-all border-l-4 border-l-indigo-400 h-full flex flex-col justify-between">
-                                <div>
-                                    <div class="flex justify-between items-start mb-2">
-                                        <h3 class="font-bold text-lg text-slate-700 leading-tight">MV. BAO LUCKY</h3>
-                                        <span class="flex items-center justify-center w-6 h-6 bg-indigo-400 rounded-full text-white text-xs font-bold shadow-sm">6</span>
-                                    </div>
-                                    <p class="text-xs text-slate-500 font-bold mb-3 uppercase tracking-wide truncate"><i class="fas fa-building mr-1"></i> HONGKONG HAIRUN</p>
-                                    <div class="grid grid-cols-2 gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded border border-slate-100">
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">RANK</span> <span class="font-bold text-slate-900">Cadet</span></div>
-                                        <div><span class="text-slate-400 block text-[10px] font-bold">TYPE</span> Gen. Cargo</div>
-                                        <div class="col-span-2"><span class="text-slate-400 block text-[10px] font-bold">GRT / HP</span> 7939 / 3500</div>
-                                    </div>
-                                </div>
-                                <div class="mt-3 flex justify-end">
-                                    <span class="text-xs font-bold text-slate-600 bg-slate-200 px-3 py-1 rounded-full">2017 - 2018</span>
-                                </div>
+                        <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-indigo-400 hover:bg-white transition-colors">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-bold text-sm text-slate-700 leading-none">MV. BAO LUCKY</h3>
+                                <span class="text-[9px] font-bold text-white bg-indigo-400 px-1.5 rounded">2017 - 2018</span>
+                            </div>
+                            <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">HONGKONG HAIRUN SHIPPING CO. LTD</p>
+                            <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
+                                <div><span class="text-slate-400 text-[9px]">Rank:</span> <b>Cadet</b></div>
+                                <div><span class="text-slate-400 text-[9px]">Type:</span> G.Cargo</div>
+                                <div class="col-span-2"><span class="text-slate-400 text-[9px]">GRT/HP:</span> 7939 / 3500</div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Documents Section -->
+                <div class="card-compact border-t-4 border-t-indigo-700">
+                    <h2 class="section-title text-indigo-900 mb-2 border-b pb-1 border-slate-100">
+                        <i class="fas fa-passport mr-2 text-indigo-600"></i> Documents & Competency
+                    </h2>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-left text-slate-700">
+                            <thead class="bg-slate-50 text-[10px] uppercase text-slate-500">
+                                <tr>
+                                    <th class="px-2 py-1">Document</th>
+                                    <th class="px-2 py-1">Number</th>
+                                    <th class="px-2 py-1">Place</th>
+                                    <th class="px-2 py-1 text-right">Valid Until</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr><td class="px-2 py-1 font-medium">Passport</td><td class="px-2 py-1 font-mono">X 4389308</td><td class="px-2 py-1">Mimika</td><td class="px-2 py-1 text-right">Apr 22, 2035</td></tr>
+                                <tr><td class="px-2 py-1 font-medium">Seaman’s Book</td><td class="px-2 py-1 font-mono">J 045625</td><td class="px-2 py-1">Marunda</td><td class="px-2 py-1 text-right">May 14, 2027</td></tr>
+                                <tr class="bg-indigo-50/50"><td class="px-2 py-1 font-bold text-indigo-900">Deck Officer Class II</td><td class="px-2 py-1 font-mono font-bold">6211592574N20423</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right italic">Follow Endors.</td></tr>
+                                <tr class="bg-green-50/50"><td class="px-2 py-1 font-bold text-green-900">Endorsement Class II</td><td class="px-2 py-1 font-mono font-bold">6211592574NB0423</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right font-bold text-green-700">Nov 28, 2028</td></tr>
+                                <tr class="bg-indigo-50/50"><td class="px-2 py-1 font-bold text-indigo-900">GMDSS Basic</td><td class="px-2 py-1 font-mono font-bold">6211592574G10420</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right italic">Follow Endors.</td></tr>
+                                <tr class="bg-green-50/50"><td class="px-2 py-1 font-bold text-green-900">Endorsement GMDSS</td><td class="px-2 py-1 font-mono font-bold">6211592574GA0420</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right font-bold text-green-700">Jan 21, 2030</td></tr>
+                                <tr><td class="px-2 py-1 font-medium">GMDSS GOC</td><td class="px-2 py-1 font-mono">110845/SOU/II/2024</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right">Feb 15, 2029</td></tr>
+                                <tr><td class="px-2 py-1 font-medium">Seafarer ID (SID)</td><td class="px-2 py-1 font-mono">IDN609976674</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right">Mar 03, 2030</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Certificates -->
+                <div class="card-compact border-t-4 border-t-teal-600 flex-grow">
+                    <h2 class="section-title text-teal-800 mb-2 border-b pb-1 border-slate-100">
+                        <i class="fas fa-certificate mr-2 text-teal-600"></i> Certificates of Proficiency (COP)
+                    </h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-[11px] text-left text-slate-700">
+                            <thead class="bg-slate-50 text-[10px] uppercase text-slate-500">
+                                <tr>
+                                    <th class="px-2 py-1 w-5/12">Certificate Name</th>
+                                    <th class="px-2 py-1 w-3/12">Number</th>
+                                    <th class="px-2 py-1 w-2/12">Place</th>
+                                    <th class="px-2 py-1 w-2/12 text-right">Valid</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Basic Safety Training (BST)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574010425</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right">Dec 16, 2030</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Advanced Fire Fighting (AFF)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574060421</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right">Oct 2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Medical First Aid (MFA)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574070421</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Medical Care (MC)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574080420</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Security Awareness (SAT)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574310421</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Designated Security Duties (SDSD)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574320421</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Ship Security Officer (SSO)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574240420</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Basic Training Liquefied Gas (BLGT)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574370421</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Basic Oil & Chemical Tanker (BOCT)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574390421</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Adv. Training Oil Tanker (AOT)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574410425</td>
+                                    <td class="px-2 py-0.5">Jakarta</td>
+                                    <td class="px-2 py-0.5 text-right">Jan 24, 2030</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Adv. Training Chemical Tanker (ACT)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574400425</td>
+                                    <td class="px-2 py-0.5">Jakarta</td>
+                                    <td class="px-2 py-0.5 text-right">Feb 28, 2030</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">ISM Code</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">020/ISM CODE/PIP MKS-04</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">RADAR Simulator</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574030421</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">ARPA Simulator</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574020421</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Crowd Management Training</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574130420</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Proficiency in Survival Craft (PSCRB)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574040424</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right">Mar 14, 2029</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Crisis Mgmt & Human Behaviour</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574170420</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">Bridge Resource Management (BRM)</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574230420</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">ECDIS</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574280420</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-0.5 font-medium">IMDG Code</td>
+                                    <td class="px-2 py-0.5 font-mono text-[9px]">6211592574290425</td>
+                                    <td class="px-2 py-0.5">Makassar</td>
+                                    <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Supporting Documents (New Card) -->
+                <div class="card-compact border-t-4 border-t-green-600">
+                    <h2 class="section-title text-green-800 mb-2 border-b pb-1 border-slate-100">
+                        <i class="fas fa-folder-open mr-2 text-green-600"></i> Supporting Documents
+                    </h2>
+                    <table class="w-full text-[11px] text-left text-slate-700">
+                        <thead class="bg-slate-50 text-[10px] uppercase text-slate-500">
+                            <tr>
+                                <th class="px-2 py-1 w-5/12">Document Name</th>
+                                <th class="px-2 py-1 w-3/12">Number</th>
+                                <th class="px-2 py-1 w-2/12">Place</th>
+                                <th class="px-2 py-1 w-2/12 text-right">Issued</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-2 py-1 font-medium">Marlin English Certificate</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6BFF94317AD0B047</td>
+                                <td class="px-2 py-1">Jakarta</td>
+                                <td class="px-2 py-1 text-right">Nov 05, 2021</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-2 py-1 font-medium">Open Water Diver</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">2835075</td>
+                                <td class="px-2 py-1">Selayar</td>
+                                <td class="px-2 py-1 text-right">Jan 14, 2020</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
 
-        <!-- PAGE BREAK FOR PAGE 2 -->
-        <div class="page-break"></div>
-
-        <!-- FULL WIDTH BOTTOM SECTIONS (Documents & Certificates) -->
-        <div class="px-10 pb-16 space-y-10">
-            
-            <!-- SECTION 1: TRAVEL DOCUMENTS & COMPETENCY -->
-            <div>
-                <h2 class="text-2xl font-bold text-indigo-900 mb-6 flex items-center gap-3 border-b-2 border-slate-200 pb-3">
-                    <span class="bg-indigo-600 text-white p-2 rounded-lg shadow-md"><i class="fas fa-passport"></i></span>
-                    Travel Documents & Competency
-                </h2>
-                
-                <div class="overflow-x-auto bg-white rounded-xl border border-slate-200 shadow-sm">
-                    <table class="w-full text-sm text-left text-slate-700">
-                        <thead class="text-xs text-slate-700 uppercase bg-slate-100 border-b border-slate-200">
-                            <tr>
-                                <th scope="col" class="px-6 py-4 font-bold w-5/12 text-slate-900">Document Name</th>
-                                <th scope="col" class="px-6 py-4 font-bold w-2/12 text-slate-900">Number</th>
-                                <th scope="col" class="px-6 py-4 font-bold w-2/12 text-slate-900">Issued At</th>
-                                <th scope="col" class="px-6 py-4 font-bold text-right w-3/12 text-slate-900">Valid Until</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 text-sm">
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Passport</td><td class="px-6 py-3 font-mono">X 4389308</td><td class="px-6 py-3">Mimika</td><td class="px-6 py-3 text-right">Apr 22, 2035</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Seaman’s Book</td><td class="px-6 py-3 font-mono">J 045625</td><td class="px-6 py-3">Marunda</td><td class="px-6 py-3 text-right">May 14, 2027</td></tr>
-                            <tr class="hover:bg-slate-50 bg-indigo-50"><td class="px-6 py-3 font-bold text-indigo-900">Deck Officer Class II</td><td class="px-6 py-3 font-mono text-indigo-900 font-bold">6211592574N20423</td><td class="px-6 py-3">Jakarta</td><td class="px-6 py-3 text-right italic text-slate-600">Follow Endorsement</td></tr>
-                            <tr class="hover:bg-slate-50 bg-green-50"><td class="px-6 py-3 font-bold text-green-900">Endorsement Class II</td><td class="px-6 py-3 font-mono text-green-900 font-bold">6211592574NB0423</td><td class="px-6 py-3">Jakarta</td><td class="px-6 py-3 text-right font-bold text-green-700">Nov 28, 2028</td></tr>
-                            <tr class="hover:bg-slate-50 bg-indigo-50"><td class="px-6 py-3 font-bold text-indigo-900">GMDSS Basic</td><td class="px-6 py-3 font-mono text-indigo-900 font-bold">6211592574G10420</td><td class="px-6 py-3">Jakarta</td><td class="px-6 py-3 text-right italic text-slate-600">Follow Endorsement</td></tr>
-                            <tr class="hover:bg-slate-50 bg-green-50"><td class="px-6 py-3 font-bold text-green-900">Endorsement GMDSS</td><td class="px-6 py-3 font-mono text-green-900 font-bold">6211592574GA0420</td><td class="px-6 py-3">Jakarta</td><td class="px-6 py-3 text-right font-bold text-green-700">Jan 21, 2030</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">GMDSS GOC</td><td class="px-6 py-3 font-mono">110845/SOU/II/2024</td><td class="px-6 py-3">Jakarta</td><td class="px-6 py-3 text-right">Feb 15, 2029</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Seafarer Identity Doc</td><td class="px-6 py-3 font-mono">IDN609976674</td><td class="px-6 py-3">Jakarta</td><td class="px-6 py-3 text-right">Mar 03, 2030</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- SECTION 2: CERTIFICATES OF PROFICIENCY (COP) -->
-            <div>
-                <h2 class="text-2xl font-bold text-blue-900 mb-6 flex items-center gap-3 border-b-2 border-slate-200 pb-3">
-                    <span class="bg-teal-600 text-white p-2 rounded-lg shadow-md"><i class="fas fa-certificate"></i></span>
-                    Certificates of Proficiency (COP)
-                </h2>
-                
-                <div class="overflow-x-auto bg-white rounded-xl border border-slate-200 shadow-sm">
-                    <table class="w-full text-sm text-left text-slate-700">
-                        <thead class="text-xs text-slate-700 uppercase bg-slate-100 border-b border-slate-200">
-                            <tr>
-                                <th scope="col" class="px-6 py-4 font-bold w-5/12 text-slate-900">Certificate Name</th>
-                                <th scope="col" class="px-6 py-4 font-bold w-2/12 text-slate-900">Number</th>
-                                <th scope="col" class="px-6 py-4 font-bold w-2/12 text-slate-900">Place</th>
-                                <th scope="col" class="px-6 py-4 font-bold text-right w-3/12 text-slate-900">Valid Until</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 text-sm">
-                            <!-- Safety -->
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Basic Safety Training (BST)</td><td class="px-6 py-3 font-mono">6211592574010425</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right">Dec 16, 2030</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Adv. Fire Fighting (AFF)</td><td class="px-6 py-3 font-mono">6211592574060421</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right">Oct 2026</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Medical First Aid (MFA)</td><td class="px-6 py-3 font-mono">6211592574070421</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Medical Care (MC)</td><td class="px-6 py-3 font-mono">6211592574080420</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <!-- Security -->
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Security Awareness (SAT)</td><td class="px-6 py-3 font-mono">6211592574310421</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Designated Security Duties (SDSD)</td><td class="px-6 py-3 font-mono">6211592574320421</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Ship Security Officer (SSO)</td><td class="px-6 py-3 font-mono">6211592574240420</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <!-- Tanker -->
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Basic Training Liquefied Gas (BLGT)</td><td class="px-6 py-3 font-mono">6211592574370421</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Basic Oil & Chem Tanker (BOCT)</td><td class="px-6 py-3 font-mono">6211592574390421</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Adv. Training Oil Tanker (AOT)</td><td class="px-6 py-3 font-mono">6211592574410425</td><td class="px-6 py-3">Jakarta</td><td class="px-6 py-3 text-right">Jan 24, 2030</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Adv. Training Chem Tanker (ACT)</td><td class="px-6 py-3 font-mono">6211592574400425</td><td class="px-6 py-3">Jakarta</td><td class="px-6 py-3 text-right">Feb 28, 2030</td></tr>
-                            <!-- General -->
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">ISM Code</td><td class="px-6 py-3 font-mono">020/ISM CODE/PIP MKS-04</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">RADAR Simulator</td><td class="px-6 py-3 font-mono">6211592574030421</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">ARPA Simulator</td><td class="px-6 py-3 font-mono">6211592574020421</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Crowd Management (CM)</td><td class="px-6 py-3 font-mono">6211592574130420</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Survival Craft (PSCRB)</td><td class="px-6 py-3 font-mono">6211592574040424</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right">Mar 14, 2029</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Crisis Mgmt & Human Bhv.</td><td class="px-6 py-3 font-mono">6211592574170420</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">Bridge Resource Mgt (BRM)</td><td class="px-6 py-3 font-mono">6211592574230420</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">ECDIS</td><td class="px-6 py-3 font-mono">6211592574280420</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                            <tr class="hover:bg-slate-50"><td class="px-6 py-3 font-medium">IMDG CODE</td><td class="px-6 py-3 font-mono">6211592574290425</td><td class="px-6 py-3">Makassar</td><td class="px-6 py-3 text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- SECTION 3: SUPPORTING DOCUMENTS -->
-            <div>
-                <h2 class="text-2xl font-bold text-green-800 mb-6 flex items-center gap-3 border-b-2 border-slate-200 pb-3">
-                    <span class="bg-green-600 text-white p-2 rounded-lg shadow-md"><i class="fas fa-folder-open"></i></span>
-                    Supporting Documents
-                </h2>
-                
-                <div class="overflow-x-auto bg-white rounded-xl border border-slate-200 shadow-sm">
-                    <table class="w-full text-sm text-left text-slate-700">
-                        <thead class="text-xs text-slate-700 uppercase bg-slate-100 border-b border-slate-200">
-                            <tr>
-                                <th scope="col" class="px-6 py-4 font-bold w-5/12 text-slate-900">Document Name</th>
-                                <th scope="col" class="px-6 py-4 font-bold w-2/12 text-slate-900">Number</th>
-                                <th scope="col" class="px-6 py-4 font-bold w-2/12 text-slate-900">Place</th>
-                                <th scope="col" class="px-6 py-4 font-bold text-right w-3/12 text-slate-900">Issued Date</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 text-sm">
-                            <tr class="hover:bg-slate-50">
-                                <td class="px-6 py-3 font-medium">Marlin English Certificate</td>
-                                <td class="px-6 py-3 font-mono">6BFF94317AD0B047</td>
-                                <td class="px-6 py-3">Jakarta</td>
-                                <td class="px-6 py-3 text-right">Nov 05, 2021</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="px-6 py-3 font-medium">Open Water Diver</td>
-                                <td class="px-6 py-3 font-mono">2835075</td>
-                                <td class="px-6 py-3">Selayar</td>
-                                <td class="px-6 py-3 text-right">Jan 14, 2020</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Footer -->
-        <div class="bg-slate-900 text-white p-8 text-center text-sm border-t-4 border-yellow-400 no-print">
-            <p class="font-semibold">&copy; 2026 Rezhky C W P Todingbua. Professional Maritime Curriculum Vitae</p>
+        <div class="bg-slate-800 text-white p-2 text-center text-[10px]">
+            &copy; 2026 Rezhky C W P Todingbua.
         </div>
     </div>
 </body>
