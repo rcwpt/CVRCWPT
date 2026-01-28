@@ -55,7 +55,7 @@
         @media print {
             @page { 
                 size: 330mm 215mm; /* F4/Legal Landscape */
-                margin: 10mm 10mm 10mm 10mm; /* Moderate margins */
+                margin: 10mm; 
             }
             body {
                 background-color: white;
@@ -70,7 +70,7 @@
                 border: none !important;
             }
             .bg-gradient-to-r {
-                background: #1e3a8a !important; /* Solid dark blue for print reliability */
+                background: #1e3a8a !important;
                 color: white !important;
                 -webkit-print-color-adjust: exact; 
                 print-color-adjust: exact;
@@ -90,17 +90,14 @@
             .print-grid-cols-3 {
                 display: grid !important;
                 grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-                gap: 0.75rem !important;
+                gap: 0.5rem !important;
             }
 
-            /* PAGE 2 LAYOUT - Side by Side Tables */
-            .print-page-2-row {
-                display: flex !important;
-                flex-direction: row !important;
-                gap: 1.5rem !important;
-            }
-            .print-col-half {
-                width: 50% !important;
+            /* PAGE 2 LAYOUT - Side by Side Tables for COP */
+            .print-cop-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 2rem !important;
             }
             
             .page-break { 
@@ -159,7 +156,7 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 1: SIDEBAR & EXPERIENCE ================= -->
+        <!-- ================= PAGE 1 ================= -->
         <div class="flex flex-col md:flex-row print-flex-row px-6 -mt-6 gap-4 relative z-20">
             
             <!-- LEFT SIDEBAR -->
@@ -250,17 +247,17 @@
                 </div>
             </div>
 
-            <!-- RIGHT CONTENT: WORK EXPERIENCE -->
+            <!-- RIGHT CONTENT -->
             <div class="w-full md:w-2/3 print-w-2-3 flex flex-col gap-3">
                 
-                <div class="card-compact border-t-4 border-t-blue-800 h-full">
+                <!-- Work Experience -->
+                <div class="card-compact border-t-4 border-t-blue-800">
                     <h2 class="section-title text-blue-900 mb-3 border-b pb-1 border-slate-100">
                         <i class="fas fa-briefcase mr-2 text-blue-600"></i> Work Experience
                     </h2>
 
                     <!-- COMPACT GRID 3 COLUMNS -->
                     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 print-grid-cols-3">
-                        
                         <!-- Exp 1 -->
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-blue-600 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
@@ -274,7 +271,6 @@
                                 <div class="col-span-2"><span class="text-slate-400 text-[9px]">GRT/HP:</span> 9243 / 3063</div>
                             </div>
                         </div>
-
                         <!-- Exp 2 -->
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-blue-500 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
@@ -288,7 +284,6 @@
                                 <div class="col-span-2"><span class="text-slate-400 text-[9px]">GRT/HP:</span> 2988 / 2366</div>
                             </div>
                         </div>
-
                         <!-- Exp 3 -->
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-blue-400 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
@@ -302,7 +297,6 @@
                                 <div class="col-span-2"><span class="text-slate-400 text-[9px]">GRT/HP:</span> 1840 / 1971</div>
                             </div>
                         </div>
-
                         <!-- Exp 4 -->
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-cyan-500 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
@@ -316,7 +310,6 @@
                                 <div class="col-span-2"><span class="text-slate-400 text-[9px]">GRT/HP:</span> 9222 / 4961</div>
                             </div>
                         </div>
-
                         <!-- Exp 5 -->
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-cyan-500 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
@@ -330,7 +323,6 @@
                                 <div class="col-span-2"><span class="text-slate-400 text-[9px]">GRT/HP:</span> 27986 / 12694</div>
                             </div>
                         </div>
-
                         <!-- Exp 6 -->
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-indigo-400 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
@@ -346,211 +338,223 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- TRAVEL DOCUMENTS & SUPPORTING DOCS (STACKED ON PAGE 1) -->
+                <div class="flex flex-col gap-3">
+                    
+                    <!-- Travel Docs -->
+                    <div class="card-compact border-t-4 border-t-indigo-700 mb-0">
+                        <h2 class="section-title text-indigo-900 mb-2 border-b pb-1 border-slate-100">
+                            <i class="fas fa-passport mr-2 text-indigo-600"></i> Travel Docs
+                        </h2>
+                        <table class="w-full text-xs text-left text-slate-700">
+                            <thead class="bg-slate-50 text-[10px] uppercase text-slate-500">
+                                <tr>
+                                    <th class="px-2 py-1">Document</th>
+                                    <th class="px-2 py-1">Number</th>
+                                    <th class="px-2 py-1 text-right">Valid</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr><td class="px-2 py-1 font-medium">Passport</td><td class="px-2 py-1 font-mono">X 4389308</td><td class="px-2 py-1 text-right">Apr 22, 2035</td></tr>
+                                <tr><td class="px-2 py-1 font-medium">Seaman Book</td><td class="px-2 py-1 font-mono">J 045625</td><td class="px-2 py-1 text-right">May 14, 2027</td></tr>
+                                <tr class="bg-indigo-50/50"><td class="px-2 py-1 font-bold">Deck Off. II</td><td class="px-2 py-1 font-mono font-bold">6211592574N20423</td><td class="px-2 py-1 text-right italic">Endors.</td></tr>
+                                <tr class="bg-green-50/50"><td class="px-2 py-1 font-bold">Endors. II</td><td class="px-2 py-1 font-mono font-bold">6211592574NB0423</td><td class="px-2 py-1 text-right font-bold text-green-700">Nov 28, 2028</td></tr>
+                                <tr class="bg-indigo-50/50"><td class="px-2 py-1 font-bold">GMDSS</td><td class="px-2 py-1 font-mono font-bold">6211592574G10420</td><td class="px-2 py-1 text-right italic">Endors.</td></tr>
+                                <tr class="bg-green-50/50"><td class="px-2 py-1 font-bold">Endors. GMDSS</td><td class="px-2 py-1 font-mono font-bold">6211592574GA0420</td><td class="px-2 py-1 text-right font-bold text-green-700">Jan 21, 2030</td></tr>
+                                <tr><td class="px-2 py-1 font-medium">GMDSS GOC</td><td class="px-2 py-1 font-mono">110845/SOU/II/2024</td><td class="px-2 py-1 text-right">Feb 15, 2029</td></tr>
+                                <tr><td class="px-2 py-1 font-medium">SID</td><td class="px-2 py-1 font-mono">IDN609976674</td><td class="px-2 py-1 text-right">Mar 03, 2030</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Supporting Docs (BELOW TRAVEL DOCS) -->
+                    <div class="card-compact border-t-4 border-t-green-600 mb-0">
+                        <h2 class="section-title text-green-800 mb-2 border-b pb-1 border-slate-100">
+                            <i class="fas fa-folder-open mr-2 text-green-600"></i> Supporting Docs
+                        </h2>
+                        <table class="w-full text-xs text-left text-slate-700">
+                            <thead class="bg-slate-50 text-[10px] uppercase text-slate-500">
+                                <tr>
+                                    <th class="px-2 py-1">Name</th>
+                                    <th class="px-2 py-1">Number</th>
+                                    <th class="px-2 py-1 text-right">Issued</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="px-2 py-2 font-medium">Marlin English</td>
+                                    <td class="px-2 py-2 font-mono text-[10px]">6BFF94317AD0B047</td>
+                                    <td class="px-2 py-2 text-right">Nov 05, 2021</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-2 font-medium">Open Water Diver</td>
+                                    <td class="px-2 py-2 font-mono text-[10px]">2835075</td>
+                                    <td class="px-2 py-2 text-right">Jan 14, 2020</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="page-break"></div>
 
-        <!-- ================= PAGE 2: DOCUMENTS & CERTIFICATES ================= -->
-        <div class="print-page-2-row px-6 mt-4">
-            
-            <!-- COLUMN 1: TRAVEL DOCS & SUPPORTING -->
-            <div class="w-full md:w-1/2 print-col-half flex flex-col gap-3">
+        <!-- ================= PAGE 2: CERTIFICATES OF PROFICIENCY (FULL PAGE) ================= -->
+        <div class="px-6 mt-4">
+            <div class="card-compact border-t-4 border-t-teal-600 h-full">
+                <h2 class="section-title text-teal-800 mb-4 border-b pb-2 border-slate-100 text-lg">
+                    <i class="fas fa-certificate mr-2 text-teal-600"></i> Certificates of Proficiency (COP)
+                </h2>
                 
-                <!-- Travel Docs -->
-                <div class="card-compact border-t-4 border-t-indigo-700">
-                    <h2 class="section-title text-indigo-900 mb-2 border-b pb-1 border-slate-100">
-                        <i class="fas fa-passport mr-2 text-indigo-600"></i> Travel Documents
-                    </h2>
-                    <table class="w-full text-xs text-left text-slate-700">
-                        <thead class="bg-slate-50 text-[10px] uppercase text-slate-500">
+                <!-- 2-COLUMN TABLE LAYOUT FOR COP ON PAGE 2 -->
+                <div class="print-cop-grid grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-0">
+                    
+                    <!-- LEFT COLUMN COP -->
+                    <table class="w-full text-[11px] text-left text-slate-700 h-fit">
+                        <thead class="bg-slate-50 text-[10px] uppercase text-slate-500 border-b-2 border-slate-200">
                             <tr>
-                                <th class="px-2 py-1">Document</th>
-                                <th class="px-2 py-1">Number</th>
-                                <th class="px-2 py-1">Place</th>
-                                <th class="px-2 py-1 text-right">Valid Until</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100">
-                            <tr><td class="px-2 py-1 font-medium">Passport</td><td class="px-2 py-1 font-mono">X 4389308</td><td class="px-2 py-1">Mimika</td><td class="px-2 py-1 text-right">Apr 22, 2035</td></tr>
-                            <tr><td class="px-2 py-1 font-medium">Seaman’s Book</td><td class="px-2 py-1 font-mono">J 045625</td><td class="px-2 py-1">Marunda</td><td class="px-2 py-1 text-right">May 14, 2027</td></tr>
-                            <tr class="bg-indigo-50/50"><td class="px-2 py-1 font-bold text-indigo-900">Deck Officer Class II</td><td class="px-2 py-1 font-mono font-bold">6211592574N20423</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right italic">Follow Endors.</td></tr>
-                            <tr class="bg-green-50/50"><td class="px-2 py-1 font-bold text-green-900">Endorsement Class II</td><td class="px-2 py-1 font-mono font-bold">6211592574NB0423</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right font-bold text-green-700">Nov 28, 2028</td></tr>
-                            <tr class="bg-indigo-50/50"><td class="px-2 py-1 font-bold text-indigo-900">GMDSS Basic</td><td class="px-2 py-1 font-mono font-bold">6211592574G10420</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right italic">Follow Endors.</td></tr>
-                            <tr class="bg-green-50/50"><td class="px-2 py-1 font-bold text-green-900">Endorsement GMDSS</td><td class="px-2 py-1 font-mono font-bold">6211592574GA0420</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right font-bold text-green-700">Jan 21, 2030</td></tr>
-                            <tr><td class="px-2 py-1 font-medium">GMDSS GOC</td><td class="px-2 py-1 font-mono">110845/SOU/II/2024</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right">Feb 15, 2029</td></tr>
-                            <tr><td class="px-2 py-1 font-medium">Seafarer ID (SID)</td><td class="px-2 py-1 font-mono">IDN609976674</td><td class="px-2 py-1">Jakarta</td><td class="px-2 py-1 text-right">Mar 03, 2030</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Supporting Documents -->
-                <div class="card-compact border-t-4 border-t-green-600">
-                    <h2 class="section-title text-green-800 mb-2 border-b pb-1 border-slate-100">
-                        <i class="fas fa-folder-open mr-2 text-green-600"></i> Supporting Documents
-                    </h2>
-                    <table class="w-full text-[11px] text-left text-slate-700">
-                        <thead class="bg-slate-50 text-[10px] uppercase text-slate-500">
-                            <tr>
-                                <th class="px-2 py-1">Document Name</th>
-                                <th class="px-2 py-1">Number</th>
-                                <th class="px-2 py-1">Place</th>
-                                <th class="px-2 py-1 text-right">Issued</th>
+                                <th class="px-2 py-1.5 w-5/12">Certificate Name</th>
+                                <th class="px-2 py-1.5 w-3/12">Number</th>
+                                <th class="px-2 py-1.5 w-2/12">Place</th>
+                                <th class="px-2 py-1.5 w-2/12 text-right">Valid</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100">
                             <tr>
-                                <td class="px-2 py-1 font-medium">Marlin English Certificate</td>
-                                <td class="px-2 py-1 font-mono text-[9px]">6BFF94317AD0B047</td>
+                                <td class="px-2 py-1 font-medium">Basic Safety Training (BST)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574010425</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right">Dec 16, 2030</td>
+                            </tr>
+                            <tr>
+                                <td class="px-2 py-1 font-medium">Advanced Fire Fighting (AFF)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574060421</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right">Oct 2026</td>
+                            </tr>
+                            <tr>
+                                <td class="px-2 py-1 font-medium">Medical First Aid (MFA)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574070421</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
+                            </tr>
+                            <tr>
+                                <td class="px-2 py-1 font-medium">Medical Care (MC)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574080420</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
+                            </tr>
+                            <tr>
+                                <td class="px-2 py-1 font-medium">Security Awareness (SAT)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574310421</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
+                            </tr>
+                            <tr>
+                                <td class="px-2 py-1 font-medium">Designated Security Duties (SDSD)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574320421</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
+                            </tr>
+                            <tr>
+                                <td class="px-2 py-1 font-medium">Ship Security Officer (SSO)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574240420</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
+                            </tr>
+                            <tr>
+                                <td class="px-2 py-1 font-medium">Basic Training Liquefied Gas (BLGT)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574370421</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
+                            </tr>
+                            <tr>
+                                <td class="px-2 py-1 font-medium">Basic Oil & Chemical Tanker (BOCT)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574390421</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
+                            </tr>
+                            <tr>
+                                <td class="px-2 py-1 font-medium">Adv. Training Oil Tanker (AOT)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574410425</td>
                                 <td class="px-2 py-1">Jakarta</td>
-                                <td class="px-2 py-1 text-right">Nov 05, 2021</td>
-                            </tr>
-                            <tr>
-                                <td class="px-2 py-1 font-medium">Open Water Diver</td>
-                                <td class="px-2 py-1 font-mono text-[9px]">2835075</td>
-                                <td class="px-2 py-1">Selayar</td>
-                                <td class="px-2 py-1 text-right">Jan 14, 2020</td>
+                                <td class="px-2 py-1 text-right">Jan 24, 2030</td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
 
-            <!-- COLUMN 2: CERTIFICATES OF PROFICIENCY -->
-            <div class="w-full md:w-1/2 print-col-half">
-                <div class="card-compact border-t-4 border-t-teal-600 h-full">
-                    <h2 class="section-title text-teal-800 mb-2 border-b pb-1 border-slate-100">
-                        <i class="fas fa-certificate mr-2 text-teal-600"></i> Certificates of Proficiency (COP)
-                    </h2>
-                    <table class="w-full text-[11px] text-left text-slate-700">
-                        <thead class="bg-slate-50 text-[10px] uppercase text-slate-500">
+                    <!-- RIGHT COLUMN COP -->
+                    <table class="w-full text-[11px] text-left text-slate-700 h-fit">
+                        <thead class="bg-slate-50 text-[10px] uppercase text-slate-500 border-b-2 border-slate-200">
                             <tr>
-                                <th class="px-2 py-1 w-5/12">Certificate Name</th>
-                                <th class="px-2 py-1 w-3/12">Number</th>
-                                <th class="px-2 py-1 w-2/12">Place</th>
-                                <th class="px-2 py-1 w-2/12 text-right">Valid</th>
+                                <th class="px-2 py-1.5 w-5/12">Certificate Name</th>
+                                <th class="px-2 py-1.5 w-3/12">Number</th>
+                                <th class="px-2 py-1.5 w-2/12">Place</th>
+                                <th class="px-2 py-1.5 w-2/12 text-right">Valid</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100">
                             <tr>
-                                <td class="px-2 py-0.5 font-medium">Basic Safety Training (BST)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574010425</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right">Dec 16, 2030</td>
+                                <td class="px-2 py-1 font-medium">Adv. Training Chemical Tanker (ACT)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574400425</td>
+                                <td class="px-2 py-1">Jakarta</td>
+                                <td class="px-2 py-1 text-right">Feb 28, 2030</td>
                             </tr>
                             <tr>
-                                <td class="px-2 py-0.5 font-medium">Advanced Fire Fighting (AFF)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574060421</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right">Oct 2026</td>
+                                <td class="px-2 py-1 font-medium">ISM Code</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">020/ISM CODE/PIP MKS-04</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
                             </tr>
                             <tr>
-                                <td class="px-2 py-0.5 font-medium">Medical First Aid (MFA)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574070421</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                <td class="px-2 py-1 font-medium">RADAR Simulator</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574030421</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
                             </tr>
                             <tr>
-                                <td class="px-2 py-0.5 font-medium">Medical Care (MC)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574080420</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                <td class="px-2 py-1 font-medium">ARPA Simulator</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574020421</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
                             </tr>
                             <tr>
-                                <td class="px-2 py-0.5 font-medium">Security Awareness (SAT)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574310421</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                <td class="px-2 py-1 font-medium">Crowd Management Training</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574130420</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
                             </tr>
                             <tr>
-                                <td class="px-2 py-0.5 font-medium">Designated Security Duties (SDSD)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574320421</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                <td class="px-2 py-1 font-medium">Proficiency in Survival Craft (PSCRB)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574040424</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right">Mar 14, 2029</td>
                             </tr>
                             <tr>
-                                <td class="px-2 py-0.5 font-medium">Ship Security Officer (SSO)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574240420</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                <td class="px-2 py-1 font-medium">Crisis Mgmt & Human Behaviour</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574170420</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
                             </tr>
                             <tr>
-                                <td class="px-2 py-0.5 font-medium">Basic Training Liquefied Gas (BLGT)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574370421</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                <td class="px-2 py-1 font-medium">Bridge Resource Management (BRM)</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574230420</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
                             </tr>
                             <tr>
-                                <td class="px-2 py-0.5 font-medium">Basic Oil & Chemical Tanker (BOCT)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574390421</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                <td class="px-2 py-1 font-medium">ECDIS</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574280420</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
                             </tr>
                             <tr>
-                                <td class="px-2 py-0.5 font-medium">Adv. Training Oil Tanker (AOT)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574410425</td>
-                                <td class="px-2 py-0.5">Jakarta</td>
-                                <td class="px-2 py-0.5 text-right">Jan 24, 2030</td>
-                            </tr>
-                            <tr>
-                                <td class="px-2 py-0.5 font-medium">Adv. Training Chemical Tanker (ACT)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574400425</td>
-                                <td class="px-2 py-0.5">Jakarta</td>
-                                <td class="px-2 py-0.5 text-right">Feb 28, 2030</td>
-                            </tr>
-                            <tr>
-                                <td class="px-2 py-0.5 font-medium">ISM Code</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">020/ISM CODE/PIP MKS-04</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
-                            </tr>
-                            <tr>
-                                <td class="px-2 py-0.5 font-medium">RADAR Simulator</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574030421</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
-                            </tr>
-                            <tr>
-                                <td class="px-2 py-0.5 font-medium">ARPA Simulator</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574020421</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
-                            </tr>
-                            <tr>
-                                <td class="px-2 py-0.5 font-medium">Crowd Management Training</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574130420</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
-                            </tr>
-                            <tr>
-                                <td class="px-2 py-0.5 font-medium">Proficiency in Survival Craft (PSCRB)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574040424</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right">Mar 14, 2029</td>
-                            </tr>
-                            <tr>
-                                <td class="px-2 py-0.5 font-medium">Crisis Mgmt & Human Behaviour</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574170420</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
-                            </tr>
-                            <tr>
-                                <td class="px-2 py-0.5 font-medium">Bridge Resource Management (BRM)</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574230420</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
-                            </tr>
-                            <tr>
-                                <td class="px-2 py-0.5 font-medium">ECDIS</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574280420</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
-                            </tr>
-                            <tr>
-                                <td class="px-2 py-0.5 font-medium">IMDG Code</td>
-                                <td class="px-2 py-0.5 font-mono text-[9px]">6211592574290425</td>
-                                <td class="px-2 py-0.5">Makassar</td>
-                                <td class="px-2 py-0.5 text-right font-bold text-green-600">UNLIMITED</td>
+                                <td class="px-2 py-1 font-medium">IMDG Code</td>
+                                <td class="px-2 py-1 font-mono text-[9px]">6211592574290425</td>
+                                <td class="px-2 py-1">Makassar</td>
+                                <td class="px-2 py-1 text-right font-bold text-green-600">UNLIMITED</td>
                             </tr>
                         </tbody>
                     </table>
@@ -558,7 +562,7 @@
             </div>
         </div>
 
-        <div class="bg-slate-800 text-white p-2 text-center text-[10px]">
+        <div class="bg-slate-800 text-white p-2 text-center text-[10px] no-print">
             &copy; 2026 Rezhky C W P Todingbua.
         </div>
     </div>
