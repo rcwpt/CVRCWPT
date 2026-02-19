@@ -13,13 +13,43 @@
     
     <style id="dynamic-styles">
         :root {
+            /* Theme Variables - Default: Ocean Blue */
             --header-from: #1e3a8a; --header-to: #312e81;
-            --section-color: #1e3a8a; /* Unified primary color for cleaner look */
-            --accent-color: #f59e0b; /* Yellow/Orange accent */
+            
+            /* Section Text Colors (Icons will use these) */
+            --profile-color: #2563eb; 
+            --personal-color: #0d9488; 
+            --edu-color: #ea580c;      
+            --kin-color: #db2777;      
+            --lang-color: #9333ea;     
+            --work-color: #1d4ed8;     
+            --doc-color: #4338ca;      
+            --cert-color: #0f766e;     
+            --support-color: #15803d;  
         }
-        .text-primary { color: var(--section-color); }
-        .bg-primary { background-color: var(--section-color); }
-        .border-primary { border-color: var(--section-color); }
+
+        /* Color Utility Classes for Text/Icons */
+        .text-profile { color: var(--profile-color) !important; }
+        .text-personal { color: var(--personal-color) !important; }
+        .text-edu { color: var(--edu-color) !important; }
+        .text-kin { color: var(--kin-color) !important; }
+        .text-lang { color: var(--lang-color) !important; }
+        .text-work { color: var(--work-color) !important; }
+        .text-doc { color: var(--doc-color) !important; }
+        .text-cert { color: var(--cert-color) !important; }
+        .text-support { color: var(--support-color) !important; }
+
+        /* Border Utilities */
+        .border-t-profile { border-top-color: var(--profile-color); }
+        .border-t-personal { border-top-color: var(--personal-color); }
+        .border-t-edu { border-top-color: var(--edu-color); }
+        .border-t-kin { border-top-color: var(--kin-color); }
+        .border-t-lang { border-top-color: var(--lang-color); }
+        .border-t-work { border-top-color: var(--work-color); }
+        .border-t-doc { border-top-color: var(--doc-color); }
+        .border-t-cert { border-top-color: var(--cert-color); }
+        .border-t-support { border-top-color: var(--support-color); }
+        
         .header-bg { background: linear-gradient(to right, var(--header-from), var(--header-to)); }
     </style>
 
@@ -32,92 +62,68 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #e2e8f0;
+            background-color: #f1f5f9;
             font-size: 14px; 
-            color: #334155;
+            color: #1e293b;
             line-height: 1.4;
+            min-width: 1024px;
+            overflow-x: auto;
         }
         
-        /* Layout Structure */
-        .cv-sheet {
-            background: white;
-            width: 210mm;
-            min-height: 297mm;
-            margin: 20px auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            position: relative;
+        /* Typography & Icons */
+        .section-title {
+            display: flex; align-items: center; margin-bottom: 0.8rem; 
+            text-transform: uppercase; letter-spacing: 0.05em; font-size: 1rem; font-weight: 700;
+            color: #334155; /* Neutral title color, icon provides contrast */
+        }
+        
+        /* New Clean Icon Style (No Box) */
+        .clean-icon {
+            font-size: 1.1rem;
+            margin-right: 10px;
+            width: 24px;
+            text-align: center;
         }
 
-        .section-header {
-            display: flex;
-            align-items: center;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-            margin-top: 15px;
-        }
-        .section-header h2 {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--section-color);
-            letter-spacing: 0.5px;
-        }
-        .section-icon {
-            background: var(--section-color);
-            color: white;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            margin-right: 8px;
-            font-size: 12px;
+        /* Card Style */
+        .card-compact {
+            background: white; padding: 16px; border-radius: 8px;
+            border: 1px solid #e2e8f0; border-top-width: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); margin-bottom: 16px;
         }
 
         /* Tables */
-        .data-table { width: 100%; font-size: 12px; border-collapse: collapse; }
+        .data-table { width: 100%; font-size: 11px; border-collapse: collapse; }
         .data-table th { 
-            text-align: left; 
-            background-color: #f1f5f9; 
-            padding: 4px 8px; 
-            font-weight: 600; 
-            color: #475569;
-            text-transform: uppercase;
-            font-size: 10px;
+            text-align: left; background-color: #f8fafc; padding: 6px 8px; 
+            font-weight: 700; color: #475569; text-transform: uppercase; font-size: 10px;
+            border-bottom: 2px solid #e2e8f0;
         }
-        .data-table td { 
-            padding: 4px 8px; 
-            border-bottom: 1px solid #f1f5f9; 
-        }
+        .data-table td { padding: 6px 8px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
         .data-table tr:last-child td { border-bottom: none; }
 
-        /* Timeline for Work */
+        /* Timeline Item */
         .timeline-item {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 12px;
-            border-left: 2px solid #cbd5e1;
+            position: relative; padding-left: 20px; margin-bottom: 12px; border-left: 2px solid #e2e8f0; padding-bottom: 8px;
         }
         .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -5px;
-            top: 4px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--section-color);
+            content: ''; position: absolute; left: -6px; top: 6px; width: 10px; height: 10px;
+            border-radius: 50%; background: #cbd5e1; border: 2px solid white; box-shadow: 0 0 0 1px #94a3b8;
         }
+        .timeline-item:last-child { border-left: none; margin-bottom: 0; padding-bottom: 0; }
+
+        /* Expiry Visuals */
+        .expiry-icon { display: none !important; } 
+        body.expiry-visuals-enabled .expiring-soon { color: #dc2626 !important; font-weight: 800 !important; }
+        body.expiry-visuals-enabled .expired { color: #991b1b !important; text-decoration: line-through; opacity: 0.7; }
+        body.expiry-visuals-enabled .expiry-icon { display: inline-block !important; }
 
         /* Settings Panel */
         .settings-panel {
             position: fixed; bottom: 20px; right: 20px; background: white; padding: 1.5rem;
-            border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 100;
-            width: 300px; transform: translateY(120%); transition: transform 0.3s ease;
-            border: 1px solid #cbd5e1;
+            border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 100;
+            width: 340px; transform: translateY(120%); transition: transform 0.3s ease-in-out;
+            border: 1px solid #e2e8f0;
         }
         .settings-panel.open { transform: translateY(0); }
         .settings-toggle {
@@ -128,76 +134,95 @@
         }
         .settings-toggle:hover { transform: scale(1.1); }
 
-        /* Warning Styles (Only shown if toggled) */
-        .expiry-visuals-enabled .expiring-soon { color: #dc2626 !important; font-weight: bold; }
-        .expiry-visuals-enabled .expired { text-decoration: line-through; color: #991b1b !important; }
-        
-        /* PRINT STYLES */
+        /* PRINT MEDIA QUERY */
         @media print {
-            body { background-color: white; -webkit-print-color-adjust: exact; }
+            body { background-color: white; -webkit-print-color-adjust: exact; min-width: auto; }
             .no-print { display: none !important; }
             .cv-sheet {
                 box-shadow: none; margin: 0; width: 100%; min-height: auto;
-                page-break-after: always;
+                page-break-after: always; border-radius: 0; padding: 0 !important;
             }
             .page-break { page-break-before: always; }
-            /* Hide URL links */
             a[href]:after { content: none !important; }
+            
+            /* Print Layout Utilities */
+            .print-row { display: flex; flex-direction: row; gap: 1.5rem; }
+            .print-col-30 { width: 32%; }
+            .print-col-70 { width: 68%; }
+            .print-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            
+            /* Ensure Colors Print */
+            .bg-blue-50, .bg-green-50, .bg-pink-50, .bg-slate-50, .bg-indigo-50, .bg-orange-50, .bg-teal-50, .bg-purple-50 {
+                -webkit-print-color-adjust: exact; print-color-adjust: exact;
+            }
+            
+            /* Hide border tops in print for cleaner look if desired, or keep for style */
+            .card-compact { box-shadow: none; border: 1px solid #e2e8f0; margin-bottom: 10px; }
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-100 text-slate-800">
 
-    <!-- SETTINGS -->
+    <!-- SETTINGS BUTTON -->
     <div class="settings-toggle no-print" onclick="toggleSettings()"><i class="fas fa-cog"></i></div>
+
+    <!-- SETTINGS PANEL -->
     <div id="settingsPanel" class="settings-panel no-print">
-        <h3 class="font-bold text-slate-800 mb-4 border-b pb-2">Pengaturan CV</h3>
+        <div class="flex justify-between items-center mb-4 border-b pb-2">
+            <h3 class="font-bold text-slate-800"><i class="fas fa-sliders-h mr-2"></i> Pengaturan CV</h3>
+            <button onclick="toggleSettings()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times"></i></button>
+        </div>
         
         <div class="mb-4">
-            <label class="block text-xs font-bold mb-1 uppercase">Tema Warna</label>
-            <div class="grid grid-cols-3 gap-2">
-                <button onclick="setTheme('blue')" class="p-1 border rounded text-xs bg-blue-100 hover:bg-blue-200">Blue</button>
-                <button onclick="setTheme('black')" class="p-1 border rounded text-xs bg-gray-100 hover:bg-gray-200">Mono</button>
-                <button onclick="toggleColorPicker()" class="p-1 border rounded text-xs">Custom</button>
+            <label class="block text-xs font-bold mb-2 uppercase text-slate-500">Pilih Tema</label>
+            <div class="grid grid-cols-3 gap-2 mb-2">
+                <button onclick="setTheme('ocean')" class="p-2 border rounded text-xs font-medium bg-blue-50 text-blue-800">🌊 Ocean</button>
+                <button onclick="setTheme('emerald')" class="p-2 border rounded text-xs font-medium bg-teal-50 text-teal-800">🌿 Emerald</button>
+                <button onclick="setTheme('sunset')" class="p-2 border rounded text-xs font-medium bg-orange-50 text-orange-800">🌅 Sunset</button>
+                <button onclick="setTheme('navy')" class="p-2 border rounded text-xs font-medium bg-indigo-50 text-indigo-800">⚓ Navy</button>
+                <button onclick="setTheme('mono')" class="p-2 border rounded text-xs font-medium bg-gray-100 text-gray-800">⚫ Mono</button>
+                <button onclick="toggleColorPicker()" class="p-2 border rounded text-xs font-medium hover:bg-gray-50">🎨 Custom</button>
             </div>
-            <div id="colorPickerContainer" class="mt-2 hidden">
+            <div id="colorPickerContainer" class="mt-2 hidden bg-slate-50 p-2 rounded border">
                 <input type="color" id="customColorInput" onchange="setCustomTheme(this.value)" class="w-full h-8 cursor-pointer">
             </div>
         </div>
 
-        <div class="mb-4 flex justify-between items-center border-t border-b py-2">
-            <label class="text-xs font-bold uppercase flex items-center gap-2">
+        <div class="mb-4 flex justify-between items-center border-t border-b py-3">
+            <label class="text-xs font-bold uppercase flex items-center gap-2 cursor-pointer" for="expiryToggle">
                 <i class="fas fa-exclamation-triangle text-orange-500"></i> Indikator Expired
             </label>
             <input type="checkbox" id="expiryToggle" onchange="toggleExpiryVisuals(this.checked)">
         </div>
 
-        <div class="mb-4">
-            <label class="block text-xs font-bold mb-2 uppercase">Ukuran Kertas (Portrait)</label>
-            <select onchange="setPaperSize(this.value)" class="w-full p-2 border rounded text-xs">
+        <div class="mb-2">
+            <label class="block text-xs font-bold mb-2 uppercase text-slate-500">Ukuran Kertas (Portrait)</label>
+            <select id="paperSize" onchange="setPaperSize(this.value)" class="w-full p-2 border rounded text-xs mb-3 bg-slate-50">
                 <option value="F4">F4 / Folio (215x330mm)</option>
                 <option value="A4">A4 (210x297mm)</option>
             </select>
+            <button onclick="window.print()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 rounded text-sm shadow transition-colors flex items-center justify-center gap-2">
+                <i class="fas fa-print"></i> Cetak Sekarang
+            </button>
         </div>
-
-        <button onclick="window.print()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded text-xs">
-            <i class="fas fa-print mr-1"></i> Cetak Sekarang
-        </button>
     </div>
 
     <!-- NOTIFICATION MODAL -->
     <div id="expiry-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden no-print backdrop-blur-sm">
-        <div class="bg-white rounded-lg shadow-xl max-w-sm w-full border-t-4 border-yellow-500 p-5">
-            <h3 class="font-bold text-lg mb-2">Status Dokumen</h3>
-            <div class="bg-yellow-50 text-yellow-800 text-xs p-2 rounded mb-3">
-                Dokumen berikut masa berlakunya &lt; 18 bulan atau sudah expired:
+        <div class="bg-white rounded-lg shadow-xl max-w-sm w-full border-t-4 border-yellow-500 p-5 animate-fade-in">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="bg-yellow-100 p-2 rounded-full"><i class="fas fa-bell text-yellow-600"></i></div>
+                <h3 class="font-bold text-lg text-slate-800">Status Dokumen</h3>
             </div>
-            <ul id="expiry-list" class="list-disc pl-5 text-xs text-red-700 mb-4 max-h-40 overflow-y-auto"></ul>
-            <button onclick="document.getElementById('expiry-modal').classList.add('hidden')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm w-full font-medium">OK, Saya Mengerti</button>
+            <div class="bg-yellow-50 text-yellow-800 text-xs p-3 rounded mb-3 border border-yellow-100">
+                Dokumen berikut masa berlakunya <strong>&lt; 18 bulan</strong> atau sudah <strong>kedaluwarsa</strong>:
+            </div>
+            <ul id="expiry-list" class="list-disc pl-5 text-xs text-red-700 mb-4 max-h-40 overflow-y-auto font-medium space-y-1"></ul>
+            <button onclick="document.getElementById('expiry-modal').classList.add('hidden')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm w-full font-bold transition-colors">OK</button>
         </div>
     </div>
 
-    <!-- CV PAGE 1 -->
+    <!-- CV PAGE 1: PROFILE, WORK EXPERIENCE -->
     <div class="cv-sheet">
         <!-- HEADER -->
         <div class="header-bg text-white p-8 flex flex-row items-center gap-6">
@@ -206,35 +231,31 @@
             </div>
             <div>
                 <h1 class="text-3xl font-bold uppercase tracking-wide">Rezhky C W P Todingbua, S.Tr.Pel</h1>
-                <div class="mt-2 inline-block bg-yellow-500 text-blue-900 font-bold px-3 py-1 text-sm shadow-sm">
+                <div class="mt-2 inline-block bg-yellow-500 text-blue-900 font-bold px-3 py-1 text-sm shadow-sm rounded">
                     Deck Officer Class II (ANT-II)
                 </div>
                 <div class="mt-4 grid grid-cols-2 gap-x-8 gap-y-1 text-xs text-blue-100">
-                    <div class="flex items-center gap-2"><i class="fas fa-calendar-day w-4"></i> Sep 11th 1996</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt w-4"></i> Mimika, Indonesia</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-phone w-4"></i> +62 813 4332 9545</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-envelope w-4"></i> rezhkytodingbua@gmail.com</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-calendar-day w-4 text-center"></i> Sep 11th 1996</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt w-4 text-center"></i> Mimika, Indonesia</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-phone w-4 text-center"></i> +62 813 4332 9545</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-envelope w-4 text-center"></i> rezhkytodingbua@gmail.com</div>
                 </div>
             </div>
         </div>
 
-        <!-- CONTENT GRID PAGE 1 -->
-        <div class="flex flex-row p-8 pt-6 gap-8">
+        <!-- CONTENT PAGE 1 -->
+        <div class="print-row flex flex-row p-8 pt-6 gap-8">
             
-            <!-- SIDEBAR (LEFT) -->
-            <div class="w-[32%] flex flex-col gap-6">
-                
+            <!-- LEFT SIDEBAR -->
+            <div class="print-col-30 w-[32%] flex flex-col gap-4">
                 <!-- Profile -->
-                <div>
-                    <div class="section-header"><div class="section-icon"><i class="fas fa-user"></i></div><h2>Profile</h2></div>
-                    <p class="text-xs text-justify text-slate-600 leading-relaxed">
-                        Dedicated Deck Officer (ANT-II) with extensive experience on General Cargo, Bulk Carrier & Container vessels. Expert in STCW, bridge resource management & safety. Disciplined professional committed to operational excellence.
-                    </p>
+                <div class="card-compact border-t-profile">
+                    <h2 class="section-title"><i class="fas fa-user clean-icon text-profile"></i> Profile</h2>
+                    <p class="text-xs text-justify text-slate-600 leading-relaxed">Highly dedicated Deck Officer (ANT-II) with extensive experience on General Cargo, Bulk Carrier & Container vessels. Expert in STCW, bridge resource management & safety. Disciplined professional committed to operational excellence.</p>
                 </div>
-
                 <!-- Personal -->
-                <div>
-                    <div class="section-header"><div class="section-icon"><i class="fas fa-info"></i></div><h2>Personal Info</h2></div>
+                <div class="card-compact border-t-personal">
+                    <h2 class="section-title"><i class="fas fa-info-circle clean-icon text-personal"></i> Personal Info</h2>
                     <table class="w-full text-xs text-slate-700">
                         <tr><td class="py-1 font-semibold">Nationality</td><td class="text-right flex justify-end gap-1"><img src="https://flagcdn.com/w20/id.png" class="h-3 mt-0.5"> Indonesian</td></tr>
                         <tr><td class="py-1 font-semibold">Status</td><td class="text-right">Married</td></tr>
@@ -242,275 +263,159 @@
                         <tr><td class="py-1 font-semibold">Coverall</td><td class="text-right font-bold">L</td></tr>
                     </table>
                 </div>
-
                 <!-- Education -->
-                <div>
-                    <div class="section-header"><div class="section-icon"><i class="fas fa-graduation-cap"></i></div><h2>Education</h2></div>
-                    <div class="flex flex-col gap-3 text-xs">
-                        <div>
-                            <div class="font-bold text-slate-800">PIP MAKASSAR</div>
-                            <div class="flex justify-between text-slate-500"><span>Diploma IV (S.Tr.Pel)</span><span class="font-bold text-primary">2020</span></div>
-                        </div>
-                        <div class="border-t border-dashed border-slate-200 pt-2">
-                            <div class="font-bold text-slate-800">SMA YPPK TIGA RAJA</div>
-                            <div class="flex justify-between text-slate-500"><span>High School</span><span class="font-bold text-primary">2014</span></div>
-                        </div>
-                        <div class="border-t border-dashed border-slate-200 pt-2">
-                            <div class="font-bold text-slate-800">SMPN 5 MIMIKA BARU</div>
-                            <div class="flex justify-between text-slate-500"><span>Junior High</span><span class="font-bold text-primary">2011</span></div>
-                        </div>
-                        <div class="border-t border-dashed border-slate-200 pt-2">
-                            <div class="font-bold text-slate-800">SD INPRES TIMIKA IV</div>
-                            <div class="flex justify-between text-slate-500"><span>Elementary</span><span class="font-bold text-primary">2008</span></div>
-                        </div>
+                <div class="card-compact border-t-edu">
+                    <h2 class="section-title"><i class="fas fa-graduation-cap clean-icon text-edu"></i> Education</h2>
+                    <div class="flex flex-col gap-2 text-xs">
+                        <div><div class="font-bold text-slate-800">PIP MAKASSAR</div><div class="flex justify-between text-slate-500"><span>Diploma IV (S.Tr.Pel)</span><span class="font-bold text-edu">2020</span></div></div>
+                        <div class="border-t border-dashed border-slate-200 pt-1"><div class="font-bold text-slate-800">SMA YPPK TIGA RAJA</div><div class="flex justify-between text-slate-500"><span>High School</span><span class="font-bold text-edu">2014</span></div></div>
+                        <div class="border-t border-dashed border-slate-200 pt-1"><div class="font-bold text-slate-800">SMPN 5 MIMIKA BARU</div><div class="flex justify-between text-slate-500"><span>Junior High</span><span class="font-bold text-edu">2011</span></div></div>
+                        <div class="border-t border-dashed border-slate-200 pt-1"><div class="font-bold text-slate-800">SD INPRES TIMIKA IV</div><div class="flex justify-between text-slate-500"><span>Elementary</span><span class="font-bold text-edu">2008</span></div></div>
                     </div>
                 </div>
-
                 <!-- Kin -->
-                <div>
-                    <div class="section-header"><div class="section-icon"><i class="fas fa-heart"></i></div><h2>Next of Kin</h2></div>
+                <div class="card-compact border-t-kin">
+                    <h2 class="section-title"><i class="fas fa-heart clean-icon text-kin"></i> Next of Kin</h2>
                     <div class="text-xs space-y-2">
-                        <div class="bg-slate-50 p-2 rounded border border-slate-200">
-                            <div class="font-bold text-slate-800">Mariana Mery <span class="font-normal text-slate-500">(Wife)</span></div>
-                            <div class="text-slate-500">+62 822 9957 2500</div>
-                        </div>
-                        <div class="bg-slate-50 p-2 rounded border border-slate-200">
-                            <div class="font-bold text-slate-800">Christina Krey <span class="font-normal text-slate-500">(Mother)</span></div>
-                            <div class="text-slate-500">+62 812 4031 5725</div>
-                        </div>
+                        <div class="bg-pink-50 p-1.5 rounded"><div class="font-bold text-slate-800">Mariana Mery <span class="font-normal text-slate-500">(Wife)</span></div><div class="text-slate-500">+62 822 9957 2500</div></div>
+                        <div class="bg-pink-50 p-1.5 rounded"><div class="font-bold text-slate-800">Christina Krey <span class="font-normal text-slate-500">(Mother)</span></div><div class="text-slate-500">+62 812 4031 5725</div></div>
                     </div>
                 </div>
-
-                <!-- Languages -->
-                <div>
-                    <div class="section-header"><div class="section-icon"><i class="fas fa-language"></i></div><h2>Languages</h2></div>
-                    <div class="text-xs space-y-2">
-                        <div class="flex justify-between"><span>Indonesia</span> <span class="font-bold text-primary bg-slate-100 px-2 rounded">Native</span></div>
-                        <div class="flex justify-between"><span>English</span> <span class="font-bold text-primary bg-slate-100 px-2 rounded">Professional</span></div>
-                    </div>
+                <!-- Langs -->
+                <div class="card-compact border-t-lang">
+                    <h2 class="section-title"><i class="fas fa-language clean-icon text-lang"></i> Languages</h2>
+                    <div class="text-xs space-y-1"><div class="flex justify-between"><span>Indonesia</span> <span class="font-bold text-lang bg-slate-100 px-2 rounded">Native</span></div><div class="flex justify-between"><span>English</span> <span class="font-bold text-lang bg-slate-100 px-2 rounded">Professional</span></div></div>
                 </div>
             </div>
 
-            <!-- MAIN CONTENT (RIGHT) -->
-            <div class="w-[68%] flex flex-col gap-6">
-                
-                <!-- Work Experience -->
-                <div>
-                    <div class="section-header"><div class="section-icon"><i class="fas fa-briefcase"></i></div><h2>Work Experience</h2></div>
-                    
+            <!-- RIGHT COLUMN (Work Experience) -->
+            <div class="print-col-70 w-[68%] flex flex-col gap-4">
+                <div class="card-compact border-t-work h-full">
+                    <h2 class="section-title mb-4 border-b pb-2 border-slate-100"><i class="fas fa-briefcase clean-icon text-work"></i> Work Experience</h2>
                     <div class="flex flex-col gap-0 text-xs">
-                        <div class="timeline-item pb-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-bold text-sm text-primary">MV. JIA HONG</h3>
-                                    <p class="font-semibold text-slate-500">JIAXIANG SHIPPING CO.,LTD</p>
-                                </div>
-                                <span class="bg-primary text-white px-2 py-0.5 rounded text-[10px]">2024 - 2025</span>
-                            </div>
-                            <div class="flex gap-4 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded">
-                                <span>Rank: <b>2/O</b></span> | <span>Type: <b>Gen. Cargo</b></span> | <span>GRT: <b>9243</b></span> | <span>HP: <b>3063</b></span>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item pb-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-bold text-sm text-primary">MV. CHANG RONG 12</h3>
-                                    <p class="font-semibold text-slate-500">VICTORY INTERNATIONAL SHIPPING</p>
-                                </div>
-                                <span class="bg-primary text-white px-2 py-0.5 rounded text-[10px]">2022 - 2023</span>
-                            </div>
-                            <div class="flex gap-4 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded">
-                                <span>Rank: <b>2/O</b></span> | <span>Type: <b>Container</b></span> | <span>GRT: <b>2988</b></span> | <span>HP: <b>2366</b></span>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item pb-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-bold text-sm text-primary">MV. V MIRACLE</h3>
-                                    <p class="font-semibold text-slate-500">VICTORY INTERNATIONAL SHIPPING</p>
-                                </div>
-                                <span class="bg-primary text-white px-2 py-0.5 rounded text-[10px]">2022</span>
-                            </div>
-                            <div class="flex gap-4 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded">
-                                <span>Rank: <b>2/O</b></span> | <span>Type: <b>Gen. Cargo</b></span> | <span>GRT: <b>1840</b></span> | <span>HP: <b>1971</b></span>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item pb-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-bold text-sm text-slate-700">MV. INTAN DAYA 322</h3>
-                                    <p class="font-semibold text-slate-500">PT. TEGUH PERSADA KENCANA</p>
-                                </div>
-                                <span class="bg-slate-500 text-white px-2 py-0.5 rounded text-[10px]">2020 - 2021</span>
-                            </div>
-                            <div class="flex gap-4 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded">
-                                <span>Rank: <b>3/O</b></span> | <span>Type: <b>Gen. Cargo</b></span> | <span>GRT: <b>9222</b></span> | <span>HP: <b>4961</b></span>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item pb-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-bold text-sm text-slate-700">MV. AMMAR</h3>
-                                    <p class="font-semibold text-slate-500">PT. GLS</p>
-                                </div>
-                                <span class="bg-slate-500 text-white px-2 py-0.5 rounded text-[10px]">2020</span>
-                            </div>
-                            <div class="flex gap-4 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded">
-                                <span>Rank: <b>3/O</b></span> | <span>Type: <b>Bulk Carrier</b></span> | <span>GRT: <b>27986</b></span> | <span>HP: <b>12694</b></span>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item pb-0 border-l-0">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-bold text-sm text-slate-700">MV. BAO LUCKY</h3>
-                                    <p class="font-semibold text-slate-500">HONGKONG HAIRUN SHIPPING</p>
-                                </div>
-                                <span class="bg-slate-500 text-white px-2 py-0.5 rounded text-[10px]">2017 - 2018</span>
-                            </div>
-                            <div class="flex gap-4 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded">
-                                <span>Rank: <b>Cadet</b></span> | <span>Type: <b>Gen. Cargo</b></span> | <span>GRT: <b>7939</b></span> | <span>HP: <b>3500</b></span>
-                            </div>
-                        </div>
+                        <!-- Items -->
+                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. JIA HONG</h3><p class="font-semibold text-slate-500">JIAXIANG SHIPPING CO.,LTD</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">2024 - 2025</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>2/O</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>9243</b></span>|<span>HP: <b>3063</b></span></div></div>
+                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. CHANG RONG 12</h3><p class="font-semibold text-slate-500">VICTORY INTERNATIONAL SHIPPING</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">2022 - 2023</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>2/O</b></span>|<span>Type: <b>Container</b></span>|<span>GRT: <b>2988</b></span>|<span>HP: <b>2366</b></span></div></div>
+                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. V MIRACLE</h3><p class="font-semibold text-slate-500">VICTORY INTERNATIONAL SHIPPING</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">2022</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>2/O</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>1840</b></span>|<span>HP: <b>1971</b></span></div></div>
+                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-slate-700">MV. INTAN DAYA 322</h3><p class="font-semibold text-slate-500">PT. TEGUH PERSADA KENCANA</p></div><span class="bg-slate-500 text-white px-2 py-0.5 rounded text-[10px]">2020 - 2021</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>3/O</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>9222</b></span>|<span>HP: <b>4961</b></span></div></div>
+                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-slate-700">MV. AMMAR</h3><p class="font-semibold text-slate-500">PT. GLS</p></div><span class="bg-slate-500 text-white px-2 py-0.5 rounded text-[10px]">2020</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>3/O</b></span>|<span>Type: <b>Bulk Carrier</b></span>|<span>GRT: <b>27986</b></span>|<span>HP: <b>12694</b></span></div></div>
+                        <div class="timeline-item pb-0 border-l-0"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-slate-700">MV. BAO LUCKY</h3><p class="font-semibold text-slate-500">HONGKONG HAIRUN SHIPPING</p></div><span class="bg-slate-500 text-white px-2 py-0.5 rounded text-[10px]">2017 - 2018</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>Cadet</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>7939</b></span>|<span>HP: <b>3500</b></span></div></div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <!-- Travel Documents -->
-                <div>
-                    <div class="section-header"><div class="section-icon"><i class="fas fa-passport"></i></div><h2>Travel Documents & Competency</h2></div>
+    <!-- CV PAGE 2: DOCUMENTS -->
+    <div class="cv-sheet page-break">
+        <div class="header-bg text-white p-4 mb-6"><h2 class="font-bold uppercase text-lg">Page 2: Documents & Certificates</h2></div>
+        
+        <div class="px-8 pb-8 flex flex-col gap-6">
+            
+            <!-- Travel Docs (Full Width) -->
+            <div class="card-compact border-t-doc">
+                <h2 class="section-title mb-2 border-b pb-1 border-slate-100"><i class="fas fa-passport clean-icon text-doc"></i> Travel Documents</h2>
+                <div class="grid grid-cols-2 gap-x-8"> <!-- Split table into 2 cols if possible, or just list -->
+                    <!-- Here we use a single wide table for max clarity -->
                     <table class="data-table">
-                        <thead><tr><th>Document Name</th><th>Number</th><th>Place</th><th class="text-right">Valid Until</th></tr></thead>
+                        <thead><tr><th width="40%">Document</th><th width="25%">Number</th><th width="15%">Issued At</th><th width="20%" class="text-right">Valid</th></tr></thead>
                         <tbody>
                             <tr><td>Passport</td><td class="font-mono">X 4389308</td><td>Mimika</td><td class="text-right check-expiry">Apr 22, 2035</td></tr>
-                            <tr><td>Seaman’s Book</td><td class="font-mono">J 045625</td><td>Marunda</td><td class="text-right check-expiry">May 14, 2027</td></tr>
-                            <tr class="bg-blue-50"><td class="font-bold text-primary">Deck Officer Class II</td><td class="font-mono font-bold text-primary">6211592574N20423</td><td>Jakarta</td><td class="text-right italic">Follow Endorsement</td></tr>
-                            <tr class="bg-blue-50"><td class="font-bold text-primary">Endorsement Class II</td><td class="font-mono font-bold text-primary">6211592574NB0423</td><td>Jakarta</td><td class="text-right font-bold text-green-700 check-expiry">Nov 28, 2028</td></tr>
-                            <tr class="bg-slate-50"><td class="font-bold text-slate-700">GMDSS Basic</td><td class="font-mono font-bold">6211592574G10420</td><td>Jakarta</td><td class="text-right italic">Follow Endorsement</td></tr>
-                            <tr class="bg-slate-50"><td class="font-bold text-slate-700">Endorsement GMDSS</td><td class="font-mono font-bold">6211592574GA0420</td><td>Jakarta</td><td class="text-right font-bold text-green-700 check-expiry">Jan 21, 2030</td></tr>
+                            <tr><td>Seaman Book</td><td class="font-mono">J 045625</td><td>Marunda</td><td class="text-right check-expiry">May 14, 2027</td></tr>
+                            <tr class="bg-blue-50"><td class="font-bold text-doc">Deck Officer Class II</td><td class="font-mono font-bold text-doc">6211592574N20423</td><td>Jakarta</td><td class="text-right italic">Follow Endors.</td></tr>
+                            <tr class="bg-blue-50"><td class="font-bold text-doc">Endorsement Class II</td><td class="font-mono font-bold text-doc">6211592574NB0423</td><td>Jakarta</td><td class="text-right font-bold text-green-700 check-expiry">Nov 28, 2028</td></tr>
+                            <tr><td>GMDSS Basic</td><td class="font-mono">6211592574G10420</td><td>Jakarta</td><td class="text-right italic">Follow Endors.</td></tr>
+                            <tr><td>Endorsement GMDSS</td><td class="font-mono">6211592574GA0420</td><td>Jakarta</td><td class="text-right font-bold text-green-700 check-expiry">Jan 21, 2030</td></tr>
                             <tr><td>GMDSS GOC</td><td class="font-mono">110845/SOU/II/2024</td><td>Jakarta</td><td class="text-right check-expiry">Feb 15, 2029</td></tr>
                             <tr><td>Seafarer Identity Doc (SID)</td><td class="font-mono">IDN609976674</td><td>Jakarta</td><td class="text-right check-expiry">Mar 03, 2030</td></tr>
                         </tbody>
                     </table>
                 </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- CV PAGE 2 -->
-    <div class="cv-sheet page-break">
-        <!-- HEADER SMALL -->
-        <div class="header-bg text-white p-4 flex justify-between items-center mb-6">
-            <h2 class="font-bold uppercase tracking-wide text-lg">Rezhky C W P Todingbua - Page 2</h2>
-            <span class="text-xs bg-white text-blue-900 px-2 py-0.5 rounded font-bold">COP & Supporting Docs</span>
-        </div>
-
-        <div class="px-8 pb-8">
-            <!-- COP -->
-            <div class="mb-6">
-                <div class="section-header"><div class="section-icon"><i class="fas fa-certificate"></i></div><h2>Certificates of Proficiency (COP)</h2></div>
-                <table class="data-table">
-                    <thead><tr><th>Certificate Name</th><th>Number</th><th>Place</th><th class="text-right">Valid Until</th></tr></thead>
-                    <tbody>
-                        <tr><td>Basic Safety Training (BST)</td><td class="font-mono">6211592574010425</td><td>Makassar</td><td class="text-right check-expiry">Dec 16, 2030</td></tr>
-                        <tr><td>Advanced Fire Fighting (AFF)</td><td class="font-mono">6211592574060421</td><td>Makassar</td><td class="text-right check-expiry">Oct 01, 2026</td></tr>
-                        <tr><td>Medical First Aid (MFA)</td><td class="font-mono">6211592574070421</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>Medical Care (MC)</td><td class="font-mono">6211592574080420</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>Security Awareness (SAT)</td><td class="font-mono">6211592574310421</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>Designated Security Duties (SDSD)</td><td class="font-mono">6211592574320421</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>Ship Security Officer (SSO)</td><td class="font-mono">6211592574240420</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>Basic Training Liquefied Gas (BLGT)</td><td class="font-mono">6211592574370421</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>Basic Oil & Chemical Tanker (BOCT)</td><td class="font-mono">6211592574390421</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>Adv. Training Oil Tanker (AOT)</td><td class="font-mono">6211592574410425</td><td>Jakarta</td><td class="text-right check-expiry">Jan 24, 2030</td></tr>
-                        <tr><td>Adv. Training Chemical Tanker (ACT)</td><td class="font-mono">6211592574400425</td><td>Jakarta</td><td class="text-right check-expiry">Feb 28, 2030</td></tr>
-                        <tr><td>ISM Code</td><td class="font-mono">020/ISM CODE/PIP MKS-04</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>RADAR Simulator</td><td class="font-mono">6211592574030421</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>ARPA Simulator</td><td class="font-mono">6211592574020421</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>Crowd Management Training</td><td class="font-mono">6211592574130420</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>Proficiency in Survival Craft (PSCRB)</td><td class="font-mono">6211592574040424</td><td>Makassar</td><td class="text-right check-expiry">Mar 14, 2029</td></tr>
-                        <tr><td>Crisis Mgmt & Human Behaviour</td><td class="font-mono">6211592574170420</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>Bridge Resource Management (BRM)</td><td class="font-mono">6211592574230420</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>ECDIS</td><td class="font-mono">6211592574280420</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                        <tr><td>IMDG Code</td><td class="font-mono">6211592574290425</td><td>Makassar</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
-                    </tbody>
-                </table>
             </div>
 
-            <!-- Supporting -->
-            <div>
-                <div class="section-header"><div class="section-icon"><i class="fas fa-folder-open"></i></div><h2>Supporting Documents</h2></div>
+            <!-- Support Docs (Full Width) -->
+            <div class="card-compact border-t-support">
+                <h2 class="section-title mb-2 border-b pb-1 border-slate-100"><i class="fas fa-folder-open clean-icon text-support"></i> Supporting Documents</h2>
                 <table class="data-table">
-                    <thead><tr><th>Document Name</th><th>Number</th><th>Place</th><th class="text-right">Issued Date</th></tr></thead>
+                    <thead><tr><th width="40%">Name</th><th width="25%">Number</th><th width="15%">Place</th><th width="20%" class="text-right">Issued</th></tr></thead>
                     <tbody>
                         <tr><td>Marlin English Certificate</td><td class="font-mono">6BFF94317AD0B047</td><td>Jakarta</td><td class="text-right">Nov 05, 2021</td></tr>
                         <tr><td>Open Water Diver</td><td class="font-mono">2835075</td><td>Selayar</td><td class="text-right">Jan 14, 2020</td></tr>
                     </tbody>
                 </table>
             </div>
+
+            <!-- COP (Full Width, Split 2 Columns inside) -->
+            <div class="card-compact border-t-cert">
+                <h2 class="section-title mb-3 border-b pb-2 border-slate-100"><i class="fas fa-certificate clean-icon text-cert"></i> Certificates of Proficiency (COP)</h2>
+                <div class="grid-print-2 grid grid-cols-2 gap-6">
+                    <table class="data-table">
+                        <thead><tr><th>Certificate</th><th>Valid</th></tr></thead>
+                        <tbody>
+                            <tr><td>Basic Safety Training (BST)</td><td class="text-right check-expiry">Dec 16, 2030</td></tr>
+                            <tr><td>Advanced Fire Fighting (AFF)</td><td class="text-right check-expiry">Oct 01, 2026</td></tr>
+                            <tr><td>Medical First Aid (MFA)</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>Medical Care (MC)</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>Security Awareness (SAT)</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>Desig. Security Duties (SDSD)</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>Ship Security Officer (SSO)</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>Basic Training Liquefied Gas (BLGT)</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>Basic Oil & Chemical Tanker (BOCT)</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>Adv. Training Oil Tanker (AOT)</td><td class="text-right check-expiry">Jan 24, 2030</td></tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table">
+                        <thead><tr><th>Certificate</th><th>Valid</th></tr></thead>
+                        <tbody>
+                            <tr><td>Adv. Training Chemical Tanker (ACT)</td><td class="text-right check-expiry">Feb 28, 2030</td></tr>
+                            <tr><td>ISM Code</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>RADAR Simulator</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>ARPA Simulator</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>Crowd Management Training</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>Proficiency in Survival Craft (PSCRB)</td><td class="text-right check-expiry">Mar 14, 2029</td></tr>
+                            <tr><td>Crisis Mgmt & Human Bhv</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>Bridge Resource Management (BRM)</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>ECDIS</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>IMDG Code</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-slate-800 text-white p-1 text-center text-[8px] no-print fixed bottom-0 w-full">
+            &copy; 2026 Rezhky C W P Todingbua.
         </div>
     </div>
 
     <!-- Scripts -->
     <script>
-        function toggleSettings() { document.getElementById('settingsPanel').classList.toggle('open'); }
-        function toggleColorPicker() { document.getElementById('colorPickerContainer').classList.toggle('hidden'); }
-        function toggleExpiryVisuals(show) { 
-            document.body.classList.toggle('expiry-visuals-enabled', show); 
+        function toggleSettings(){document.getElementById('settingsPanel').classList.toggle('open')}
+        function toggleColorPicker(){document.getElementById('colorPickerContainer').classList.toggle('hidden')}
+        function toggleExpiryVisuals(s){document.body.classList.toggle('expiry-visuals-enabled',s)}
+        function setPaperSize(s){document.getElementById('page-size-style').innerHTML=`@media print{@page{size:${s==='A4'?'210mm 297mm':'215mm 330mm'};margin:10mm}}`}
+        function setTheme(t){
+            const r=document.documentElement.style;
+            if(t==='ocean'){r.cssText='--header-from:#1e3a8a;--header-to:#312e81;--profile-color:#2563eb;--personal-color:#0d9488;--edu-color:#ea580c;--kin-color:#db2777;--lang-color:#9333ea;--work-color:#1d4ed8;--doc-color:#4338ca;--cert-color:#0f766e;--support-color:#15803d'}
+            if(t==='emerald'){r.cssText='--header-from:#064e3b;--header-to:#115e59;--profile-color:#059669;--personal-color:#047857;--edu-color:#d97706;--kin-color:#be123c;--lang-color:#0891b2;--work-color:#059669;--doc-color:#0f766e;--cert-color:#047857;--support-color:#15803d'}
+            if(t==='sunset'){r.cssText='--header-from:#881337;--header-to:#9f1239;--profile-color:#e11d48;--personal-color:#db2777;--edu-color:#ea580c;--kin-color:#be123c;--lang-color:#c026d3;--work-color:#e11d48;--doc-color:#be123c;--cert-color:#9f1239;--support-color:#b91c1c'}
+            if(t==='navy'){r.cssText='--header-from:#0f172a;--header-to:#1e293b;--profile-color:#334155;--personal-color:#475569;--edu-color:#ca8a04;--kin-color:#9f1239;--lang-color:#475569;--work-color:#1e293b;--doc-color:#334155;--cert-color:#475569;--support-color:#0f172a'}
+            if(t==='mono'){r.cssText='--header-from:#171717;--header-to:#262626;--profile-color:#404040;--personal-color:#404040;--edu-color:#404040;--kin-color:#404040;--lang-color:#404040;--work-color:#404040;--doc-color:#404040;--cert-color:#404040;--support-color:#404040'}
         }
+        function setCustomTheme(c){const r=document.documentElement.style;r.setProperty('--header-from',c);r.setProperty('--header-to',c);['profile','personal','edu','kin','lang','work','doc','cert','support'].forEach(k=>r.setProperty(`--${k}-color`,c))}
         
-        function setTheme(type) {
-            const root = document.documentElement;
-            if (type === 'black') {
-                root.style.setProperty('--header-from', '#1f2937'); root.style.setProperty('--header-to', '#111827');
-                root.style.setProperty('--section-color', '#334155'); root.style.setProperty('--accent-color', '#64748b');
-            } else { 
-                root.style = ''; /* Reset to CSS defaults */
-            }
-        }
-        function setCustomTheme(c) {
-            const root = document.documentElement;
-            root.style.setProperty('--header-from', c); root.style.setProperty('--header-to', c);
-            root.style.setProperty('--section-color', c);
-        }
-        function setPaperSize(size) {
-            const style = document.getElementById('page-size-style');
-            const dims = size === 'A4' ? '210mm 297mm' : '215mm 330mm';
-            style.innerHTML = `@media print { @page { size: ${dims}; margin: 10mm; } }`;
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const expiryCells = document.querySelectorAll('.check-expiry');
-            const today = new Date();
-            const warningLimit = 18 * 30 * 24 * 60 * 60 * 1000;
-            let expiredDocs = [];
-
-            expiryCells.forEach(cell => {
-                const dateText = cell.innerText.trim();
-                const expiryDate = new Date(dateText);
-                if (!isNaN(expiryDate.getTime())) {
-                    const timeDiff = expiryDate - today;
-                    if (timeDiff < 0) {
-                        cell.classList.add('expired');
-                        expiredDocs.push(`<b>${cell.closest('tr').cells[0].innerText}</b> (Expired)`);
-                    } else if (timeDiff < warningLimit) {
-                        cell.classList.add('expiring-soon');
-                        cell.innerHTML += ' <i class="fas fa-exclamation-triangle expiry-icon text-orange-500 ml-1"></i>';
-                        expiredDocs.push(`<b>${cell.closest('tr').cells[0].innerText}</b> (Expiring Soon)`);
-                    }
+        document.addEventListener("DOMContentLoaded",()=>{
+            const today=new Date(), limit=18*30*24*60*60*1000; let docs=[];
+            document.querySelectorAll('.check-expiry').forEach(c=>{
+                const d=new Date(c.innerText);
+                if(!isNaN(d)){
+                    const diff=d-today;
+                    if(diff<0){c.classList.add('expired'); c.innerHTML+=' <i class="fas fa-times-circle expiry-icon ml-1 text-red-600"></i>'; docs.push(c.closest('tr').cells[0].innerText+" (Expired)");}
+                    else if(diff<limit){c.classList.add('expiring-soon'); c.innerHTML+=' <i class="fas fa-exclamation-triangle expiry-icon ml-1 text-orange-500"></i>'; docs.push(c.closest('tr').cells[0].innerText+" (Expiring)");}
                 }
             });
-
-            if (expiredDocs.length > 0) {
-                document.getElementById('expiry-list').innerHTML = expiredDocs.map(d => `<li>${d}</li>`).join('');
-                document.getElementById('expiry-modal').classList.remove('hidden');
-            }
+            if(docs.length) { document.getElementById('expiry-list').innerHTML=docs.map(d=>`<li>${d}</li>`).join(''); document.getElementById('expiry-modal').classList.remove('hidden'); }
         });
     </script>
 </body>
 </html>
-
-
