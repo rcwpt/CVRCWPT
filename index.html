@@ -11,16 +11,87 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <style>
+    <style id="dynamic-styles">
         :root {
-            --primary-bg: #f1f5f9;
+            /* Default Colorful Theme Palette */
+            --header-from: #1e3a8a; /* Blue 900 */
+            --header-to: #312e81;   /* Indigo 900 */
+            --primary-text: #1e293b;
+            --muted-text: #64748b;
+            
+            /* Section Specific Colors (Default) */
+            --profile-color: #2563eb; /* Blue 600 */
+            --personal-color: #0d9488; /* Teal 600 */
+            --edu-color: #ea580c;      /* Orange 600 */
+            --kin-color: #db2777;      /* Pink 600 */
+            --lang-color: #9333ea;     /* Purple 600 */
+            --work-color: #1d4ed8;     /* Blue 700 */
+            --doc-color: #4338ca;      /* Indigo 700 */
+            --cert-color: #0f766e;     /* Teal 700 */
+            --support-color: #15803d;  /* Green 700 */
         }
+
+        /* Utility Classes mapping to Variables */
+        .text-profile { color: var(--profile-color); }
+        .bg-profile { background-color: var(--profile-color); }
+        .border-t-profile { border-top-color: var(--profile-color); }
+        
+        .text-personal { color: var(--personal-color); }
+        .bg-personal { background-color: var(--personal-color); }
+        .border-t-personal { border-top-color: var(--personal-color); }
+
+        .text-edu { color: var(--edu-color); }
+        .bg-edu { background-color: var(--edu-color); }
+        .border-t-edu { border-top-color: var(--edu-color); }
+
+        .text-kin { color: var(--kin-color); }
+        .bg-kin { background-color: var(--kin-color); }
+        .border-t-kin { border-top-color: var(--kin-color); }
+
+        .text-lang { color: var(--lang-color); }
+        .bg-lang { background-color: var(--lang-color); }
+        .border-t-lang { border-top-color: var(--lang-color); }
+
+        .text-work { color: var(--work-color); }
+        .bg-work { background-color: var(--work-color); }
+        .border-t-work { border-top-color: var(--work-color); }
+
+        .text-doc { color: var(--doc-color); }
+        .bg-doc { background-color: var(--doc-color); }
+        .border-t-doc { border-top-color: var(--doc-color); }
+
+        .text-cert { color: var(--cert-color); }
+        .bg-cert { background-color: var(--cert-color); }
+        .border-t-cert { border-top-color: var(--cert-color); }
+
+        .text-support { color: var(--support-color); }
+        .bg-support { background-color: var(--support-color); }
+        .border-t-support { border-top-color: var(--support-color); }
+
+        /* Dynamic Header Gradient */
+        .header-bg {
+            background: linear-gradient(to right, var(--header-from), var(--header-to));
+        }
+    </style>
+
+    <style id="page-size-style">
+        @media print {
+            @page { 
+                size: 330mm 215mm; /* Default F4 Landscape */
+                margin: 10mm; 
+            }
+        }
+    </style>
+
+    <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--primary-bg);
+            background-color: #f1f5f9;
             font-size: 14px; 
             color: #1e293b;
             line-height: 1.4;
+            min-width: 1024px; /* Desktop only focus */
+            overflow-x: auto;
         }
         
         .section-title {
@@ -47,21 +118,58 @@
             border-radius: 0.5rem;
             background: white;
             border: 1px solid #e2e8f0;
+            border-top-width: 4px; /* Colored top border */
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             margin-bottom: 0.75rem;
         }
         
-        /* PRINT STYLES - LEGAL LANDSCAPE OPTIMIZED */
+        /* Floating Settings Panel */
+        .settings-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            z-index: 100;
+            width: 300px;
+            transform: translateY(120%);
+            transition: transform 0.3s ease-in-out;
+            border: 1px solid #e2e8f0;
+        }
+        .settings-panel.open {
+            transform: translateY(0);
+        }
+        .settings-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            z-index: 101;
+            transition: transform 0.2s;
+        }
+        .settings-toggle:hover { transform: scale(1.1); }
+
+        /* PRINT STYLES */
         @media print {
-            @page { 
-                size: 330mm 215mm; /* F4/Legal Landscape */
-                margin: 10mm; 
-            }
             body {
                 background-color: white;
                 -webkit-print-color-adjust: exact;
                 font-size: 10pt !important;
+                min-width: auto;
             }
+            .no-print { display: none !important; }
             .cv-container {
                 max-width: none !important;
                 width: 100% !important;
@@ -69,67 +177,105 @@
                 box-shadow: none !important;
                 border: none !important;
             }
-            .bg-gradient-to-r {
-                background: #1e3a8a !important;
-                color: white !important;
-                -webkit-print-color-adjust: exact; 
-                print-color-adjust: exact;
-            }
-            
-            /* PAGE 1 LAYOUT */
-            .print-flex-row {
-                display: flex !important;
-                flex-direction: row !important;
-                gap: 1rem !important;
-                align-items: flex-start !important;
-            }
-            .print-w-1-3 { width: 33% !important; }
-            .print-w-2-3 { width: 67% !important; }
-            
-            /* Work Experience Grid - 3 Columns for Landscape */
-            .print-grid-cols-3 {
-                display: grid !important;
-                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-                gap: 0.5rem !important;
-            }
-
-            /* PAGE 2 LAYOUT - Side by Side Tables for COP */
-            .print-cop-grid {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr !important;
-                gap: 2rem !important;
-            }
-            
             .page-break { 
                 page-break-before: always; 
                 display: block; 
                 height: 1px;
                 clear: both;
             }
-            
+            /* Ensure Colors Print Correctly */
             .bg-blue-50, .bg-green-50, .bg-pink-50, .bg-slate-50, .bg-indigo-50, .bg-orange-50, .bg-teal-50, .bg-purple-50 {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-            .shadow-2xl, .shadow-lg, .shadow-md, .shadow-sm {
-                box-shadow: none !important;
-            }
+            /* Hide links */
             a[href]:after { content: none !important; }
         }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800">
 
-    <!-- Main Container -->
-    <div class="cv-container max-w-7xl mx-auto my-4 bg-white shadow-xl overflow-hidden border border-slate-300 rounded-lg">
+    <!-- SETTINGS BUTTON -->
+    <div class="settings-toggle no-print" onclick="toggleSettings()">
+        <i class="fas fa-cog"></i>
+    </div>
+
+    <!-- SETTINGS PANEL -->
+    <div id="settingsPanel" class="settings-panel no-print">
+        <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <i class="fas fa-sliders-h"></i> Pengaturan CV
+        </h3>
         
-        <!-- Header / Hero Section -->
-        <div class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white px-6 pt-5 pb-10 relative">
+        <!-- Theme Selector -->
+        <div class="mb-4">
+            <label class="block text-xs font-semibold text-slate-500 mb-2 uppercase">Tema Warna</label>
+            <div class="grid grid-cols-3 gap-2">
+                <button onclick="setTheme('colorful')" class="p-2 border rounded hover:bg-slate-50 text-xs font-medium text-center">Colorful</button>
+                <button onclick="setTheme('monochrome')" class="p-2 border rounded hover:bg-slate-50 text-xs font-medium text-center">Mono</button>
+                <button onclick="toggleColorPicker()" class="p-2 border rounded hover:bg-slate-50 text-xs font-medium text-center">Custom</button>
+            </div>
+            <div id="colorPickerContainer" class="mt-2 hidden">
+                <div class="flex items-center gap-2">
+                    <input type="color" id="customColorInput" onchange="setCustomTheme(this.value)" class="h-8 w-8 cursor-pointer rounded border p-0">
+                    <span class="text-xs text-slate-500">Pilih Warna Utama</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paper Size Selector -->
+        <div class="mb-4">
+            <label class="block text-xs font-semibold text-slate-500 mb-2 uppercase">Ukuran Kertas (Landscape)</label>
+            <select onchange="setPaperSize(this.value)" class="w-full p-2 border rounded text-sm bg-slate-50">
+                <option value="F4">F4 / Legal (330x215mm)</option>
+                <option value="A4">A4 (297x210mm)</option>
+            </select>
+        </div>
+
+        <!-- Print Action -->
+        <button onclick="window.print()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow transition-colors">
+            <i class="fas fa-print mr-2"></i> Cetak Sekarang
+        </button>
+        <p class="text-[10px] text-slate-400 mt-2 text-center">Notifikasi & tombol ini tidak akan ikut tercetak.</p>
+    </div>
+
+    <!-- EXPIRY POP-UP MODAL (Hidden by default) -->
+    <div id="expiry-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden no-print backdrop-blur-sm">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full border-t-8 border-yellow-500 animate-fade-in p-0 overflow-hidden transform scale-100 transition-transform">
+            <div class="p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-yellow-100 p-2 rounded-full">
+                        <i class="fas fa-bell text-yellow-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">Notifikasi Dokumen</h3>
+                </div>
+                
+                <p class="text-sm text-slate-600 mb-3">Dokumen berikut memiliki masa berlaku <strong>kurang dari 18 bulan</strong> atau sudah <strong>kedaluwarsa</strong>:</p>
+                
+                <div class="bg-slate-50 rounded-lg p-3 max-h-60 overflow-y-auto border border-slate-200 mb-5">
+                    <ul id="expiry-list" class="list-disc pl-5 text-sm text-slate-700 space-y-1 font-medium">
+                        <!-- JS will inject items here -->
+                    </ul>
+                </div>
+
+                <div class="flex justify-end">
+                    <button onclick="document.getElementById('expiry-modal').classList.add('hidden')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors shadow-md">
+                        OK, Saya Mengerti
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="cv-container max-w-[1280px] mx-auto my-4 bg-white shadow-xl overflow-hidden border border-slate-300 rounded-lg">
+        
+        <!-- Header -->
+        <div class="header-bg text-white px-6 pt-5 pb-10 relative">
             <div class="absolute top-2 right-4 opacity-10">
                 <i class="fas fa-anchor text-8xl text-white"></i>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center md:items-center gap-6 relative z-10">
+            <div class="flex flex-row items-center gap-6 relative z-10">
                 <!-- Photo -->
                 <div class="flex-shrink-0">
                     <div class="w-32 h-40 bg-white p-1 rounded shadow-lg">
@@ -138,15 +284,15 @@
                 </div>
 
                 <!-- Info -->
-                <div class="text-center md:text-left flex-grow">
-                    <h1 class="text-3xl md:text-4xl font-bold uppercase tracking-wide leading-tight">Rezhky C W P Todingbua, S.Tr.Pel</h1>
+                <div class="text-left flex-grow">
+                    <h1 class="text-4xl font-bold uppercase tracking-wide leading-tight">Rezhky C W P Todingbua, S.Tr.Pel</h1>
                     <div class="mt-2 mb-3">
                         <span class="bg-yellow-400 text-blue-900 font-bold px-3 py-1 rounded text-sm shadow-sm inline-block">
                             Deck Officer Class II (ANT-II)
                         </span>
                     </div>
                     
-                    <div class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-1 text-sm text-blue-100 font-medium">
+                    <div class="flex flex-wrap justify-start gap-x-6 gap-y-1 text-sm text-blue-100 font-medium">
                         <div class="flex items-center gap-2"><i class="fas fa-calendar-day text-yellow-400"></i> Sep 11th 1996</div>
                         <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-yellow-400"></i> Mimika, ID</div>
                         <div class="flex items-center gap-2"><i class="fas fa-phone text-yellow-400"></i> +62 813 4332 9545</div>
@@ -157,15 +303,15 @@
         </div>
 
         <!-- ================= PAGE 1 ================= -->
-        <div class="flex flex-col md:flex-row print-flex-row px-6 -mt-6 gap-4 relative z-20">
+        <div class="flex flex-row px-6 -mt-6 gap-4 relative z-20">
             
             <!-- LEFT SIDEBAR -->
-            <div class="w-full md:w-1/3 print-w-1-3 flex flex-col gap-2">
+            <div class="w-1/3 flex flex-col gap-2">
                 
                 <!-- Profile -->
-                <div class="card-compact border-t-4 border-t-blue-600">
-                    <h2 class="section-title text-blue-800">
-                        <span class="icon-box bg-blue-600 text-white"><i class="fas fa-user"></i></span> Profile
+                <div class="card-compact border-t-profile">
+                    <h2 class="section-title text-profile">
+                        <span class="icon-box bg-profile text-white"><i class="fas fa-user"></i></span> Profile
                     </h2>
                     <p class="text-xs text-justify leading-snug">
                         Highly dedicated and disciplined Deck Officer holding <strong>ANT-II</strong> qualification with extensive sailing experience across various vessel types, including General Cargo, Bulk Carrier, and Container ships. Possesses profound knowledge and practical expertise in navigation, bridge resource management, maritime safety (STCW), and efficient vessel operations. Proven ability to maintain high safety standards, manage deck operations effectively, and adapt quickly to dynamic maritime environments. Committed to continuous professional development.
@@ -173,9 +319,9 @@
                 </div>
 
                 <!-- Personal Details -->
-                <div class="card-compact border-t-4 border-t-teal-600">
-                    <h2 class="section-title text-teal-800">
-                        <span class="icon-box bg-teal-600 text-white"><i class="fas fa-info"></i></span> Personal
+                <div class="card-compact border-t-personal">
+                    <h2 class="section-title text-personal">
+                        <span class="icon-box bg-personal text-white"><i class="fas fa-info"></i></span> Personal
                     </h2>
                     <table class="w-full text-xs">
                         <tr class="border-b border-dashed border-slate-200"><td class="py-1 font-semibold text-slate-500">Nationality</td>
@@ -190,79 +336,79 @@
                 </div>
 
                 <!-- Education -->
-                <div class="card-compact border-t-4 border-t-orange-500">
-                    <h2 class="section-title text-orange-700">
-                        <span class="icon-box bg-orange-600 text-white"><i class="fas fa-graduation-cap"></i></span> Education
+                <div class="card-compact border-t-edu">
+                    <h2 class="section-title text-edu">
+                        <span class="icon-box bg-edu text-white"><i class="fas fa-graduation-cap"></i></span> Education
                     </h2>
                     <ul class="space-y-1.5 text-xs">
                         <li class="border-b border-dashed border-slate-200 pb-1">
                             <div class="font-bold text-slate-800">POLITEKNIK ILMU PELAYARAN MAKASSAR</div>
-                            <div class="flex justify-between text-slate-500"><span>Diploma IV (S.Tr.Pel)</span><span class="font-bold text-orange-600">2020</span></div>
+                            <div class="flex justify-between text-slate-500"><span>Diploma IV (S.Tr.Pel)</span><span class="font-bold text-edu">2020</span></div>
                         </li>
                         <li class="border-b border-dashed border-slate-200 pb-1">
                             <div class="font-bold text-slate-800">SMA YPPK TIGA RAJA TIMIKA</div>
-                            <div class="flex justify-between text-slate-500"><span>High School</span><span class="font-bold text-orange-600">2014</span></div>
+                            <div class="flex justify-between text-slate-500"><span>High School</span><span class="font-bold text-edu">2014</span></div>
                         </li>
                         <li class="border-b border-dashed border-slate-200 pb-1">
                             <div class="font-bold text-slate-800">SMPN 5 MIMIKA BARU</div>
-                            <div class="flex justify-between text-slate-500"><span>Junior High</span><span class="font-bold text-orange-600">2011</span></div>
+                            <div class="flex justify-between text-slate-500"><span>Junior High</span><span class="font-bold text-edu">2011</span></div>
                         </li>
                         <li>
                             <div class="font-bold text-slate-800">SD INPRES TIMIKA IV</div>
-                            <div class="flex justify-between text-slate-500"><span>Elementary</span><span class="font-bold text-orange-600">2008</span></div>
+                            <div class="flex justify-between text-slate-500"><span>Elementary</span><span class="font-bold text-edu">2008</span></div>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Next of Kin -->
-                <div class="card-compact border-t-4 border-t-pink-500">
-                    <h2 class="section-title text-pink-700">
-                        <span class="icon-box bg-pink-600 text-white"><i class="fas fa-heart"></i></span> Next of Kin
+                <div class="card-compact border-t-kin">
+                    <h2 class="section-title text-kin">
+                        <span class="icon-box bg-kin text-white"><i class="fas fa-heart"></i></span> Next of Kin
                     </h2>
                     <div class="space-y-1 text-xs">
                         <div class="bg-pink-50 p-1.5 rounded border border-pink-100">
-                            <div class="font-bold text-pink-900">Mariana Mery <span class="font-normal text-pink-500">(Wife)</span></div>
+                            <div class="font-bold text-pink-900">Mariana Mery <span class="font-normal text-kin">(Wife)</span></div>
                             <div class="text-slate-600"><i class="fas fa-phone-alt text-[10px] mr-1"></i> +62 822 9957 2500</div>
                         </div>
                         <div class="bg-pink-50 p-1.5 rounded border border-pink-100">
-                            <div class="font-bold text-pink-900">Christina Krey <span class="font-normal text-pink-500">(Mother)</span></div>
+                            <div class="font-bold text-pink-900">Christina Krey <span class="font-normal text-kin">(Mother)</span></div>
                             <div class="text-slate-600"><i class="fas fa-phone-alt text-[10px] mr-1"></i> +62 812 4031 5725</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Languages -->
-                <div class="card-compact border-t-4 border-t-purple-500 flex-grow">
-                    <h2 class="section-title text-purple-800">
-                        <span class="icon-box bg-purple-600 text-white"><i class="fas fa-language"></i></span> Langs
+                <div class="card-compact border-t-lang flex-grow">
+                    <h2 class="section-title text-lang">
+                        <span class="icon-box bg-lang text-white"><i class="fas fa-language"></i></span> Langs
                     </h2>
                     <div class="text-xs space-y-1">
                         <div class="flex justify-between border-b border-slate-100 pb-1">
-                            <span class="font-medium">Indonesia</span> <span class="font-bold text-purple-700 bg-purple-50 px-1 rounded">Native</span>
+                            <span class="font-medium">Indonesia</span> <span class="font-bold text-lang bg-slate-50 px-1 rounded">Native</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="font-medium">English</span> <span class="font-bold text-purple-700 bg-purple-50 px-1 rounded">Professional</span>
+                            <span class="font-medium">English</span> <span class="font-bold text-lang bg-slate-50 px-1 rounded">Professional</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- RIGHT CONTENT -->
-            <div class="w-full md:w-2/3 print-w-2-3 flex flex-col gap-3">
+            <div class="w-2/3 flex flex-col gap-3">
                 
                 <!-- Work Experience -->
-                <div class="card-compact border-t-4 border-t-blue-800">
-                    <h2 class="section-title text-blue-900 mb-3 border-b pb-1 border-slate-100">
-                        <i class="fas fa-briefcase mr-2 text-blue-600"></i> Work Experience
+                <div class="card-compact border-t-work">
+                    <h2 class="section-title text-work mb-3 border-b pb-1 border-slate-100">
+                        <i class="fas fa-briefcase mr-2 text-work"></i> Work Experience
                     </h2>
 
                     <!-- COMPACT GRID 3 COLUMNS -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 print-grid-cols-3">
+                    <div class="grid grid-cols-3 gap-2">
                         <!-- Exp 1 -->
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-blue-600 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
                                 <h3 class="font-bold text-sm text-blue-900 leading-none">MV. JIA HONG</h3>
-                                <span class="text-[9px] font-bold text-white bg-blue-600 px-1.5 rounded">2024 - 2025</span>
+                                <span class="text-[9px] font-bold text-white bg-work px-1.5 rounded">2024 - 2025</span>
                             </div>
                             <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">JIAXIANG SHIPPING CO.,LTD</p>
                             <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
@@ -275,7 +421,7 @@
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-blue-500 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
                                 <h3 class="font-bold text-sm text-blue-900 leading-none">MV. CHANG RONG 12</h3>
-                                <span class="text-[9px] font-bold text-white bg-blue-500 px-1.5 rounded">2022 - 2023</span>
+                                <span class="text-[9px] font-bold text-white bg-work px-1.5 rounded">2022 - 2023</span>
                             </div>
                             <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">VICTORY INTERNATIONAL SHIPPING CO.,LTD.</p>
                             <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
@@ -288,7 +434,7 @@
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-blue-400 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
                                 <h3 class="font-bold text-sm text-blue-900 leading-none">MV. V MIRACLE</h3>
-                                <span class="text-[9px] font-bold text-white bg-blue-400 px-1.5 rounded">2022</span>
+                                <span class="text-[9px] font-bold text-white bg-work px-1.5 rounded">2022</span>
                             </div>
                             <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">VICTORY INTERNATIONAL SHIPPING CO.,LTD.</p>
                             <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
@@ -301,7 +447,7 @@
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-cyan-500 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
                                 <h3 class="font-bold text-sm text-slate-700 leading-none">MV. INTAN DAYA 322</h3>
-                                <span class="text-[9px] font-bold text-white bg-cyan-500 px-1.5 rounded">2020 - 2021</span>
+                                <span class="text-[9px] font-bold text-white bg-work px-1.5 rounded">2020 - 2021</span>
                             </div>
                             <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">PT. TEGUH PERSADA KENCANA</p>
                             <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
@@ -314,7 +460,7 @@
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-cyan-500 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
                                 <h3 class="font-bold text-sm text-slate-700 leading-none">MV. AMMAR</h3>
-                                <span class="text-[9px] font-bold text-white bg-cyan-500 px-1.5 rounded">2020</span>
+                                <span class="text-[9px] font-bold text-white bg-work px-1.5 rounded">2020</span>
                             </div>
                             <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">PT. GLS</p>
                             <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
@@ -327,7 +473,7 @@
                         <div class="bg-slate-50 p-2 rounded border border-slate-200 border-l-4 border-l-indigo-400 hover:bg-white transition-colors">
                             <div class="flex justify-between items-start mb-1">
                                 <h3 class="font-bold text-sm text-slate-700 leading-none">MV. BAO LUCKY</h3>
-                                <span class="text-[9px] font-bold text-white bg-indigo-400 px-1.5 rounded">2017 - 2018</span>
+                                <span class="text-[9px] font-bold text-white bg-work px-1.5 rounded">2017 - 2018</span>
                             </div>
                             <p class="text-[9px] font-bold text-slate-500 uppercase truncate mb-1">HONGKONG HAIRUN SHIPPING CO. LTD</p>
                             <div class="text-[10px] grid grid-cols-2 gap-x-1 gap-y-0.5 text-slate-700">
@@ -343,9 +489,9 @@
                 <div class="flex flex-col gap-3">
                     
                     <!-- Travel Docs -->
-                    <div class="card-compact border-t-4 border-t-indigo-700 mb-0">
-                        <h2 class="section-title text-indigo-900 mb-2 border-b pb-1 border-slate-100">
-                            <i class="fas fa-passport mr-2 text-indigo-600"></i> Travel Docs
+                    <div class="card-compact border-t-doc mb-0">
+                        <h2 class="section-title text-doc mb-2 border-b pb-1 border-slate-100">
+                            <i class="fas fa-passport mr-2 text-doc"></i> Travel Docs
                         </h2>
                         <table class="w-full text-xs text-left text-slate-700">
                             <thead class="bg-slate-50 text-[10px] uppercase text-slate-500">
@@ -356,22 +502,22 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100">
-                                <tr><td class="px-2 py-1 font-medium">Passport</td><td class="px-2 py-1 font-mono">X 4389308</td><td class="px-2 py-1 text-right">Apr 22, 2035</td></tr>
-                                <tr><td class="px-2 py-1 font-medium">Seaman Book</td><td class="px-2 py-1 font-mono">J 045625</td><td class="px-2 py-1 text-right">May 14, 2027</td></tr>
-                                <tr class="bg-indigo-50/50"><td class="px-2 py-1 font-bold">Deck Off. II</td><td class="px-2 py-1 font-mono font-bold">6211592574N20423</td><td class="px-2 py-1 text-right italic">Endors.</td></tr>
-                                <tr class="bg-green-50/50"><td class="px-2 py-1 font-bold">Endors. II</td><td class="px-2 py-1 font-mono font-bold">6211592574NB0423</td><td class="px-2 py-1 text-right font-bold text-green-700">Nov 28, 2028</td></tr>
-                                <tr class="bg-indigo-50/50"><td class="px-2 py-1 font-bold">GMDSS</td><td class="px-2 py-1 font-mono font-bold">6211592574G10420</td><td class="px-2 py-1 text-right italic">Endors.</td></tr>
-                                <tr class="bg-green-50/50"><td class="px-2 py-1 font-bold">Endors. GMDSS</td><td class="px-2 py-1 font-mono font-bold">6211592574GA0420</td><td class="px-2 py-1 text-right font-bold text-green-700">Jan 21, 2030</td></tr>
-                                <tr><td class="px-2 py-1 font-medium">GMDSS GOC</td><td class="px-2 py-1 font-mono">110845/SOU/II/2024</td><td class="px-2 py-1 text-right">Feb 15, 2029</td></tr>
-                                <tr><td class="px-2 py-1 font-medium">SID</td><td class="px-2 py-1 font-mono">IDN609976674</td><td class="px-2 py-1 text-right">Mar 03, 2030</td></tr>
+                                <tr><td class="px-2 py-1 font-medium">Passport</td><td class="px-2 py-1 font-mono">X 4389308</td><td class="px-2 py-1 text-right check-expiry">Apr 22, 2035</td></tr>
+                                <tr><td class="px-2 py-1 font-medium">Seaman Book</td><td class="px-2 py-1 font-mono">J 045625</td><td class="px-2 py-1 text-right check-expiry">May 14, 2027</td></tr>
+                                <tr class="bg-slate-50"><td class="px-2 py-1 font-bold">Deck Off. II</td><td class="px-2 py-1 font-mono font-bold">6211592574N20423</td><td class="px-2 py-1 text-right italic">Endors.</td></tr>
+                                <tr class="bg-slate-50"><td class="px-2 py-1 font-bold">Endors. II</td><td class="px-2 py-1 font-mono font-bold">6211592574NB0423</td><td class="px-2 py-1 text-right font-bold text-doc check-expiry">Nov 28, 2028</td></tr>
+                                <tr class="bg-slate-50"><td class="px-2 py-1 font-bold">GMDSS</td><td class="px-2 py-1 font-mono font-bold">6211592574G10420</td><td class="px-2 py-1 text-right italic">Endors.</td></tr>
+                                <tr class="bg-slate-50"><td class="px-2 py-1 font-bold">Endors. GMDSS</td><td class="px-2 py-1 font-mono font-bold">6211592574GA0420</td><td class="px-2 py-1 text-right font-bold text-doc check-expiry">Jan 21, 2030</td></tr>
+                                <tr><td class="px-2 py-1 font-medium">GMDSS GOC</td><td class="px-2 py-1 font-mono">110845/SOU/II/2024</td><td class="px-2 py-1 text-right check-expiry">Feb 15, 2029</td></tr>
+                                <tr><td class="px-2 py-1 font-medium">SID</td><td class="px-2 py-1 font-mono">IDN609976674</td><td class="px-2 py-1 text-right check-expiry">Mar 03, 2030</td></tr>
                             </tbody>
                         </table>
                     </div>
 
                     <!-- Supporting Docs (BELOW TRAVEL DOCS) -->
-                    <div class="card-compact border-t-4 border-t-green-600 mb-0">
-                        <h2 class="section-title text-green-800 mb-2 border-b pb-1 border-slate-100">
-                            <i class="fas fa-folder-open mr-2 text-green-600"></i> Supporting Docs
+                    <div class="card-compact border-t-support mb-0">
+                        <h2 class="section-title text-support mb-2 border-b pb-1 border-slate-100">
+                            <i class="fas fa-folder-open mr-2 text-support"></i> Supporting Docs
                         </h2>
                         <table class="w-full text-xs text-left text-slate-700">
                             <thead class="bg-slate-50 text-[10px] uppercase text-slate-500">
@@ -403,13 +549,13 @@
 
         <!-- ================= PAGE 2: CERTIFICATES OF PROFICIENCY (FULL PAGE) ================= -->
         <div class="px-6 mt-4">
-            <div class="card-compact border-t-4 border-t-teal-600 h-full">
-                <h2 class="section-title text-teal-800 mb-4 border-b pb-2 border-slate-100 text-lg">
-                    <i class="fas fa-certificate mr-2 text-teal-600"></i> Certificates of Proficiency (COP)
+            <div class="card-compact border-t-cert h-full">
+                <h2 class="section-title text-cert mb-4 border-b pb-2 border-slate-100 text-lg">
+                    <i class="fas fa-certificate mr-2 text-cert"></i> Certificates of Proficiency (COP)
                 </h2>
                 
                 <!-- 2-COLUMN TABLE LAYOUT FOR COP ON PAGE 2 -->
-                <div class="print-cop-grid grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-0">
+                <div class="grid grid-cols-2 gap-x-8 gap-y-0">
                     
                     <!-- LEFT COLUMN COP -->
                     <table class="w-full text-[11px] text-left text-slate-700 h-fit">
@@ -426,13 +572,13 @@
                                 <td class="px-2 py-1 font-medium">Basic Safety Training (BST)</td>
                                 <td class="px-2 py-1 font-mono text-[9px]">6211592574010425</td>
                                 <td class="px-2 py-1">Makassar</td>
-                                <td class="px-2 py-1 text-right">Dec 16, 2030</td>
+                                <td class="px-2 py-1 text-right check-expiry">Dec 16, 2030</td>
                             </tr>
                             <tr>
                                 <td class="px-2 py-1 font-medium">Advanced Fire Fighting (AFF)</td>
                                 <td class="px-2 py-1 font-mono text-[9px]">6211592574060421</td>
                                 <td class="px-2 py-1">Makassar</td>
-                                <td class="px-2 py-1 text-right">Oct 2026</td>
+                                <td class="px-2 py-1 text-right check-expiry">Oct 01, 2026</td>
                             </tr>
                             <tr>
                                 <td class="px-2 py-1 font-medium">Medical First Aid (MFA)</td>
@@ -480,7 +626,7 @@
                                 <td class="px-2 py-1 font-medium">Adv. Training Oil Tanker (AOT)</td>
                                 <td class="px-2 py-1 font-mono text-[9px]">6211592574410425</td>
                                 <td class="px-2 py-1">Jakarta</td>
-                                <td class="px-2 py-1 text-right">Jan 24, 2030</td>
+                                <td class="px-2 py-1 text-right check-expiry">Jan 24, 2030</td>
                             </tr>
                         </tbody>
                     </table>
@@ -500,7 +646,7 @@
                                 <td class="px-2 py-1 font-medium">Adv. Training Chemical Tanker (ACT)</td>
                                 <td class="px-2 py-1 font-mono text-[9px]">6211592574400425</td>
                                 <td class="px-2 py-1">Jakarta</td>
-                                <td class="px-2 py-1 text-right">Feb 28, 2030</td>
+                                <td class="px-2 py-1 text-right check-expiry">Feb 28, 2030</td>
                             </tr>
                             <tr>
                                 <td class="px-2 py-1 font-medium">ISM Code</td>
@@ -530,7 +676,7 @@
                                 <td class="px-2 py-1 font-medium">Proficiency in Survival Craft (PSCRB)</td>
                                 <td class="px-2 py-1 font-mono text-[9px]">6211592574040424</td>
                                 <td class="px-2 py-1">Makassar</td>
-                                <td class="px-2 py-1 text-right">Mar 14, 2029</td>
+                                <td class="px-2 py-1 text-right check-expiry">Mar 14, 2029</td>
                             </tr>
                             <tr>
                                 <td class="px-2 py-1 font-medium">Crisis Mgmt & Human Behaviour</td>
@@ -566,5 +712,119 @@
             &copy; 2026 Rezhky C W P Todingbua.
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script>
+        function toggleSettings() {
+            document.getElementById('settingsPanel').classList.toggle('open');
+        }
+
+        function toggleColorPicker() {
+            const container = document.getElementById('colorPickerContainer');
+            container.classList.toggle('hidden');
+        }
+
+        function setTheme(type) {
+            const root = document.documentElement;
+            
+            if (type === 'monochrome') {
+                root.style.setProperty('--header-from', '#1f2937'); // Gray 800
+                root.style.setProperty('--header-to', '#111827');   // Gray 900
+                // Set all sections to Gray/Slate
+                ['profile', 'personal', 'edu', 'kin', 'lang', 'work', 'doc', 'cert', 'support'].forEach(sec => {
+                    root.style.setProperty(`--${sec}-color`, '#334155'); // Slate 700
+                });
+            } else if (type === 'colorful') {
+                // Reset to defaults defined in CSS
+                root.style = '';
+            }
+        }
+
+        function setCustomTheme(color) {
+            const root = document.documentElement;
+            // Set header gradient
+            root.style.setProperty('--header-from', color);
+            root.style.setProperty('--header-to', adjustBrightness(color, -20));
+            
+            // Set all sections to selected color
+            ['profile', 'personal', 'edu', 'kin', 'lang', 'work', 'doc', 'cert', 'support'].forEach(sec => {
+                root.style.setProperty(`--${sec}-color`, color);
+            });
+        }
+
+        // Helper to darken color
+        function adjustBrightness(col, amt) {
+            var usePound = false;
+            if (col[0] == "#") {
+                col = col.slice(1);
+                usePound = true;
+            }
+            var num = parseInt(col,16);
+            var r = (num >> 16) + amt;
+            if (r > 255) r = 255;
+            else if  (r < 0) r = 0;
+            var b = ((num >> 8) & 0x00FF) + amt;
+            if (b > 255) b = 255;
+            else if  (b < 0) b = 0;
+            var g = (num & 0x0000FF) + amt;
+            if (g > 255) g = 255;
+            else if (g < 0) g = 0;
+            return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+        }
+
+        function setPaperSize(size) {
+            const style = document.getElementById('page-size-style');
+            if (size === 'A4') {
+                style.innerHTML = '@media print { @page { size: 297mm 210mm; margin: 10mm; } }';
+            } else {
+                style.innerHTML = '@media print { @page { size: 330mm 215mm; margin: 10mm; } }';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const expiryCells = document.querySelectorAll('.check-expiry');
+            const today = new Date();
+            const warningLimit = 18 * 30 * 24 * 60 * 60 * 1000; // ~18 months
+            let expiredDocs = [];
+
+            expiryCells.forEach(cell => {
+                const dateText = cell.innerText.trim();
+                const expiryDate = new Date(dateText);
+
+                if (!isNaN(expiryDate.getTime())) {
+                    const timeDiff = expiryDate - today;
+                    let isIssue = false;
+
+                    // Logic: Expired -> "expired" CSS class (Strikethrough only)
+                    // Logic: Soon -> Bold Red text via CSS class
+                    // BUT USER SAID NO RED TEXT IN CV.
+                    // So we will NOT add classes that change text color to red.
+                    // We only collect names for popup.
+
+                    if (timeDiff < 0 || timeDiff < warningLimit) {
+                        isIssue = true;
+                    }
+
+                    if (isIssue) {
+                        const row = cell.closest('tr');
+                        if (row) {
+                            const name = row.cells[0].innerText.trim();
+                            const dateStr = cell.innerText.trim();
+                            const status = timeDiff < 0 ? "EXPIRED" : "Expiring Soon";
+                            expiredDocs.push(`<b>${name}</b> <span class="text-xs text-slate-500">(${status}: ${dateStr})</span>`);
+                        }
+                    }
+                }
+            });
+
+            if (expiredDocs.length > 0) {
+                const list = document.getElementById('expiry-list');
+                list.innerHTML = expiredDocs.map(doc => `<li>${doc}</li>`).join('');
+                document.getElementById('expiry-modal').classList.remove('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
+
+
