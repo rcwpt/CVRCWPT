@@ -74,13 +74,13 @@
         .section-title {
             display: flex; align-items: center; margin-bottom: 0.8rem; 
             text-transform: uppercase; letter-spacing: 0.05em; font-size: 1rem; font-weight: 700;
-            color: #334155; /* Neutral title color, icon provides contrast */
+            color: #334155; 
         }
         
         /* New Clean Icon Style (No Box) */
         .clean-icon {
-            font-size: 1.1rem;
-            margin-right: 10px;
+            font-size: 1.2rem;
+            margin-right: 12px;
             width: 24px;
             text-align: center;
         }
@@ -95,11 +95,11 @@
         /* Tables */
         .data-table { width: 100%; font-size: 11px; border-collapse: collapse; }
         .data-table th { 
-            text-align: left; background-color: #f8fafc; padding: 6px 8px; 
+            text-align: left; background-color: #f8fafc; padding: 8px 10px; 
             font-weight: 700; color: #475569; text-transform: uppercase; font-size: 10px;
             border-bottom: 2px solid #e2e8f0;
         }
-        .data-table td { padding: 6px 8px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+        .data-table td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
         .data-table tr:last-child td { border-bottom: none; }
 
         /* Timeline Item */
@@ -149,14 +149,18 @@
             .print-row { display: flex; flex-direction: row; gap: 1.5rem; }
             .print-col-30 { width: 32%; }
             .print-col-70 { width: 68%; }
+            
+            /* Grid for COP - Side by side tables on print */
             .print-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            
+            /* Full Width for Travel/Support Docs */
+            .print-full-width { width: 100%; display: block; }
             
             /* Ensure Colors Print */
             .bg-blue-50, .bg-green-50, .bg-pink-50, .bg-slate-50, .bg-indigo-50, .bg-orange-50, .bg-teal-50, .bg-purple-50 {
                 -webkit-print-color-adjust: exact; print-color-adjust: exact;
             }
             
-            /* Hide border tops in print for cleaner look if desired, or keep for style */
             .card-compact { box-shadow: none; border: 1px solid #e2e8f0; margin-bottom: 10px; }
         }
     </style>
@@ -215,7 +219,7 @@
                 <h3 class="font-bold text-lg text-slate-800">Status Dokumen</h3>
             </div>
             <div class="bg-yellow-50 text-yellow-800 text-xs p-3 rounded mb-3 border border-yellow-100">
-                Dokumen berikut masa berlakunya <strong>&lt; 18 bulan</strong> atau sudah <strong>kedaluwarsa</strong>:
+                Dokumen berikut masa berlakunya <strong>&lt; 18 bulan</strong> atau <strong>akan kedaluwarsa</strong>:
             </div>
             <ul id="expiry-list" class="list-disc pl-5 text-xs text-red-700 mb-4 max-h-40 overflow-y-auto font-medium space-y-1"></ul>
             <button onclick="document.getElementById('expiry-modal').classList.add('hidden')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm w-full font-bold transition-colors">OK</button>
@@ -225,11 +229,14 @@
     <!-- CV PAGE 1: PROFILE, WORK EXPERIENCE -->
     <div class="cv-sheet">
         <!-- HEADER -->
-        <div class="header-bg text-white p-8 flex flex-row items-center gap-6">
-            <div class="w-32 h-40 bg-white p-1 shadow-lg flex-shrink-0">
+        <div class="header-bg text-white p-8 flex flex-row items-center gap-6 relative overflow-hidden">
+            <div class="absolute top-2 right-4 opacity-10">
+                <i id="theme-watermark-icon" class="fas fa-water text-8xl text-white"></i>
+            </div>
+            <div class="w-32 h-40 bg-white p-1 shadow-lg flex-shrink-0 relative z-10">
                 <img src="https://raw.githubusercontent.com/rcwpt/CVRCWPT/main/IMG_20260128_125245.jpg.jpeg" class="w-full h-full object-cover">
             </div>
-            <div>
+            <div class="relative z-10">
                 <h1 class="text-3xl font-bold uppercase tracking-wide">Rezhky C W P Todingbua, S.Tr.Pel</h1>
                 <div class="mt-2 inline-block bg-yellow-500 text-blue-900 font-bold px-3 py-1 text-sm shadow-sm rounded">
                     Deck Officer Class II (ANT-II)
@@ -251,7 +258,7 @@
                 <!-- Profile -->
                 <div class="card-compact border-t-profile">
                     <h2 class="section-title"><i class="fas fa-user clean-icon text-profile"></i> Profile</h2>
-                    <p class="text-xs text-justify text-slate-600 leading-relaxed">Highly dedicated Deck Officer (ANT-II) with extensive experience on General Cargo, Bulk Carrier & Container vessels. Expert in STCW, bridge resource management & safety. Disciplined professional committed to operational excellence.</p>
+                    <p class="text-xs text-justify text-slate-600 leading-relaxed">Highly dedicated and disciplined Deck Officer holding <strong>ANT-II</strong> qualification with extensive sailing experience across various vessel types, including General Cargo, Bulk Carrier, and Container ships. Possesses profound knowledge and practical expertise in navigation, bridge resource management, maritime safety (STCW), and efficient vessel operations. Proven ability to maintain high safety standards, manage deck operations effectively, and adapt quickly to dynamic maritime environments. Committed to continuous professional development.</p>
                 </div>
                 <!-- Personal -->
                 <div class="card-compact border-t-personal">
@@ -267,7 +274,7 @@
                 <div class="card-compact border-t-edu">
                     <h2 class="section-title"><i class="fas fa-graduation-cap clean-icon text-edu"></i> Education</h2>
                     <div class="flex flex-col gap-2 text-xs">
-                        <div><div class="font-bold text-slate-800">PIP MAKASSAR</div><div class="flex justify-between text-slate-500"><span>Diploma IV (S.Tr.Pel)</span><span class="font-bold text-edu">2020</span></div></div>
+                        <div><div class="font-bold text-slate-800">POLITEKNIK ILMU PELAYARAN MAKASSAR</div><div class="flex justify-between text-slate-500"><span>Diploma IV (S.Tr.Pel)</span><span class="font-bold text-edu">2020</span></div></div>
                         <div class="border-t border-dashed border-slate-200 pt-1"><div class="font-bold text-slate-800">SMA YPPK TIGA RAJA</div><div class="flex justify-between text-slate-500"><span>High School</span><span class="font-bold text-edu">2014</span></div></div>
                         <div class="border-t border-dashed border-slate-200 pt-1"><div class="font-bold text-slate-800">SMPN 5 MIMIKA BARU</div><div class="flex justify-between text-slate-500"><span>Junior High</span><span class="font-bold text-edu">2011</span></div></div>
                         <div class="border-t border-dashed border-slate-200 pt-1"><div class="font-bold text-slate-800">SD INPRES TIMIKA IV</div><div class="flex justify-between text-slate-500"><span>Elementary</span><span class="font-bold text-edu">2008</span></div></div>
@@ -294,12 +301,12 @@
                     <h2 class="section-title mb-4 border-b pb-2 border-slate-100"><i class="fas fa-briefcase clean-icon text-work"></i> Work Experience</h2>
                     <div class="flex flex-col gap-0 text-xs">
                         <!-- Items -->
-                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. JIA HONG</h3><p class="font-semibold text-slate-500">JIAXIANG SHIPPING CO.,LTD</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">2024 - 2025</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>2/O</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>9243</b></span>|<span>HP: <b>3063</b></span></div></div>
-                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. CHANG RONG 12</h3><p class="font-semibold text-slate-500">VICTORY INTERNATIONAL SHIPPING</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">2022 - 2023</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>2/O</b></span>|<span>Type: <b>Container</b></span>|<span>GRT: <b>2988</b></span>|<span>HP: <b>2366</b></span></div></div>
-                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. V MIRACLE</h3><p class="font-semibold text-slate-500">VICTORY INTERNATIONAL SHIPPING</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">2022</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>2/O</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>1840</b></span>|<span>HP: <b>1971</b></span></div></div>
-                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-slate-700">MV. INTAN DAYA 322</h3><p class="font-semibold text-slate-500">PT. TEGUH PERSADA KENCANA</p></div><span class="bg-slate-500 text-white px-2 py-0.5 rounded text-[10px]">2020 - 2021</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>3/O</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>9222</b></span>|<span>HP: <b>4961</b></span></div></div>
-                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-slate-700">MV. AMMAR</h3><p class="font-semibold text-slate-500">PT. GLS</p></div><span class="bg-slate-500 text-white px-2 py-0.5 rounded text-[10px]">2020</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>3/O</b></span>|<span>Type: <b>Bulk Carrier</b></span>|<span>GRT: <b>27986</b></span>|<span>HP: <b>12694</b></span></div></div>
-                        <div class="timeline-item pb-0 border-l-0"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-slate-700">MV. BAO LUCKY</h3><p class="font-semibold text-slate-500">HONGKONG HAIRUN SHIPPING</p></div><span class="bg-slate-500 text-white px-2 py-0.5 rounded text-[10px]">2017 - 2018</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>Cadet</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>7939</b></span>|<span>HP: <b>3500</b></span></div></div>
+                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. BAO LUCKY</h3><p class="font-semibold text-slate-500">HONGKONG HAIRUN SHIPPING</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">Tahun: 2017 - 2018</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>Cadet</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>7939</b></span>|<span>HP: <b>3500</b></span></div></div>
+                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. AMMAR</h3><p class="font-semibold text-slate-500">PT. GLS</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">Tahun: 2020</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>3/O</b></span>|<span>Type: <b>Bulk Carrier</b></span>|<span>GRT: <b>27986</b></span>|<span>HP: <b>12694</b></span></div></div>
+                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. INTAN DAYA 322</h3><p class="font-semibold text-slate-500">PT. TEGUH PERSADA KENCANA</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">Tahun: 2020 - 2021</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>3/O</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>9222</b></span>|<span>HP: <b>4961</b></span></div></div>
+                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. V MIRACLE</h3><p class="font-semibold text-slate-500">VICTORY INTERNATIONAL SHIPPING</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">Jan - Jun 2022</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>2/O</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>1840</b></span>|<span>HP: <b>1971</b></span></div></div>
+                        <div class="timeline-item pb-1"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. CHANG RONG 12</h3><p class="font-semibold text-slate-500">VICTORY INTERNATIONAL SHIPPING</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">Tahun: 2022 - 2023</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>2/O</b></span>|<span>Type: <b>Container</b></span>|<span>GRT: <b>2988</b></span>|<span>HP: <b>2366</b></span></div></div>
+                        <div class="timeline-item pb-0 border-l-0"><div class="flex justify-between items-start"><div><h3 class="font-bold text-sm text-work">MV. JIA HONG</h3><p class="font-semibold text-slate-500">JIAXIANG SHIPPING CO.,LTD</p></div><span class="bg-work text-white px-2 py-0.5 rounded text-[10px]">Tahun: 2024 - 2025</span></div><div class="flex gap-3 mt-1 text-slate-600 bg-slate-50 p-1.5 rounded"><span>Rank: <b>2/O</b></span>|<span>Type: <b>Gen. Cargo</b></span>|<span>GRT: <b>9243</b></span>|<span>HP: <b>3063</b></span></div></div>
                     </div>
                 </div>
             </div>
@@ -313,31 +320,28 @@
         <div class="px-8 pb-8 flex flex-col gap-6">
             
             <!-- Travel Docs (Full Width) -->
-            <div class="card-compact border-t-doc">
+            <div class="card-compact border-t-doc print-full-width">
                 <h2 class="section-title mb-2 border-b pb-1 border-slate-100"><i class="fas fa-passport clean-icon text-doc"></i> Travel Documents</h2>
-                <div class="grid grid-cols-2 gap-x-8"> <!-- Split table into 2 cols if possible, or just list -->
-                    <!-- Here we use a single wide table for max clarity -->
-                    <table class="data-table">
-                        <thead><tr><th width="40%">Document</th><th width="25%">Number</th><th width="15%">Issued At</th><th width="20%" class="text-right">Valid</th></tr></thead>
-                        <tbody>
-                            <tr><td>Passport</td><td class="font-mono">X 4389308</td><td>Mimika</td><td class="text-right check-expiry">Apr 22, 2035</td></tr>
-                            <tr><td>Seaman Book</td><td class="font-mono">J 045625</td><td>Marunda</td><td class="text-right check-expiry">May 14, 2027</td></tr>
-                            <tr class="bg-blue-50"><td class="font-bold text-doc">Deck Officer Class II</td><td class="font-mono font-bold text-doc">6211592574N20423</td><td>Jakarta</td><td class="text-right italic">Follow Endors.</td></tr>
-                            <tr class="bg-blue-50"><td class="font-bold text-doc">Endorsement Class II</td><td class="font-mono font-bold text-doc">6211592574NB0423</td><td>Jakarta</td><td class="text-right font-bold text-green-700 check-expiry">Nov 28, 2028</td></tr>
-                            <tr><td>GMDSS Basic</td><td class="font-mono">6211592574G10420</td><td>Jakarta</td><td class="text-right italic">Follow Endors.</td></tr>
-                            <tr><td>Endorsement GMDSS</td><td class="font-mono">6211592574GA0420</td><td>Jakarta</td><td class="text-right font-bold text-green-700 check-expiry">Jan 21, 2030</td></tr>
-                            <tr><td>GMDSS GOC</td><td class="font-mono">110845/SOU/II/2024</td><td>Jakarta</td><td class="text-right check-expiry">Feb 15, 2029</td></tr>
-                            <tr><td>Seafarer Identity Doc (SID)</td><td class="font-mono">IDN609976674</td><td>Jakarta</td><td class="text-right check-expiry">Mar 03, 2030</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <table class="data-table">
+                    <thead><tr><th width="35%">Document</th><th width="25%">Number</th><th width="20%">Issued At</th><th width="20%" class="text-right">Valid Until</th></tr></thead>
+                    <tbody>
+                        <tr><td>Passport</td><td class="font-mono">X 4389308</td><td>Mimika</td><td class="text-right check-expiry">Apr 22, 2035</td></tr>
+                        <tr><td>Seaman Book</td><td class="font-mono">J 045625</td><td>Marunda</td><td class="text-right check-expiry">May 14, 2027</td></tr>
+                        <tr class="bg-blue-50"><td class="font-bold text-doc">Deck Officer Class II</td><td class="font-mono font-bold text-doc">6211592574N20423</td><td>Jakarta</td><td class="text-right italic">Follow Endors.</td></tr>
+                        <tr class="bg-blue-50"><td class="font-bold text-doc">Endorsement Class II</td><td class="font-mono font-bold text-doc">6211592574NB0423</td><td>Jakarta</td><td class="text-right font-bold text-green-700 check-expiry">Nov 28, 2028</td></tr>
+                        <tr><td>GMDSS Basic</td><td class="font-mono">6211592574G10420</td><td>Jakarta</td><td class="text-right italic">Follow Endors.</td></tr>
+                        <tr><td>Endorsement GMDSS</td><td class="font-mono">6211592574GA0420</td><td>Jakarta</td><td class="text-right font-bold text-green-700 check-expiry">Jan 21, 2030</td></tr>
+                        <tr><td>GMDSS GOC</td><td class="font-mono">110845/SOU/II/2024</td><td>Jakarta</td><td class="text-right check-expiry">Feb 15, 2029</td></tr>
+                        <tr><td>Seafarer Identity Doc (SID)</td><td class="font-mono">IDN609976674</td><td>Jakarta</td><td class="text-right check-expiry">Mar 03, 2030</td></tr>
+                    </tbody>
+                </table>
             </div>
 
             <!-- Support Docs (Full Width) -->
-            <div class="card-compact border-t-support">
+            <div class="card-compact border-t-support print-full-width">
                 <h2 class="section-title mb-2 border-b pb-1 border-slate-100"><i class="fas fa-folder-open clean-icon text-support"></i> Supporting Documents</h2>
                 <table class="data-table">
-                    <thead><tr><th width="40%">Name</th><th width="25%">Number</th><th width="15%">Place</th><th width="20%" class="text-right">Issued</th></tr></thead>
+                    <thead><tr><th width="35%">Name</th><th width="25%">Number</th><th width="20%">Place</th><th width="20%" class="text-right">Issued</th></tr></thead>
                     <tbody>
                         <tr><td>Marlin English Certificate</td><td class="font-mono">6BFF94317AD0B047</td><td>Jakarta</td><td class="text-right">Nov 05, 2021</td></tr>
                         <tr><td>Open Water Diver</td><td class="font-mono">2835075</td><td>Selayar</td><td class="text-right">Jan 14, 2020</td></tr>
@@ -346,11 +350,11 @@
             </div>
 
             <!-- COP (Full Width, Split 2 Columns inside) -->
-            <div class="card-compact border-t-cert">
+            <div class="card-compact border-t-cert print-full-width">
                 <h2 class="section-title mb-3 border-b pb-2 border-slate-100"><i class="fas fa-certificate clean-icon text-cert"></i> Certificates of Proficiency (COP)</h2>
-                <div class="grid-print-2 grid grid-cols-2 gap-6">
+                <div class="print-grid-2 grid grid-cols-2 gap-6">
                     <table class="data-table">
-                        <thead><tr><th>Certificate</th><th>Valid</th></tr></thead>
+                        <thead><tr><th>Certificate</th><th class="text-right">Valid</th></tr></thead>
                         <tbody>
                             <tr><td>Basic Safety Training (BST)</td><td class="text-right check-expiry">Dec 16, 2030</td></tr>
                             <tr><td>Advanced Fire Fighting (AFF)</td><td class="text-right check-expiry">Oct 01, 2026</td></tr>
@@ -365,7 +369,7 @@
                         </tbody>
                     </table>
                     <table class="data-table">
-                        <thead><tr><th>Certificate</th><th>Valid</th></tr></thead>
+                        <thead><tr><th>Certificate</th><th class="text-right">Valid</th></tr></thead>
                         <tbody>
                             <tr><td>Adv. Training Chemical Tanker (ACT)</td><td class="text-right check-expiry">Feb 28, 2030</td></tr>
                             <tr><td>ISM Code</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
@@ -373,7 +377,7 @@
                             <tr><td>ARPA Simulator</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
                             <tr><td>Crowd Management Training</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
                             <tr><td>Proficiency in Survival Craft (PSCRB)</td><td class="text-right check-expiry">Mar 14, 2029</td></tr>
-                            <tr><td>Crisis Mgmt & Human Bhv</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
+                            <tr><td>Crisis Mgmt & Human Behaviour</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
                             <tr><td>Bridge Resource Management (BRM)</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
                             <tr><td>ECDIS</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
                             <tr><td>IMDG Code</td><td class="text-right font-bold text-green-600">UNLIMITED</td></tr>
@@ -394,27 +398,75 @@
         function toggleColorPicker(){document.getElementById('colorPickerContainer').classList.toggle('hidden')}
         function toggleExpiryVisuals(s){document.body.classList.toggle('expiry-visuals-enabled',s)}
         function setPaperSize(s){document.getElementById('page-size-style').innerHTML=`@media print{@page{size:${s==='A4'?'210mm 297mm':'215mm 330mm'};margin:10mm}}`}
+        
+        function setThemeIcon(iconClass) {
+            const icon = document.getElementById('theme-watermark-icon');
+            if (icon) icon.className = `fas ${iconClass} text-8xl text-white`;
+        }
+
         function setTheme(t){
             const r=document.documentElement.style;
-            if(t==='ocean'){r.cssText='--header-from:#1e3a8a;--header-to:#312e81;--profile-color:#2563eb;--personal-color:#0d9488;--edu-color:#ea580c;--kin-color:#db2777;--lang-color:#9333ea;--work-color:#1d4ed8;--doc-color:#4338ca;--cert-color:#0f766e;--support-color:#15803d'}
-            if(t==='emerald'){r.cssText='--header-from:#064e3b;--header-to:#115e59;--profile-color:#059669;--personal-color:#047857;--edu-color:#d97706;--kin-color:#be123c;--lang-color:#0891b2;--work-color:#059669;--doc-color:#0f766e;--cert-color:#047857;--support-color:#15803d'}
-            if(t==='sunset'){r.cssText='--header-from:#881337;--header-to:#9f1239;--profile-color:#e11d48;--personal-color:#db2777;--edu-color:#ea580c;--kin-color:#be123c;--lang-color:#c026d3;--work-color:#e11d48;--doc-color:#be123c;--cert-color:#9f1239;--support-color:#b91c1c'}
-            if(t==='navy'){r.cssText='--header-from:#0f172a;--header-to:#1e293b;--profile-color:#334155;--personal-color:#475569;--edu-color:#ca8a04;--kin-color:#9f1239;--lang-color:#475569;--work-color:#1e293b;--doc-color:#334155;--cert-color:#475569;--support-color:#0f172a'}
-            if(t==='mono'){r.cssText='--header-from:#171717;--header-to:#262626;--profile-color:#404040;--personal-color:#404040;--edu-color:#404040;--kin-color:#404040;--lang-color:#404040;--work-color:#404040;--doc-color:#404040;--cert-color:#404040;--support-color:#404040'}
+            if(t==='ocean'){
+                r.cssText='--header-from:#1e3a8a;--header-to:#312e81;--profile-color:#2563eb;--personal-color:#0d9488;--edu-color:#ea580c;--kin-color:#db2777;--lang-color:#9333ea;--work-color:#1d4ed8;--doc-color:#4338ca;--cert-color:#0f766e;--support-color:#15803d';
+                setThemeIcon('fa-water');
+            }
+            if(t==='emerald'){
+                r.cssText='--header-from:#064e3b;--header-to:#115e59;--profile-color:#059669;--personal-color:#047857;--edu-color:#d97706;--kin-color:#be123c;--lang-color:#0891b2;--work-color:#059669;--doc-color:#0f766e;--cert-color:#047857;--support-color:#15803d';
+                setThemeIcon('fa-leaf');
+            }
+            if(t==='sunset'){
+                r.cssText='--header-from:#881337;--header-to:#9f1239;--profile-color:#e11d48;--personal-color:#db2777;--edu-color:#ea580c;--kin-color:#be123c;--lang-color:#c026d3;--work-color:#e11d48;--doc-color:#be123c;--cert-color:#9f1239;--support-color:#b91c1c';
+                setThemeIcon('fa-sun');
+            }
+            if(t==='navy'){
+                r.cssText='--header-from:#0f172a;--header-to:#1e293b;--profile-color:#334155;--personal-color:#475569;--edu-color:#ca8a04;--kin-color:#9f1239;--lang-color:#475569;--work-color:#1e293b;--doc-color:#334155;--cert-color:#475569;--support-color:#0f172a';
+                setThemeIcon('fa-anchor');
+            }
+            if(t==='mono'){
+                r.cssText='--header-from:#171717;--header-to:#262626;--profile-color:#404040;--personal-color:#404040;--edu-color:#404040;--kin-color:#404040;--lang-color:#404040;--work-color:#404040;--doc-color:#404040;--cert-color:#404040;--support-color:#404040';
+                setThemeIcon('fa-compass');
+            }
         }
-        function setCustomTheme(c){const r=document.documentElement.style;r.setProperty('--header-from',c);r.setProperty('--header-to',c);['profile','personal','edu','kin','lang','work','doc','cert','support'].forEach(k=>r.setProperty(`--${k}-color`,c))}
+        function setCustomTheme(c){
+            const r=document.documentElement.style;r.setProperty('--header-from',c);r.setProperty('--header-to',c);['profile','personal','edu','kin','lang','work','doc','cert','support'].forEach(k=>r.setProperty(`--${k}-color`,c));
+            setThemeIcon('fa-star');
+        }
         
         document.addEventListener("DOMContentLoaded",()=>{
             const today=new Date(), limit=18*30*24*60*60*1000; let docs=[];
             document.querySelectorAll('.check-expiry').forEach(c=>{
-                const d=new Date(c.innerText);
+                const dateText = c.innerText.trim();
+                const d=new Date(dateText);
                 if(!isNaN(d)){
                     const diff=d-today;
-                    if(diff<0){c.classList.add('expired'); c.innerHTML+=' <i class="fas fa-times-circle expiry-icon ml-1 text-red-600"></i>'; docs.push(c.closest('tr').cells[0].innerText+" (Expired)");}
-                    else if(diff<limit){c.classList.add('expiring-soon'); c.innerHTML+=' <i class="fas fa-exclamation-triangle expiry-icon ml-1 text-orange-500"></i>'; docs.push(c.closest('tr').cells[0].innerText+" (Expiring)");}
+                    if(diff<0){
+                        c.classList.add('expired'); 
+                        c.innerHTML+=' <i class="fas fa-times-circle expiry-icon ml-1 text-red-600"></i>'; 
+                        docs.push(`<div><b class="text-slate-800">${c.closest('tr').cells[0].innerText}</b><br><span class="text-[10px] text-red-600">Akan kedaluwarsa pada: ${dateText}</span></div>`);
+                    }
+                    else if(diff<limit){
+                        c.classList.add('expiring-soon'); 
+                        c.innerHTML+=' <i class="fas fa-exclamation-triangle expiry-icon ml-1 text-orange-500"></i>'; 
+                        
+                        const totalDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
+                        const months = Math.floor(totalDays / 30);
+                        const days = totalDays % 30;
+                        let sisa = [];
+                        if (months > 0) sisa.push(`${months} bulan`);
+                        if (days > 0) sisa.push(`${days} hari`);
+                        const sisaText = sisa.length > 0 ? sisa.join(' ') : "Hari ini";
+
+                        docs.push(`<div><b class="text-slate-800">${c.closest('tr').cells[0].innerText}</b><br><span class="text-[10px] text-slate-600">Akan kedaluwarsa pada: ${dateText} <strong class="text-orange-600">(Sisa: ${sisaText})</strong></span></div>`);
+                    }
                 }
             });
-            if(docs.length) { document.getElementById('expiry-list').innerHTML=docs.map(d=>`<li>${d}</li>`).join(''); document.getElementById('expiry-modal').classList.remove('hidden'); }
+            if(docs.length) { 
+                document.getElementById('expiry-list').innerHTML=docs.map(d=>`<li class="mb-3">${d}</li>`).join(''); 
+                document.getElementById('expiry-modal').classList.remove('hidden'); 
+            }
+            
+            // Set default icon mapping on load
+            setThemeIcon('fa-water');
         });
     </script>
 </body>
