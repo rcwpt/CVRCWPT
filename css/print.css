@@ -1,0 +1,400 @@
+/* ==========================================================================
+   MARITIME CV PRINT STYLESHEET
+   Standard A4 Maritime CV Layout for Recruitment & Formal Submission
+   ========================================================================== */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm 10mm 12mm;
+  }
+
+  /* Reset & Clean Defaults for Crisp Black & White / Minimal Print */
+  *, *::before, *::after {
+    background: transparent !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html, body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+    width: 100% !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  /* HIDE ALL INTERACTIVE & NAVIGATION ELEMENTS */
+  .sidebar,
+  .mobile-topbar,
+  .drawer-backdrop,
+  .sidebar-collapse-btn,
+  .hero-cta,
+  .quick-facts-grid,
+  .sea-filter-bar,
+  .cert-dashboard-header,
+  .cert-filter-pills,
+  .doc-actions,
+  .contact-action-bar,
+  .site-footer,
+  .toast-container,
+  .modal-overlay,
+  .btn,
+  .no-print {
+    display: none !important;
+  }
+
+  .main-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .content-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* SECTION FORMATTING FOR PRINT */
+  .section {
+    padding: 10pt 0 !important;
+    border-bottom: 1pt solid #cbd5e1 !important;
+    page-break-inside: auto;
+  }
+
+  .section:last-of-type {
+    border-bottom: none !important;
+  }
+
+  .section-header {
+    margin-bottom: 6pt !important;
+  }
+
+  .section-pretitle {
+    display: none !important;
+  }
+
+  .section-title {
+    font-size: 12pt !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    margin-bottom: 4pt !important;
+    color: #0f172a !important;
+    border-bottom: 1.5pt solid #0f172a !important;
+    padding-bottom: 2pt !important;
+  }
+
+  .section-subtitle {
+    display: none !important;
+  }
+
+  /* PRINT HEADER (HERO TRANSFORMED) */
+  .hero-section {
+    padding: 0 0 12pt 0 !important;
+    border-bottom: 2pt solid #0f172a !important;
+    background: none !important;
+  }
+
+  .hero-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 14pt !important;
+    text-align: left !important;
+  }
+
+  .hero-avatar-wrapper {
+    width: 85pt !important;
+    height: 110pt !important;
+    border: 1pt solid #475569 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border-radius: 4pt !important;
+  }
+
+  .hero-avatar-badge {
+    display: none !important;
+  }
+
+  .hero-meta {
+    flex: 1 !important;
+    gap: 4pt !important;
+  }
+
+  .hero-tagline {
+    display: none !important;
+  }
+
+  .hero-name {
+    font-size: 16pt !important;
+    font-weight: 900 !important;
+    line-height: 1.1 !important;
+    color: #0f172a !important;
+    text-transform: uppercase !important;
+  }
+
+  .hero-title-highlight {
+    font-size: 10pt !important;
+    font-weight: 700 !important;
+    color: #1e3a8a !important;
+    margin-bottom: 4pt !important;
+  }
+
+  .hero-title-highlight .rank-chip {
+    border: 1pt solid #000000 !important;
+    padding: 1pt 4pt !important;
+    font-size: 8.5pt !important;
+  }
+
+  .hero-summary {
+    font-size: 8.5pt !important;
+    line-height: 1.35 !important;
+    color: #334155 !important;
+  }
+
+  /* PRINT CONTACT STRIP */
+  .print-contact-strip {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10pt !important;
+    font-size: 8pt !important;
+    margin-top: 4pt !important;
+    padding-top: 4pt !important;
+    border-top: 0.5pt dashed #94a3b8 !important;
+  }
+
+  .print-contact-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 3pt !important;
+  }
+
+  /* PROFILE GRID PRINT */
+  .profile-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10pt !important;
+  }
+
+  .profile-card {
+    border: 0.5pt solid #cbd5e1 !important;
+    padding: 8pt !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+  }
+
+  .profile-card::before {
+    display: none !important;
+  }
+
+  .profile-card-header {
+    margin-bottom: 4pt !important;
+  }
+
+  .profile-card-title {
+    font-size: 9.5pt !important;
+    font-weight: 700 !important;
+  }
+
+  .profile-details-table {
+    font-size: 8pt !important;
+  }
+
+  .profile-details-table td {
+    padding: 2pt 0 !important;
+  }
+
+  /* TIMELINE & SEA SERVICE PRINT */
+  .timeline {
+    padding-left: 0 !important;
+  }
+
+  .timeline::before,
+  .timeline-marker {
+    display: none !important;
+  }
+
+  .timeline-item {
+    margin-bottom: 8pt !important;
+    page-break-inside: avoid !important;
+  }
+
+  .timeline-card {
+    border: 0.5pt solid #cbd5e1 !important;
+    padding: 8pt !important;
+    box-shadow: none !important;
+  }
+
+  .timeline-vessel {
+    font-size: 10.5pt !important;
+    font-weight: 700 !important;
+  }
+
+  .timeline-company {
+    font-size: 8.5pt !important;
+  }
+
+  .timeline-period-badge {
+    border: 0.5pt solid #64748b !important;
+    font-size: 7.5pt !important;
+    padding: 1pt 4pt !important;
+  }
+
+  .vessel-specs-strip {
+    grid-template-columns: repeat(4, 1fr) !important;
+    padding: 4pt 6pt !important;
+    margin-bottom: 6pt !important;
+    border: 0.5pt solid #e2e8f0 !important;
+    background: #f8fafc !important;
+  }
+
+  .spec-key {
+    font-size: 6.5pt !important;
+  }
+
+  .spec-val {
+    font-size: 8pt !important;
+  }
+
+  .responsibilities-list li {
+    font-size: 8pt !important;
+    padding-left: 8pt !important;
+  }
+
+  /* SEA SERVICE TABLE FOR PRINT */
+  .table-responsive {
+    border: 0.5pt solid #000000 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .maritime-table {
+    width: 100% !important;
+    font-size: 7.5pt !important;
+    border-collapse: collapse !important;
+  }
+
+  .maritime-table th {
+    background-color: #f1f5f9 !important;
+    border: 0.5pt solid #64748b !important;
+    padding: 4pt 6pt !important;
+    font-size: 7pt !important;
+    font-weight: bold !important;
+  }
+
+  .maritime-table td {
+    border: 0.5pt solid #cbd5e1 !important;
+    padding: 3pt 6pt !important;
+  }
+
+  /* CERTIFICATES & LICENSES GRID PRINT */
+  .cert-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6pt !important;
+  }
+
+  .cert-card {
+    border: 0.5pt solid #cbd5e1 !important;
+    padding: 6pt 8pt !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cert-title {
+    font-size: 8.5pt !important;
+    font-weight: 700 !important;
+    margin-bottom: 2pt !important;
+  }
+
+  .cert-meta-list {
+    margin: 4pt 0 0 0 !important;
+    padding-top: 3pt !important;
+    font-size: 7.5pt !important;
+    gap: 1.5pt !important;
+  }
+
+  .status-pill {
+    border: 0.5pt solid #000000 !important;
+    padding: 1pt 4pt !important;
+    font-size: 6.5pt !important;
+  }
+
+  /* EDUCATION & SKILLS PRINT */
+  .edu-timeline {
+    gap: 8pt !important;
+  }
+
+  .edu-card {
+    border: 0.5pt solid #cbd5e1 !important;
+    padding: 8pt !important;
+    gap: 8pt !important;
+    page-break-inside: avoid !important;
+  }
+
+  .edu-icon-badge {
+    width: 28pt !important;
+    height: 28pt !important;
+    font-size: 11pt !important;
+    border: 0.5pt solid #94a3b8 !important;
+  }
+
+  .edu-institution {
+    font-size: 9.5pt !important;
+  }
+
+  .edu-degree {
+    font-size: 8.5pt !important;
+  }
+
+  .edu-highlights li {
+    font-size: 7.5pt !important;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8pt !important;
+  }
+
+  .skill-category-card {
+    border: 0.5pt solid #cbd5e1 !important;
+    padding: 8pt !important;
+    page-break-inside: avoid !important;
+  }
+
+  .skill-cat-header {
+    margin-bottom: 6pt !important;
+  }
+
+  .skill-cat-title {
+    font-size: 8.5pt !important;
+  }
+
+  .skill-chip {
+    font-size: 7pt !important;
+    padding: 2pt 5pt !important;
+    border: 0.5pt solid #cbd5e1 !important;
+    background: #f8fafc !important;
+  }
+
+  /* FORCE PAGE BREAKS WHERE APPROPRIATE */
+  .page-break-before {
+    page-break-before: always !important;
+  }
+
+  .page-break-avoid {
+    page-break-inside: avoid !important;
+  }
+}

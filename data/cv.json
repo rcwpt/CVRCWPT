@@ -1,0 +1,770 @@
+{
+  "profile": {
+    "name": "Rezhky C. W. P. Todingbua, S.Tr.Pel",
+    "shortName": "Rezhky Todingbua",
+    "initials": "RCWPT",
+    "surname": "Todingbua",
+    "firstName": "Rezhky C W P",
+    "rank": "Second Officer (2/O)",
+    "license": "Deck Officer Class II (ANT-II)",
+    "title": "Deck Officer Class II (ANT-II) / Second Officer",
+    "subtitle": "Maritime Navigation, Bridge Watchkeeping & Vessel Operations",
+    "summary": "Highly dedicated and disciplined Deck Officer holding Indonesian Deck Officer Class II (ANT-II / STCW II/2) qualification with 1,740+ days (~4.8 years) of verified sea service across General Cargo vessels, Bulk Carriers, and Container ships. Possesses extensive sea-going experience in international and domestic waters, specializing in bridge navigational watchkeeping, passage planning, ECDIS/RADAR navigation, safety compliance (SOLAS/MARPOL/STCW), and vessel deck operations. Committed to the highest standards of navigational safety, situational awareness, and operational excellence.",
+    "nationality": "Indonesian",
+    "dateOfBirth": "1996-09-11",
+    "placeOfBirth": "Sentani, Indonesia",
+    "age": 29,
+    "maritalStatus": "Married",
+    "physical": {
+      "height": "163 cm",
+      "weight": "72 kg",
+      "overallSize": "L"
+    },
+    "nextOfKin": [
+      {
+        "name": "Mariana Mery",
+        "relationship": "Wife",
+        "phone": "+62 822 9957 2500"
+      },
+      {
+        "name": "Christina Krey",
+        "relationship": "Mother",
+        "phone": "+62 812 4031 5725"
+      }
+    ],
+    "avatar": {
+      "webp": "assets/images/profile.webp",
+      "jpg": "assets/images/profile.jpg",
+      "thumb": "assets/images/profile-thumb.webp",
+      "original": "IMG_20260128_125245.jpg.jpeg",
+      "alt": "Formal Portrait of Officer Rezhky C. W. P. Todingbua in Maritime Uniform"
+    }
+  },
+  "contact": {
+    "phone": "+62 813 4332 9545",
+    "phoneClean": "+6281343329545",
+    "email": "rezhkytodingbua@gmail.com",
+    "address": "Jl. Garuda RT/RW 002/008 Wonosari Jaya, Wania, Kab. Mimika, Papua Tengah, ID",
+    "location": "Mimika, Papua Tengah, Indonesia",
+    "github": "https://github.com/rcwpt",
+    "githubRepo": "https://github.com/rcwpt/CVRCWPT",
+    "website": "https://rcwpt.github.io/CVRCWPT/"
+  },
+  "quickFacts": [
+    {
+      "label": "Current Rank",
+      "value": "Second Officer (2/O)",
+      "icon": "fa-compass"
+    },
+    {
+      "label": "Competency License",
+      "value": "Deck Officer Class II (ANT-II)",
+      "icon": "fa-certificate"
+    },
+    {
+      "label": "Total Sea Service",
+      "value": "1,747 Days (~4.8 Yrs)",
+      "icon": "fa-water"
+    },
+    {
+      "label": "Vessel Experience",
+      "value": "Gen. Cargo, Bulk, Container",
+      "icon": "fa-ship"
+    },
+    {
+      "label": "Radio Qualification",
+      "value": "GMDSS GOC (STCW IV/2)",
+      "icon": "fa-broadcast-tower"
+    },
+    {
+      "label": "Nationality",
+      "value": "Indonesian",
+      "icon": "fa-flag"
+    }
+  ],
+  "stats": {
+    "totalSeaServiceDays": 1747,
+    "totalSeaServiceYearsFormatted": "4 Years, 9 Months, 17 Days",
+    "totalOfficerDays": 1375,
+    "totalOfficerYearsFormatted": "3 Years, 9 Months",
+    "secondOfficerDays": 904,
+    "secondOfficerYearsFormatted": "2 Years, 5 Months",
+    "totalVessels": 6,
+    "largestVesselGRT": "27,986 GRT",
+    "maxEnginePower": "12,694 HP"
+  },
+  "licenses": [
+    {
+      "name": "Deck Officer Class II (ANT-II) STCW II/2",
+      "type": "Certificate of Competency (CoC)",
+      "category": "license",
+      "number": "6211592574N20423",
+      "issuedAt": "Jakarta",
+      "dateIssued": "2023-11-28",
+      "validUntil": "FOLLOW ENDORSEMENT",
+      "expiryStatus": "follow-endorsement",
+      "notes": "Indonesian Directorate General of Sea Transportation"
+    },
+    {
+      "name": "Endorsement Class II (STCW II/2)",
+      "type": "Certificate of Endorsement (CoE)",
+      "category": "license",
+      "number": "6211592574NB0423",
+      "issuedAt": "Jakarta",
+      "dateIssued": "2023-11-28",
+      "validUntil": "2028-11-28",
+      "expiryStatus": "valid",
+      "notes": "Valid until Nov 28, 2028"
+    },
+    {
+      "name": "GMDSS Basic",
+      "type": "Radio Operator CoC",
+      "category": "license",
+      "number": "6211592574G10420",
+      "issuedAt": "Jakarta",
+      "dateIssued": "2020-04-17",
+      "validUntil": "FOLLOW ENDORSEMENT",
+      "expiryStatus": "follow-endorsement",
+      "notes": "Global Maritime Distress and Safety System"
+    },
+    {
+      "name": "Endorsement GMDSS Operator",
+      "type": "Certificate of Endorsement (CoE)",
+      "category": "license",
+      "number": "6211592574GA0420",
+      "issuedAt": "Jakarta",
+      "dateIssued": "2025-01-21",
+      "validUntil": "2030-01-21",
+      "expiryStatus": "valid",
+      "notes": "Valid until Jan 21, 2030"
+    },
+    {
+      "name": "GMDSS General Operator Certificate (GOC)",
+      "type": "Radio Operator Certificate",
+      "category": "license",
+      "number": "110845/SOU/II/2024",
+      "issuedAt": "Jakarta",
+      "dateIssued": "2024-02-15",
+      "validUntil": "2029-02-15",
+      "expiryStatus": "valid",
+      "notes": "Post and Telecommunication Ministry / Sea Transportation"
+    },
+    {
+      "name": "Seafarer Identity Document (SID)",
+      "type": "Identity Document (ILO 185)",
+      "category": "travel",
+      "number": "IDN609976674",
+      "issuedAt": "Jakarta",
+      "dateIssued": "2025-03-03",
+      "validUntil": "2030-03-03",
+      "expiryStatus": "valid",
+      "notes": "Biometric Seafarers Identity Card"
+    },
+    {
+      "name": "Passport",
+      "type": "International Travel Document",
+      "category": "travel",
+      "number": "X 4389308",
+      "issuedAt": "Mimika",
+      "dateIssued": "2025-04-22",
+      "validUntil": "2035-04-22",
+      "expiryStatus": "valid",
+      "notes": "Republic of Indonesia Passport (10 Years Validity)"
+    },
+    {
+      "name": "Seaman's Book (Buku Pelaut)",
+      "type": "Seafarer Registration",
+      "category": "travel",
+      "number": "J 045625",
+      "issuedAt": "Marunda",
+      "dateIssued": "2024-05-14",
+      "validUntil": "2027-05-14",
+      "expiryStatus": "valid",
+      "notes": "Official Continuous Discharge Certificate"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "bst",
+      "name": "Basic Safety Training Rev (BST)",
+      "code": "BST",
+      "category": "safety",
+      "number": "6211592574010425",
+      "dateIssued": "2025-12-16",
+      "validUntil": "2030-12-16",
+      "validityPeriod": "5 Years",
+      "issuedAt": "Makassar",
+      "stcw": "VI/1",
+      "description": "Personal Survival Techniques, Fire Prevention & Fire Fighting, Elementary First Aid, Personal Safety & Social Responsibilities."
+    },
+    {
+      "id": "aff",
+      "name": "Advanced Fire Fighting Rev (AFF)",
+      "code": "AFF",
+      "category": "safety",
+      "number": "6211592574060426",
+      "dateIssued": "2021-06-04",
+      "validUntil": "2026-06-04",
+      "validityPeriod": "5 Years",
+      "issuedAt": "Makassar",
+      "stcw": "VI/3",
+      "description": "Control fire-fighting operations aboard ships, organize and train fire parties, inspect and service fire detection and extinguishing systems."
+    },
+    {
+      "id": "pscrb",
+      "name": "Proficiency in Survival Craft and Rescue Boats Rev (PSCRB)",
+      "code": "PSCRB",
+      "category": "safety",
+      "number": "6211592574040424",
+      "dateIssued": "2024-03-14",
+      "validUntil": "2029-03-14",
+      "validityPeriod": "5 Years",
+      "issuedAt": "Makassar",
+      "stcw": "VI/2",
+      "description": "Take charge of survival craft or rescue boat during and after launch, operate marine survival equipment and locating devices."
+    },
+    {
+      "id": "mfa",
+      "name": "Medical First Aid (MFA)",
+      "code": "MFA",
+      "category": "safety",
+      "number": "6211592574070421",
+      "dateIssued": "2021-10-26",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "VI/4-1",
+      "description": "Immediate first aid in case of accident or illness on board, wound care, CPR, patient transport."
+    },
+    {
+      "id": "mc",
+      "name": "Medical Care (MC)",
+      "code": "MC",
+      "category": "safety",
+      "number": "6211592574080420",
+      "dateIssued": "2020-02-25",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "VI/4-2",
+      "description": "Advanced medical care aboard ship without a doctor, medical tele-consultation, pharmacy administration, clinical procedures."
+    },
+    {
+      "id": "sat",
+      "name": "Security Awareness Training (SAT)",
+      "code": "SAT",
+      "category": "security",
+      "number": "6211592574310421",
+      "dateIssued": "2021-10-28",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "VI/6-1",
+      "description": "Maritime security threats, ISPS code requirements, recognizing security risks."
+    },
+    {
+      "id": "sdsd",
+      "name": "Seafarers With Designated Security Duties (SDSD)",
+      "code": "SDSD",
+      "category": "security",
+      "number": "6211592574320421",
+      "dateIssued": "2021-10-28",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "VI/6-2",
+      "description": "Specific security duties in support of Ship Security Plan (SSP), access control, search procedures."
+    },
+    {
+      "id": "sso",
+      "name": "Ship Security Officer (SSO)",
+      "code": "SSO",
+      "category": "security",
+      "number": "6211592574240420",
+      "dateIssued": "2020-03-03",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "VI/5",
+      "description": "Overall security management on board, coordinating with Company Security Officer (CSO) and Port Facility Security Officer (PFSO)."
+    },
+    {
+      "id": "blgt",
+      "name": "Basic Training for Liquefied Gas Tanker (BLGT)",
+      "code": "BLGT",
+      "category": "tanker",
+      "number": "6211592574370421",
+      "dateIssued": "2021-10-19",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "V/1-2-1",
+      "description": "Basic cargo handling, thermodynamics, fire hazards, and emergency operations for LNG/LPG gas carriers."
+    },
+    {
+      "id": "boct",
+      "name": "Basic Training for Oil and Chemical Tanker Rev (BOCT)",
+      "code": "BOCT",
+      "category": "tanker",
+      "number": "6211592574390421",
+      "dateIssued": "2021-10-14",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "V/1-1-1",
+      "description": "Fundamental tanker safety, inert gas systems, pollution prevention, cargo piping and hazards on oil and chemical tankers."
+    },
+    {
+      "id": "aot",
+      "name": "Advanced Training for Oil Tanker (AOT)",
+      "code": "AOT",
+      "category": "tanker",
+      "number": "6211592574410425",
+      "dateIssued": "2025-01-24",
+      "validUntil": "2030-01-24",
+      "validityPeriod": "5 Years",
+      "issuedAt": "Jakarta",
+      "stcw": "V/1-1-2",
+      "description": "Advanced management of oil cargo operations, crude oil washing (COW), vapor emission control, MARPOL Annex I compliance."
+    },
+    {
+      "id": "act",
+      "name": "Advanced Training for Chemical Tanker (ACT)",
+      "code": "ACT",
+      "category": "tanker",
+      "number": "6211592574400425",
+      "dateIssued": "2025-02-28",
+      "validUntil": "2030-02-28",
+      "validityPeriod": "5 Years",
+      "issuedAt": "Jakarta",
+      "stcw": "V/1-1-3",
+      "description": "Advanced management of noxious liquid chemical cargo, IBC code requirements, tank cleaning, toxicity precautions, MARPOL Annex II."
+    },
+    {
+      "id": "radar",
+      "name": "RADAR Simulator",
+      "code": "RADAR",
+      "category": "navigation",
+      "number": "6211592574030421",
+      "dateIssued": "2021-10-28",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "II/1",
+      "description": "Radar navigation, target tracking, parallel indexing, performance tuning, and blind pilotage techniques."
+    },
+    {
+      "id": "arpa",
+      "name": "ARPA Simulator",
+      "code": "ARPA",
+      "category": "navigation",
+      "number": "6211592574020421",
+      "dateIssued": "2021-10-29",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "II/1",
+      "description": "Automatic Radar Plotting Aids, vector analysis, CPA/TCPA assessment, trial maneuvers, and multi-target collision avoidance."
+    },
+    {
+      "id": "brm",
+      "name": "Bridge Resource Management (BRM)",
+      "code": "BRM",
+      "category": "navigation",
+      "number": "6211592574230420",
+      "dateIssued": "2020-03-07",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "II/1 & II/2",
+      "description": "Effective leadership, situational awareness, workload management, team communications, and error prevention on the bridge."
+    },
+    {
+      "id": "ecdis",
+      "name": "ECDIS (Electronic Chart Display & Information System)",
+      "code": "ECDIS",
+      "category": "navigation",
+      "number": "6211592574280420",
+      "dateIssued": "2020-03-27",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "II/1 & II/2",
+      "description": "Electronic passage planning, ENC chart updating, safety contour & depth settings, route monitoring, and sensor integration."
+    },
+    {
+      "id": "ism",
+      "name": "ISM Code",
+      "code": "ISM",
+      "category": "management",
+      "number": "020/ISM CODE/PIP MKS-04",
+      "dateIssued": "2017-04-27",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "ISM",
+      "description": "International Safety Management Code for the Safe Operation of Ships and Pollution Prevention, SMS internal auditing and drills."
+    },
+    {
+      "id": "imdg",
+      "name": "IMDG CODE Rev",
+      "code": "IMDG",
+      "category": "management",
+      "number": "6211592574290425",
+      "dateIssued": "2025-01-22",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "IMDG",
+      "description": "International Maritime Dangerous Goods Code, packaging, segregation tables, labeling, and emergency response for packaged goods."
+    },
+    {
+      "id": "cm",
+      "name": "Crowd Management (CM)",
+      "code": "CM",
+      "category": "management",
+      "number": "6211592574130420",
+      "dateIssued": "2020-03-09",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "V/2-1",
+      "description": "Control of crowd movements, passenger muster, lifejacket deployment, and emergency communication on passenger/cargo vessels."
+    },
+    {
+      "id": "cmhb",
+      "name": "Crisis Management and Human Behaviour (CMHB)",
+      "code": "CMHB",
+      "category": "management",
+      "number": "6211592574170420",
+      "dateIssued": "2020-03-09",
+      "validUntil": "UNLIMITED",
+      "validityPeriod": "UNLIMITED",
+      "issuedAt": "Makassar",
+      "stcw": "V/2-2",
+      "description": "Managing stress, human factors in maritime accidents, emergency communication, and crowd psychological leadership."
+    }
+  ],
+  "supportingDocuments": [
+    {
+      "no": 1,
+      "name": "Marlin English Certificate",
+      "category": "language",
+      "number": "6BFF94317AD0B047",
+      "dateIssued": "2021-11-05",
+      "placeIssued": "Jakarta",
+      "description": "International standard maritime English language competency evaluation for seafarers."
+    },
+    {
+      "no": 2,
+      "name": "Open Water Diver",
+      "category": "diver",
+      "number": "2835075",
+      "dateIssued": "2020-01-14",
+      "placeIssued": "Selayar",
+      "description": "Certified underwater diver qualifications (underwater inspection, marine navigation environment awareness)."
+    }
+  ],
+  "seaService": [
+    {
+      "vesselName": "MV JIA HONG",
+      "vesselType": "General Cargo",
+      "grt": 1995,
+      "hp": 1972,
+      "rank": "2/O",
+      "rankFull": "Second Officer",
+      "company": "JIAXIANG SHIPPING CO., LTD",
+      "signOn": "2024-03-16",
+      "signOff": "2025-03-17",
+      "durationDays": 367,
+      "durationFormatted": "1 Year, 1 Day (12.2 mos)",
+      "periodFormatted": "16 Mar 2024 – 17 Mar 2025",
+      "responsibilities": [
+        "Carried out bridge navigational watch (12-4 watch: 00:00-04:00 & 12:00-16:00) during international and coastal voyages.",
+        "Acted as primary Navigating Officer: formulated comprehensive passage plans, calculated courses, and managed ECDIS electronic charts.",
+        "Executed weekly and monthly Notices to Mariners (NtM) chart and publication corrections.",
+        "Monitored GMDSS radio equipment, navigational aids, and logged weather reports.",
+        "Supervised cargo watch and deck mooring operations in port."
+      ]
+    },
+    {
+      "vesselName": "MV CHANG RONG 12",
+      "vesselType": "Container",
+      "grt": 2988,
+      "hp": 2366,
+      "rank": "2/O",
+      "rankFull": "Second Officer",
+      "company": "VICTORY INTERNATIONAL SHIPPING CO., LTD.",
+      "signOn": "2022-09-12",
+      "signOff": "2023-09-16",
+      "durationDays": 370,
+      "durationFormatted": "1 Year, 4 Days (12.3 mos)",
+      "periodFormatted": "12 Sep 2022 – 16 Sep 2023",
+      "responsibilities": [
+        "Stood navigational watch on feeder container liner routes with intensive coastal traffic and strait passages.",
+        "Conducted berth-to-berth passage planning taking into account squat, under-keel clearance (UKC), tidal windows, and traffic separation schemes (TSS).",
+        "Inspected bridge and deck safety gear, distress flares, and portable radio equipment.",
+        "Coordinated with port authorities, pilotage services, and cargo surveyors during port turnarounds."
+      ]
+    },
+    {
+      "vesselName": "MV. V MIRACLE",
+      "vesselType": "General Cargo",
+      "grt": 1840,
+      "hp": 1971,
+      "rank": "2/O",
+      "rankFull": "Second Officer",
+      "company": "VICTORY INTERNATIONAL SHIPPING CO., LTD.",
+      "signOn": "2022-01-04",
+      "signOff": "2022-06-19",
+      "durationDays": 167,
+      "durationFormatted": "5 Months, 15 Days (5.6 mos)",
+      "periodFormatted": "04 Jan 2022 – 19 Jun 2022",
+      "responsibilities": [
+        "Safely executed navigational watchkeeping under various weather conditions and reduced visibility.",
+        "Maintained paper and digital chart inventory, nautical almanacs, and tide tables.",
+        "Assisted Master in preparing departure clearances, crew lists, and bridge logs.",
+        "Monitored cargo hold ventilation, bilge sounding, and deck security while at anchor and underway."
+      ]
+    },
+    {
+      "vesselName": "MV. INTAN DAYA 322",
+      "vesselType": "General Cargo",
+      "grt": 9222,
+      "hp": 4961,
+      "rank": "3/O",
+      "rankFull": "Third Officer",
+      "company": "PT. TEGUH PERSADA KENCANA",
+      "signOn": "2020-12-28",
+      "signOff": "2021-08-17",
+      "durationDays": 233,
+      "durationFormatted": "7 Months, 20 Days (7.8 mos)",
+      "periodFormatted": "28 Dec 2020 – 17 Aug 2021",
+      "responsibilities": [
+        "Performed navigational watch (08:00-12:00 & 20:00-24:00) adhering strictly to COLREG standards.",
+        "Assigned as Ship Safety Officer assistant: inspected lifesaving appliances (LSA) and firefighting appliances (FFA) regularly.",
+        "Checked lifeboats, life rafts, pyrotechnics, portable fire extinguishers, and SCBA breathing apparatus.",
+        "Managed port arrival/departure documentation and cargo lashings verification."
+      ]
+    },
+    {
+      "vesselName": "MV. AMMAR",
+      "vesselType": "Bulk Carrier",
+      "grt": 27986,
+      "hp": 12694,
+      "rank": "3/O",
+      "rankFull": "Third Officer",
+      "company": "PT. GLS",
+      "signOn": "2020-04-16",
+      "signOff": "2020-12-09",
+      "durationDays": 238,
+      "durationFormatted": "7 Months, 23 Days (7.9 mos)",
+      "periodFormatted": "16 Apr 2020 – 09 Dec 2020",
+      "responsibilities": [
+        "Served as Third Officer on a 27,986 GRT bulk carrier engaged in international dry bulk trades.",
+        "Maintained bridge watchkeeping, lookout vigilance, and collision avoidance in heavy traffic waterways.",
+        "Maintained vessel muster lists, emergency station bills, and recorded fire/boat drills in official logbooks.",
+        "Assisted Chief Officer during dry bulk loading and de-ballasting operations."
+      ]
+    },
+    {
+      "vesselName": "MV. BAO LUCKY",
+      "vesselType": "General Cargo",
+      "grt": 7939,
+      "hp": 3500,
+      "rank": "D/C",
+      "rankFull": "Deck Cadet",
+      "company": "HONGKONG HAIRUN SHIPPING CO. LTD",
+      "signOn": "2017-12-16",
+      "signOff": "2018-12-22",
+      "durationDays": 372,
+      "durationFormatted": "1 Year, 6 Days (12.4 mos)",
+      "periodFormatted": "16 Dec 2017 – 22 Dec 2018",
+      "responsibilities": [
+        "Completed one full year of sea phase training for PIP Makassar Training Record Book (TRB).",
+        "Trained in bridge watchkeeping, celestial navigation, terrestrial fixes, and radar plotting under officer guidance.",
+        "Learned deck maintenance, mooring operations, cargo hold preparation, and painting routines.",
+        "Participated actively in shipboard emergency drills and safety meetings."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Politeknik Ilmu Pelayaran (PIP) Makassar",
+      "program": "Nautika (Deck Department)",
+      "degree": "Diploma IV (S.Tr.Pel - Sarjana Terapan Pelayaran)",
+      "period": "2015 – 2020",
+      "yearGraduated": "2020",
+      "badge": "Maritime Academy",
+      "highlights": [
+        "Awarded Deck Officer Class III (ANT-III) Certificate of Competency upon graduation, later upgraded to Class II (ANT-II).",
+        "Completed comprehensive STCW-compliant officer training in electronic navigation, passage planning, ship handling, stability, meteorology, and maritime law.",
+        "Completed 12 months cadetship aboard ocean-going commercial general cargo vessel (MV. BAO LUCKY)."
+      ]
+    },
+    {
+      "institution": "SMA YPPK Tiga Raja",
+      "program": "Natural Sciences (IPA)",
+      "degree": "High School Diploma",
+      "period": "2011 – 2014",
+      "yearGraduated": "2014",
+      "badge": "Senior High",
+      "highlights": [
+        "Focus on advanced mathematics, physics, and chemistry.",
+        "Active in student leadership and disciplined extracurricular activities."
+      ]
+    },
+    {
+      "institution": "SMPN 5 Mimika Baru",
+      "program": "General Studies",
+      "degree": "Junior High School",
+      "period": "2008 – 2011",
+      "yearGraduated": "2011",
+      "badge": "Junior High",
+      "highlights": [
+        "Core academic foundation and youth leadership development."
+      ]
+    },
+    {
+      "institution": "SD Inpres Timika IV",
+      "program": "Primary Education",
+      "degree": "Elementary School",
+      "period": "2002 – 2008",
+      "yearGraduated": "2008",
+      "badge": "Elementary",
+      "highlights": [
+        "Primary education completed in Timika, Papua."
+      ]
+    }
+  ],
+  "skills": {
+    "navigation": {
+      "title": "Bridge Navigation & Watchkeeping",
+      "icon": "fa-compass",
+      "items": [
+        "ECDIS (Electronic Chart Display)",
+        "Radar & ARPA Simulator",
+        "Berth-to-Berth Passage Planning",
+        "Bridge Resource Management (BRM)",
+        "COLREG 1972 Compliance",
+        "Celestial & Terrestrial Navigation",
+        "Gyro & Magnetic Compass Error",
+        "Tidal & Current Calculations"
+      ]
+    },
+    "safety": {
+      "title": "Maritime Safety & Emergency Response",
+      "icon": "fa-shield-halved",
+      "items": [
+        "Advanced Fire Fighting (AFF)",
+        "Basic Safety Training (BST)",
+        "Proficiency in Survival Craft (PSCRB)",
+        "Medical First Aid (MFA)",
+        "Medical Care on Board (MC)",
+        "LSA & FFA Routine Inspections",
+        "Emergency Muster & Boat Drills"
+      ]
+    },
+    "security": {
+      "title": "Ship Security & Crisis Control",
+      "icon": "fa-user-shield",
+      "items": [
+        "Ship Security Officer (SSO)",
+        "Designated Security Duties (SDSD)",
+        "Security Awareness Training (SAT)",
+        "ISPS Code Implementation",
+        "Crowd Management (CM)",
+        "Crisis Management & Human Behaviour (CMHB)"
+      ]
+    },
+    "tanker": {
+      "title": "Tanker Operations & Certification",
+      "icon": "fa-oil-well",
+      "items": [
+        "Advanced Oil Tanker (AOT)",
+        "Advanced Chemical Tanker (ACT)",
+        "Basic Oil & Chemical Tanker (BOCT)",
+        "Basic Liquefied Gas Tanker (BLGT)",
+        "Inert Gas & Tank Washing",
+        "MARPOL Annex I & II Protocols"
+      ]
+    },
+    "regulations": {
+      "title": "Maritime Regulations & Cargo",
+      "icon": "fa-book-bookmark",
+      "items": [
+        "ISM Code & Safety Management System",
+        "IMDG Code (Dangerous Goods)",
+        "SOLAS & MARPOL Conventions",
+        "STCW 2010 Manila Amendments",
+        "General Cargo & Bulk Handling",
+        "Container Lashing & Twistlock Safety",
+        "Draft Survey & Cargo Watch"
+      ]
+    },
+    "communication": {
+      "title": "Communications & Technical Systems",
+      "icon": "fa-tower-broadcast",
+      "items": [
+        "GMDSS General Operator Certificate (GOC)",
+        "VHF, MF/HF Radio Watchkeeping",
+        "Navtex & Inmarsat-C Messages",
+        "Standard Marine Communication Phrases (SMCP)",
+        "Marlin English Test Certified",
+        "Digital Noon Reporting & Voyage Logs",
+        "Open Water Diver Certified"
+      ]
+    }
+  },
+  "languages": [
+    {
+      "language": "Bahasa Indonesia",
+      "level": "Native Speaker",
+      "proficiency": "First Language",
+      "flag": "🇮🇩"
+    },
+    {
+      "language": "English",
+      "level": "Professional Working Proficiency",
+      "proficiency": "Certified (Marlin English Certificate No. 6BFF94317AD0B047)",
+      "flag": "🇬🇧"
+    }
+  ],
+  "documents": [
+    {
+      "title": "Curriculum Vitae (PDF)",
+      "subtitle": "Official Maritime Format (Deck Officer Class II)",
+      "filename": "CV_REZHKY_ANT2.pdf",
+      "path": "assets/documents/CV_REZHKY_ANT2.pdf",
+      "size": "270 KB",
+      "type": "PDF Document",
+      "icon": "fa-file-pdf",
+      "canDownload": true,
+      "canPrint": true
+    },
+    {
+      "title": "Deck Officer Class II (ANT-II)",
+      "subtitle": "Certificate of Competency No. 6211592574N20423",
+      "type": "Certificate of Competency",
+      "icon": "fa-certificate",
+      "status": "Verified Document",
+      "canPrint": true
+    },
+    {
+      "title": "GMDSS General Operator Certificate (GOC)",
+      "subtitle": "Certificate No. 110845/SOU/II/2024",
+      "type": "Radio Qualification",
+      "icon": "fa-broadcast-tower",
+      "status": "Verified Document",
+      "canPrint": true
+    },
+    {
+      "title": "Passport & Seaman's Book",
+      "subtitle": "Passport: X 4389308 | Seaman Book: J 045625",
+      "type": "Travel Credentials",
+      "icon": "fa-passport",
+      "status": "Active & Valid",
+      "canPrint": true
+    }
+  ]
+}
